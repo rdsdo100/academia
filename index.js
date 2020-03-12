@@ -1,7 +1,7 @@
 'use strict'
 const express = require ('express')
 const bodyParser = require ('body-parser')
-const  rota = require("./config/rotas/indexRote")
+const  rota = require("./config/rotas/IndexRote")
 const http = require('http')
 
 const app = express()
@@ -18,5 +18,5 @@ const server = http.createServer(app)
 app.use(rota)
 
 server.listen(port, ()=>{
-    console.log("Foi !!!  porta :" + port )
+    console.log('Server Online !!!  port: ' + port )
 })
