@@ -1,20 +1,10 @@
 const express = require("express")
 const router = express.Router()
+const aluno = require('../../controller/Aluno')
 
 
-router.get('/' , (req, res, next)=>{
+router.get('/aluno' ,  aluno.get  )
 
 
-    console.log('aqui')
-
-    res.status(200).send({
-        title: 'academia' ,
-        versao: '0.00.1'
-        }
-
-    )
-
-
-} )
 
 module.exports = router;
