@@ -2,12 +2,10 @@ const  db  = require ('../config/bancoDados/db')
 
 module.exports.get = (req , res) =>{
 
-/*    db('pessoa').where('id' ,'<' ,10).then(t=>{
-        console.log(t)
-        res.status(200).send(t)
-    })*/
 
-let test = 6542;
+    
+
+let test = 1000;
 
     db.select('*')
         .from('pessoa')
@@ -18,9 +16,34 @@ let test = 6542;
         .first()
         .then(t=> {
 
-
-
-            res.status(200).send(t)
+const aluno = new Object()
+            aluno.aluno = {
+                id: t.id,
+                    nome: t.nome ,
+                    sobrenome: t.sobrenome ,
+                    cpf: t.cpf ,
+                    dataNacimento: t. data_nacimento ,
+                    dataCadastro: t.data_cadastro ,
+                    ativo: t.ativo
+            }
+            aluno.endereco = {
+                cep : t.cep,
+                logradouro : t.logradouro,
+                complemento : t.complemento,
+                bairro : t.bairro,
+                localidade: t.localidade,
+                uf: t.uf,
+                ibge : t.ibge,
+                numero: t.numero
+            }
+            aluno.telefone = {
+                dd: t.dd,
+                telefone: t.telefone,
+            }
+            aluno.Email = {
+                email: t.email
+            }
+            res.status(200).send(aluno)
         })
 
 }
