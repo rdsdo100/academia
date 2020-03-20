@@ -3,7 +3,8 @@ const router = express.Router()
 const aluno = require('../../controller/Aluno')
 
 
-router.get('/aluno' ,  aluno.get  )
+router.get ('/aluno' ,  aluno.get  )
+router.get ('/aluno/:id' ,  aluno.getId  )
 /*
 router.post('/aluno' ,   )
 router.delete('/aluno' ,    )
