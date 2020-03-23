@@ -1,22 +1,28 @@
 'use strict'
+const mongoose = require('mongoose')
 const express = require ('express')
+const cors = require('cors')
 const bodyParser = require ('body-parser')
 const  rota = require("./config/rotas/IndexRote")
-const http = require('http')
+
+mongoose.connect('mongodb+srv://rdsdo:root@academia-jxuob.mongodb.net/Academia?retryWrites=true&w=majority' ,
+    {useNewUrlParser : true ,
+        useUnifiedTopology : true
+    })
 
 const app = express()
 const port = 3003
 
-
+app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
 app.set('port' , port)
 
-const server = http.createServer(app)
+
 
 app.use(rota)
 
-server.listen(port, ()=>{
+app.listen(port, ()=>{
     console.log('Server Online !!!  port: ' + port )
 })

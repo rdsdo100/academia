@@ -1,5 +1,6 @@
 const  db  = require ('../config/bancoDados/db')
-const aluno = require ('../models/alunoModel')
+const alunoTeste = require ('../models/alunoModel')
+const Aluno = require('../models/mongoose/Aluno')
 
 module.exports.get = async (req , res) =>{
 
@@ -34,6 +35,19 @@ module.exports.getId = async (req , res) =>{
 
 
 
-    res.status(200).send(aluno)
+    res.status(200).send(alunoTeste)
+
+}
+
+module.exports.post = async (req ,res) =>{
+const {nome , sobrenome} = req.body
+let ok = await Aluno.create({
+    nome ,
+    sobrenome
+})
+
+
+    res.status(200).json(ok)
+
 
 }
