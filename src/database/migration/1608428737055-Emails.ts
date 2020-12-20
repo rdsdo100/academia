@@ -7,7 +7,9 @@ export class Emails1608428737055 implements MigrationInterface {
         await  queryRunner.query(`
             create  table if not exists emails (
                                                    id serial primary key,
-                                                   email varchar
+                                                   email varchar,
+                                                   created_at timestamp default now() not null,
+                                                   updated_at timestamp default now() not null
             );
         `)
 

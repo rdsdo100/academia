@@ -18,7 +18,9 @@ create table if not exists pessoas (
                           telefones_id_fk integer,
                           constraint pessoas_enderecos foreign key (enderecos_id_fk) references enderecos(id),
                           constraint pessoas_emails foreign key (emails_id_fk) references emails(id),
-                          constraint pessoas_telefones foreign key (telefones_id_fk) references telefones(id)
+                          constraint pessoas_telefones foreign key (telefones_id_fk) references telefones(id),
+                          created_at timestamp default now() not null,
+                          updated_at timestamp default now() not null
 
 );
         `)
