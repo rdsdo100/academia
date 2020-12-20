@@ -7,7 +7,7 @@ export class Treinos1608428778000 implements MigrationInterface {
         await  queryRunner.query(`
 crEate table if not exists treino (
                                       id   serial primary key,
-                                      sere int,
+                                      serie int,
                                       vezes int,
                                       kilos decimal,
                                       tempo integer,
