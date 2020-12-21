@@ -1,4 +1,15 @@
-import {BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {
+    BaseEntity,
+    Column,
+    CreateDateColumn,
+    Entity, JoinColumn,
+    ManyToOne,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
+} from "typeorm";
+import {Telefones} from "./Telefones";
+import {Enderecos} from "./Enderecos";
+import {Pessoas} from "./Pessoas";
 
 @Entity()
 export class Medidas extends BaseEntity {
@@ -51,10 +62,16 @@ export class Medidas extends BaseEntity {
     @Column()
     observacoes: string
 
-    @CreateDateColumn({name: "updated_at"})
+/*    @CreateDateColumn({name: "updated_at"})
     createdAt: Date;
 
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;
+    updatedAt: Date;*/
+
+    @ManyToOne(() => Pessoas, (pessoas) => pessoas.medidas, {eager: true})
+    @JoinColumn([{name: "pessoas_id_fK", referencedColumnName: "id"}])
+    pessoasIdFK: Pessoas
+
+
 
 }

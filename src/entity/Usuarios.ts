@@ -13,7 +13,7 @@ import { GrupoUsuarios } from "./GrupoUsuarios";
 @Entity()
 export class Usuarios extends BaseEntity {
 
-@PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn()
     id: number
 
     @Column({name: "nome_usuario"})
@@ -28,11 +28,11 @@ export class Usuarios extends BaseEntity {
     @Column()
     matricula: string
 
-    @CreateDateColumn({name: "updated_at"})
+ /*   @CreateDateColumn({name: "updated_at"})
     createdAt: Date;
 
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;
+    updatedAt: Date;*/
 
     @ManyToOne(() => GrupoUsuarios, (grupoUsuaruios) => grupoUsuaruios.usuarios, {eager: true})
     @JoinColumn([{name: "grupo_usuarios_id_fk", referencedColumnName: "id"}])

@@ -1,4 +1,13 @@
-import {BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {
+    BaseEntity,
+    Column,
+    CreateDateColumn,
+    Entity,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
+} from "typeorm";
+import {Pessoas} from "./Pessoas";
 
 @Entity()
 export class Enderecos extends BaseEntity {
@@ -30,10 +39,13 @@ export class Enderecos extends BaseEntity {
     @Column()
     numero: string
 
-    @CreateDateColumn({name: "updated_at"})
+/*    @CreateDateColumn({name: "updated_at"})
     createdAt: Date;
 
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;
+    updatedAt: Date;*/
+
+    @OneToMany(() => Pessoas, (pessoas) => pessoas.enderecosIdFK)
+    pessoas: Pessoas[];
 
 }

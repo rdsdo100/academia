@@ -21,10 +21,10 @@ export class Treino extends BaseEntity {
     @Column()
     observacoes: string
 
-    @CreateDateColumn({name: "updated_at"})
+/*    @CreateDateColumn({name: "updated_at"})
     createdAt: Date;
 
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;
+    updatedAt: Date;*/
 
 }

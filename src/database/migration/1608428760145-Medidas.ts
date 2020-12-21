@@ -22,8 +22,8 @@ create table if not exists medidas (
                                        panturrilia_direita decimal,
                                        panturrilia_esquerda decimal,
                                        observacoes varchar,
-                                       pessoa_id_fk integer,
-                                       constraint medidas_pessoas foreign key (pessoa_id_fk) references pessoas(id),
+                                       pessoas_id_fk integer,
+                                       constraint medidas_pessoas foreign key (pessoas_id_fk) references pessoas(id),
                                        created_at timestamp default now() not null,
                                        updated_at timestamp default now() not null
 );
