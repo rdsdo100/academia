@@ -11,6 +11,8 @@ import {Enderecos} from "./Enderecos";
 import {Emails} from "./Emails";
 import {Telefones} from "./Telefones";
 import {Medidas} from "./Medidas";
+import {Exercicios} from "./Exercicios";
+import {Treino} from "./Treino";
 
 @Entity()
 export class Pessoas extends BaseEntity {
@@ -56,6 +58,9 @@ export class Pessoas extends BaseEntity {
 
     @OneToMany(() => Medidas, (medidas) => medidas.pessoasIdFK)
     medidas: Medidas[];
+
+    @OneToMany(() => Treino, (trino) => trino.pessoasIdFK)
+    treino: Treino[];
 
 
 }
