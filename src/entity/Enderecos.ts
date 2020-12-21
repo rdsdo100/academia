@@ -5,7 +5,7 @@ import {
     Entity,
     OneToMany,
     PrimaryGeneratedColumn,
-    UpdateDateColumn
+
 } from "typeorm";
 import {Pessoas} from "./Pessoas";
 

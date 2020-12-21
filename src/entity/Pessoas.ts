@@ -1,18 +1,16 @@
 import {
     BaseEntity,
-    Column,
-    CreateDateColumn,
-    Entity, JoinColumn,
+    Column , JoinColumn,
     ManyToOne, OneToMany,
     PrimaryGeneratedColumn,
-    UpdateDateColumn
+
 } from "typeorm";
 import {Enderecos} from "./Enderecos";
 import {Emails} from "./Emails";
 import {Telefones} from "./Telefones";
 import {Medidas} from "./Medidas";
-import {Exercicios} from "./Exercicios";
 import {Treino} from "./Treino";
+import {Entity} from "typeorm";
 
 @Entity()
 export class Pessoas extends BaseEntity {
@@ -29,31 +27,26 @@ export class Pessoas extends BaseEntity {
     @Column()
     cpf: string
 
-    @Column()
+    @Column({name: 'data_nacimento'})
     dataNacimento: string
 
-    @Column()
+    @Column({name: 'data_cadastro'})
     dataCadastro: string
 
     @Column()
     ativo: boolean
 
-  /*  @CreateDateColumn({name: "updated_at"})
-    createdAt: Date;
 
-    @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;*/
-
-    @ManyToOne(() => Enderecos, (enderecos) => enderecos.pessoas, {eager: true})
-    @JoinColumn([{name: "enderecos_id_fK", referencedColumnName: "id"}])
+   @ManyToOne(() => Enderecos, (enderecos) => enderecos.pessoas, {eager: true})
+    @JoinColumn([{name: 'enderecos_id_fk', referencedColumnName: "id"}])
     enderecosIdFK: Enderecos
 
     @ManyToOne(() => Emails, (emails) => emails.pessoas, {eager: true})
-    @JoinColumn([{name: "emails_id_fK", referencedColumnName: "id"}])
+    @JoinColumn([{name: 'emails_id_fk', referencedColumnName: "id"}])
     emailsIdFK: Enderecos
 
     @ManyToOne(() => Telefones, (telefones) => telefones.pessoas, {eager: true})
-    @JoinColumn([{name: "telefones_id_fK", referencedColumnName: "id"}])
+    @JoinColumn([{name: 'telefones_id_fk', referencedColumnName: "id"}])
     telefonesIdFK: Enderecos
 
     @OneToMany(() => Medidas, (medidas) => medidas.pessoasIdFK)
