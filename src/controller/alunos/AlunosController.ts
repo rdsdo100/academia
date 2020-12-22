@@ -1,31 +1,11 @@
 import {Controller, Get, Post} from "@overnightjs/core";
 import { Request, Response} from "express";
+import {Enderecos} from "../../entity/Enderecos";
+import {Pessoas} from "../../entity/Pessoas";
+import {Emails} from "../../entity/Emails";
+import {Telefones} from "../../entity/Telefones";
 
-interface IEndereco{
-    cep: string ,
-    logradouro: string,
-    complemento: string,
-    bairro: string,
-    localidade: string,
-    uf: string,
-    ibge: string,
-    numero: string
-}
-interface IEmail{
-    email: string
-}
-interface ITelefone{
-    dd: string,
-    telefone: string
-}
-interface IPessoa {
-    nome: string,
-    sobrenome: string,
-    cpf: string,
-    dataNacimento: String,
-    dataCadastro: Date,
-    ativo: boolean,
-}
+
 
 @Controller('alunos')
 export default class AlunosController{
@@ -38,38 +18,33 @@ export default class AlunosController{
 
     @Post()
     async cadastrPessoas(request: Request , response: Response){
-        let pessoa: IPessoa
-        let endereco: IEndereco
-        let telefone: ITelefone
-        let email: IEmail
 
-        pessoa= {
-            nome :String(request.body.pessoa.nome),
-            sobrenome : String(request.body.pessoa.sobrenome),
-            cpf : String(request.body.pessoa.cpf),
-            dataCadastro : new Date(),
-            dataNacimento : String(request.body.pessoa.dataNacimento),
-            ativo : true
-        }
-        endereco = {
-            cep:  String(request.body.endereco.cep),
-            logradouro: String(request.body.endereco.logradouro),
-            complemento: String(request.body.endereco.complemento),
-            bairro: String(request.body.endereco.bairro),
-            localidade: String(request.body.endereco.localidade),
-            uf: String(request.body.endereco.uf),
-            ibge: String(request.body.endereco.ibge),
-            numero: String(request.body.endereco.numero)
-        }
-        telefone= {
-            dd:  String(request.body.telefone.dd),
-            telefone:  String(request.body.telefone.telefone)
-        }
-        email = {
-            email:  String(request.body.email.email)
-        }
+        const pessoas = new Pessoas()
+        const telefones = new Telefones()
+        const emails = new Emails()
+        const enderecos = new Enderecos()
 
-        return response.json({pessoa , endereco , telefone , email})
+        pessoas.nome = String(request.body.pessoa.nome)
+        pessoas.sobrenome = String(request.body.pessoa.sobrenome)
+        pessoas.cpf = String(request.body.pessoa.cpf)
+        pessoas.dataCadastro = new Date()
+        pessoas.dataNacimento = new Date()
+        pessoas.ativo = true
+
+        enderecos.cep =  String(request.body.endereco.cep)
+        enderecos.logradouro = String(request.body.endereco.logradouro)
+        enderecos.complemento = String(request.body.endereco.complemento)
+        enderecos.bairro = String(request.body.endereco.bairro)
+        enderecos.localidade = String(request.body.endereco.localidade)
+        enderecos.uf = String(request.body.endereco.uf)
+        enderecos.ibge = String(request.body.endereco.ibge)
+        enderecos.numero = String(request.body.endereco.numero)
+
+        telefones.dd =  String(request.body.telefone.dd)
+        telefones.telefone =  String(request.body.telefone.telefone)
+
+        emails.email =  String(request.body.email.email)
+
 
 
     }

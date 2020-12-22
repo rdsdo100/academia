@@ -11,7 +11,9 @@ import {Telefones} from "./Telefones";
 import {Entity} from "typeorm";
 import {Alunos} from "./Alunos";
 
+
 @Entity()
+
 export class Pessoas extends BaseEntity {
 
     @PrimaryGeneratedColumn()
@@ -27,10 +29,10 @@ export class Pessoas extends BaseEntity {
     cpf: string
 
     @Column({name: 'data_nacimento'})
-    dataNacimento: string
+    dataNacimento: Date
 
     @Column({name: 'data_cadastro'})
-    dataCadastro: string
+    dataCadastro: Date
 
     @Column()
     ativo: boolean

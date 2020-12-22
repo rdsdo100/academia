@@ -9,14 +9,13 @@ const buscarAlunoRepository = async ()=>{
     const usuarioRepository = getManager()
     return usuarioRepository.find(Alunos)
 }
-const cadastrarAlunos = async ()=>{
+const cadastrarAlunos = async (pessoas: Pessoas ,
+                               enderecos: Enderecos ,
+                               emails: Emails ,
+                               telefones: Telefones)=>{
 
     let cadastroAlunos
     const alunos = new Alunos()
-    const pessoas = new Pessoas()
-    const endereco = new Enderecos()
-    const email = new Emails()
-    const telefone = new Telefones()
 
     const connection = getConnection();
     const queryRunner = connection.createQueryRunner();
@@ -26,8 +25,8 @@ const cadastrarAlunos = async ()=>{
 
     try {
 
-        cadastroAlunos = await queryRunner.manager.getRepository(Alunos).findOne()
-
+        //cadastroAlunos = await queryRunner.manager.getRepository(Alunos).findOne()
+        const retornoEnderecos = await queryRunner.manager.save(Enderecos, enderecos )
 
 
 
