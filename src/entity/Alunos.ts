@@ -13,7 +13,7 @@ export class Alunos  extends BaseEntity {
 
 
     @ManyToOne(() => Pessoas, (pessoas) => pessoas.alunos, {eager: true})
-    @JoinColumn([{name: "pessoas_id_fK", referencedColumnName: "id"}])
+    @JoinColumn([{name: 'pessoas_id_fk', referencedColumnName: "id"}])
     pessoasIdFK: Pessoas
 
     @OneToMany(() => TreinosAlunos, (treinosAlunos) => treinosAlunos.alunosIdFK)
