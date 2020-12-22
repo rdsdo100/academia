@@ -1,4 +1,4 @@
-import {buscarAlunoRepository} from "../../repository/PessoasRepository";
+import {buscarAlunoRepository} from "../../repository/AlunosRepository";
 
 export default  class BuscarAlunosBuisiness {
 
@@ -7,6 +7,10 @@ export default  class BuscarAlunosBuisiness {
     async index (){
         const  pessoas = await buscarAlunoRepository()
         return pessoas
+    }
+
+    async cadastrarAlunos (){
+
     }
 
 
