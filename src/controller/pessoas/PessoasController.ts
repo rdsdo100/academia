@@ -1,6 +1,5 @@
 import {Controller, Get, Post} from "@overnightjs/core";
 import { Request, Response} from "express";
-import BuscarPessoasBuisiness from "../../business/BuscarPessoasBuisiness";
 
 interface IEndereco{
     cep: string ,
@@ -33,9 +32,7 @@ export default class PessoasController{
 
     @Get()
     async index(request: Request , response: Response) {
-const  pessoas = new BuscarPessoasBuisiness()
-        const ok = await pessoas.index()
-        return response.json(ok)
+
 
     }
 

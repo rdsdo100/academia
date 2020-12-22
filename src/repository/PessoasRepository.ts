@@ -1,12 +1,16 @@
 import {getManager} from "typeorm";
-import {Pessoas} from "../entity/Pessoas";
-import {Exercicios} from "../entity/Exercicios";
+import {Alunos} from "../entity/Alunos";
 
-const buscarPessoasRepository = async ()=>{
+const buscarAlunoRepository = async ()=>{
     const usuarioRepository = getManager()
-    return usuarioRepository.find(Pessoas)
+    return usuarioRepository.find(Alunos)
 }
 
+
+
+
+
+
 export {
-    buscarPessoasRepository
+    buscarAlunoRepository
 }

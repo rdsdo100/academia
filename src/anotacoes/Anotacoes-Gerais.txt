@@ -89,6 +89,7 @@ npm install @types/multer
 comandos typeorm
 
 
+
 npx typeorm migration:create -n "nome Tabelas"                                 == cria migrations
 npx typeorm entity:create -n "nome Tabelas"                                    == cria Entidades
 npx ts-node ./node_modules/typeorm/cli.js migration:run                        == executa as migrations
