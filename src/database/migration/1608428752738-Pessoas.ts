@@ -7,9 +7,9 @@ export class Pessoas1608428752738 implements MigrationInterface {
         await  queryRunner.query(`
 create table if not exists pessoas (
                           id            serial primary key,
-                          nome          varchar,
-                          sobrenome     varchar,
-                          cpf           varchar,
+                          nome          varchar(80),
+                          sobrenome     varchar(90),
+                          cpf           varchar(11),
                           data_nacimento varchar,
                           data_cadastro  varchar,
                           ativo         boolean,

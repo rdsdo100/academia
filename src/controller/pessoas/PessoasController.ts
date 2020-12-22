@@ -72,7 +72,7 @@ const  pessoas = new BuscarPessoasBuisiness()
             email:  String(request.body.email.email)
         }
 
-        console.log(pessoa , endereco , telefone , email)
+       return response.json({pessoa , endereco , telefone , email})
 
 
     }
