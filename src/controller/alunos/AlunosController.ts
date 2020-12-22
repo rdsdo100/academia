@@ -4,6 +4,7 @@ import {Enderecos} from "../../entity/Enderecos";
 import {Pessoas} from "../../entity/Pessoas";
 import {Emails} from "../../entity/Emails";
 import {Telefones} from "../../entity/Telefones";
+import AlunosBuisiness from "../../business/alunosBuisiness/AlunosBuisiness";
 
 
 
@@ -44,7 +45,11 @@ export default class AlunosController{
         telefones.telefone =  String(request.body.telefone.telefone)
 
         emails.email =  String(request.body.email.email)
+        const alunosBuisiness = new  AlunosBuisiness()
 
+      const retorno = await  alunosBuisiness.cadastrarAlunos(pessoas,enderecos,emails,telefones)
+
+return response.json(retorno)
 
 
     }

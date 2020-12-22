@@ -19,6 +19,8 @@ export default  class AlunosBuisiness {
                            telefones: Telefones){
 
         const alunos = await cadastrarAlunos(pessoas, enderecos , emails, telefones)
+
+        return alunos
     }
 
 

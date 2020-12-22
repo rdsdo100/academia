@@ -14,14 +14,12 @@ const cadastrarAlunos = async (pessoas: Pessoas ,
                                emails: Emails ,
                                telefones: Telefones)=>{
 
-    let cadastroAlunos
-    const alunos = new Alunos()
     let retornoAlunos
     const connection = getConnection();
     const queryRunner = connection.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
-    
+
     try {
 
         //cadastroAlunos = await queryRunner.manager.getRepository(Alunos).findOne()
