@@ -1,16 +1,13 @@
 import {
     BaseEntity,
     Column,
-    CreateDateColumn,
-    Entity, JoinColumn,
-    ManyToOne, OneToMany,
+    Entity, OneToMany,
     PrimaryGeneratedColumn,
-    UpdateDateColumn
+
 } from "typeorm";
-import {Telefones} from "./Telefones";
-import {Enderecos} from "./Enderecos";
-import {Pessoas} from "./Pessoas";
-import {Treino} from "./Treino";
+import {Alunos} from "./Alunos";
+import {Treinos} from "./Treinos";
+
 
 @Entity()
 export class Exercicios extends BaseEntity {
@@ -27,7 +24,7 @@ export class Exercicios extends BaseEntity {
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
     updatedAt: Date;*/
 
-    @OneToMany(() => Treino, (trino) => trino.pessoasIdFK)
-    treino: Treino[];
+    @OneToMany(() => Treinos, (treino) => treino.exerciciosIdFK)
+    treino: Treinos[];
 
 }

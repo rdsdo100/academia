@@ -14,7 +14,6 @@ export class Usuarios1608428752748 implements MigrationInterface {
                                                     grupo_usuarios_id_fk integer,
                                                     pessoas_id_fk integer,
                                                     constraint usuarios_grupo_usuarios_id_fk foreign key (grupo_usuarios_id_fk) references grupo_usuarios (id),
-                                                    constraint pessoas_usuarios foreign key (pessoas_id_fk) references pessoas (id),
                                                     created_at timestamp default now() not null,
                                                     updated_at timestamp default now() not null
                 );

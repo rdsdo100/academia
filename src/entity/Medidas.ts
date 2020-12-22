@@ -1,15 +1,12 @@
 import {
     BaseEntity,
     Column,
-    CreateDateColumn,
-    Entity, JoinColumn,
-    ManyToOne,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn
+    Entity, OneToMany,
+    PrimaryGeneratedColumn
+
 } from "typeorm";
-import {Telefones} from "./Telefones";
-import {Enderecos} from "./Enderecos";
-import {Pessoas} from "./Pessoas";
+import {Treinos} from "./Treinos";
+import {Alunos} from "./Alunos";
 
 @Entity()
 export class Medidas extends BaseEntity {
@@ -68,10 +65,8 @@ export class Medidas extends BaseEntity {
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
     updatedAt: Date;*/
 
-    @ManyToOne(() => Pessoas, (pessoas) => pessoas.medidas, {eager: true})
-    @JoinColumn([{name: "pessoas_id_fK", referencedColumnName: "id"}])
-    pessoasIdFK: Pessoas
-
+    @OneToMany(() => Alunos, (alunos) => alunos.mediasIdFK)
+    alunos: Alunos[];
 
 
 }

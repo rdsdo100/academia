@@ -1,6 +1,6 @@
 import {
     BaseEntity,
-    Column , JoinColumn,
+    Column, JoinColumn,
     ManyToOne, OneToMany,
     PrimaryGeneratedColumn,
 
@@ -8,9 +8,8 @@ import {
 import {Enderecos} from "./Enderecos";
 import {Emails} from "./Emails";
 import {Telefones} from "./Telefones";
-import {Medidas} from "./Medidas";
-import {Treino} from "./Treino";
 import {Entity} from "typeorm";
+import {Alunos} from "./Alunos";
 
 @Entity()
 export class Pessoas extends BaseEntity {
@@ -49,11 +48,8 @@ export class Pessoas extends BaseEntity {
     @JoinColumn([{name: 'telefones_id_fk', referencedColumnName: "id"}])
     telefonesIdFK: Enderecos
 
-    @OneToMany(() => Medidas, (medidas) => medidas.pessoasIdFK)
-    medidas: Medidas[];
-
-    @OneToMany(() => Treino, (trino) => trino.pessoasIdFK)
-    treino: Treino[];
+    @OneToMany(() => Alunos, (alunos) => alunos.pessoasIdFK)
+    alunos: Alunos[];
 
 
 }
