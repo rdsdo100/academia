@@ -1,10 +1,13 @@
 import {
     BaseEntity,
     Column,
-    Entity,
+    Entity, OneToMany,
     PrimaryGeneratedColumn
 
 } from "typeorm";
+import {TreinosAlunos} from "./TreinosAlunos";
+import {Alunos} from "./Alunos";
+import {MedidasAlunos} from "./MedidasAlunos";
 
 
 @Entity()
@@ -64,6 +67,8 @@ export class Medidas extends BaseEntity {
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
     updatedAt: Date;*/
 
+    @OneToMany(() => MedidasAlunos, (medidasAlunos) => medidasAlunos.medidasIdFK)
+    medidasAlunos: MedidasAlunos[];
 
 
 }
