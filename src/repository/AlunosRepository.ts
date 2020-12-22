@@ -16,19 +16,25 @@ const cadastrarAlunos = async (pessoas: Pessoas ,
 
     let cadastroAlunos
     const alunos = new Alunos()
-
+    let retornoAlunos
     const connection = getConnection();
     const queryRunner = connection.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
-
-
+    
     try {
 
         //cadastroAlunos = await queryRunner.manager.getRepository(Alunos).findOne()
         const retornoEnderecos = await queryRunner.manager.save(Enderecos, enderecos )
+        const retornoEmails = await queryRunner.manager.save(Emails, emails )
+        const retornoTelefones = await queryRunner.manager.save(Telefones, telefones )
 
+        pessoas.enderecosIdFK = retornoEnderecos
+        pessoas.emailsIdFK = retornoEmails
+        pessoas.telefonesIdFK = retornoTelefones
 
+        const retornoPessoas = await queryRunner.manager.save(Pessoas, pessoas )
+         retornoAlunos = await queryRunner.manager.save(Alunos, {pessoasIdFK : retornoPessoas} )
 
         await queryRunner.commitTransaction();
     } catch (err) {
@@ -38,7 +44,7 @@ const cadastrarAlunos = async (pessoas: Pessoas ,
         await queryRunner.release();
     }
 
-    return true
+    return  retornoAlunos
 }
 
 

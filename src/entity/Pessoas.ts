@@ -44,11 +44,11 @@ export class Pessoas extends BaseEntity {
 
     @ManyToOne(() => Emails, (emails) => emails.pessoas, {eager: true})
     @JoinColumn([{name: 'emails_id_fk', referencedColumnName: "id"}])
-    emailsIdFK: Enderecos
+    emailsIdFK: Emails
 
     @ManyToOne(() => Telefones, (telefones) => telefones.pessoas, {eager: true})
     @JoinColumn([{name: 'telefones_id_fk', referencedColumnName: "id"}])
-    telefonesIdFK: Enderecos
+    telefonesIdFK: Telefones
 
     @OneToMany(() => Alunos, (alunos) => alunos.pessoasIdFK)
     alunos: Alunos[];
