@@ -1,5 +1,4 @@
 import {celebrate, Joi, Segments} from "celebrate";
-import {Column} from "typeorm";
 
 const medidasValidations = celebrate(
     {
