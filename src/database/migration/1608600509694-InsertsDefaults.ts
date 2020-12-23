@@ -4,16 +4,10 @@ export class InsertsDefaults1608600509694 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
 
-        await queryRunner.query(`
-        insert into grupo_usuarios (id, nome ) VALUES
-(1 , 'root'),
-(2 , 'administrador'),
-(3 , 'adm. Estoque');
 
-        `)
         await queryRunner.query(`
-        insert into usuarios (id ,nome_usuario, email, senha, matricula, grupo_usuarios_id_fk) values
-        (1 , 'root' , 'root@root.com' , '123456' , '123' , 1);
+        insert into usuarios (id ,nome_usuario, email, senha, matricula) values
+        (1 , 'root' , 'root@root.com' , '123456' , '123' );
         
         `)
         await queryRunner.query(`

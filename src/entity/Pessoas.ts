@@ -19,26 +19,25 @@ export class Pessoas extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column({length: 80, nullable: false})
     nome: string
 
-    @Column()
+    @Column({length: 90, nullable: false})
     sobrenome: string
 
-    @Column()
+    @Column({length: 11})
     cpf: string
 
-    @Column({name: 'data_nacimento'})
+    @Column({name: 'data_nacimento', nullable: false , type: "date"})
     dataNacimento: Date
 
-    @Column({name: 'data_cadastro'})
+    @Column({name: 'data_cadastro', nullable: false ,type: "date"})
     dataCadastro: Date
 
     @Column()
     ativo: boolean
 
-
-   @ManyToOne(() => Enderecos, (enderecos) => enderecos.pessoas, {eager: true})
+    @ManyToOne(() => Enderecos, (enderecos) => enderecos.pessoas, {eager: true})
     @JoinColumn([{name: 'enderecos_id_fk', referencedColumnName: "id"}])
     enderecosIdFK: Enderecos
 

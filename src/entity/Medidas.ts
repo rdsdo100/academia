@@ -5,8 +5,6 @@ import {
     PrimaryGeneratedColumn
 
 } from "typeorm";
-import {TreinosAlunos} from "./TreinosAlunos";
-import {Alunos} from "./Alunos";
 import {MedidasAlunos} from "./MedidasAlunos";
 
 
@@ -16,7 +14,7 @@ export class Medidas extends BaseEntity {
     @PrimaryGeneratedColumn()
     id : number
 
-    @Column()
+    @Column({type: "date"})
     dataAvaliacao: Date
 
     @Column()

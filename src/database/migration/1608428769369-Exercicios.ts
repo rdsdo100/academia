@@ -7,7 +7,7 @@ export class Exercicios1608428769369 implements MigrationInterface {
         await  queryRunner.query(`
 create table if not exists exercicios (
                                           id   serial primary key,
-                                          nome varchar(50),
+                                          nome varchar(50) not null ,
                                           created_at timestamp default now() not null,
                                           updated_at timestamp default now() not null
 );

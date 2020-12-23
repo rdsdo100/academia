@@ -2,6 +2,7 @@ import { Server } from '@overnightjs/core';
 import bodyParser from 'body-parser';
 import cors from 'cors'
 import {routes} from './routes/routes';
+import {errors} from "celebrate";
 
 export class SetupServer extends Server {
 
@@ -18,6 +19,7 @@ export class SetupServer extends Server {
     this.app.use(cors())
     this.app.use(bodyParser.json());
     this.setupControllers();
+    this.app.use(errors()); // celebrates
   }
 
   private setupControllers(): void {

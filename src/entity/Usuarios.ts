@@ -1,11 +1,9 @@
 import {
     Column,
     Entity,
-    PrimaryGeneratedColumn,
-    ManyToOne,
-    JoinColumn, BaseEntity
+    PrimaryGeneratedColumn, BaseEntity
 } from "typeorm";
-import { GrupoUsuarios } from "./GrupoUsuarios";
+
 
 
 @Entity()
@@ -31,9 +29,5 @@ export class Usuarios extends BaseEntity {
 
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
     updatedAt: Date;*/
-
-    @ManyToOne(() => GrupoUsuarios, (grupoUsuaruios) => grupoUsuaruios.usuarios, {eager: true})
-    @JoinColumn([{name: "grupo_usuarios_id_fk", referencedColumnName: "id"}])
-    grupoUsuariosIdFk: GrupoUsuarios
 
 }

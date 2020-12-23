@@ -1,7 +1,7 @@
-import {ClassMiddleware, Controller, Delete, Get, Post} from "@overnightjs/core";
+import {ClassMiddleware, Controller, Delete, Post} from "@overnightjs/core";
 import { Usuarios } from "../../entity/Usuarios";
 import {Request , Response} from 'express'
-import {GrupoUsuarios} from "../../entity/GrupoUsuarios";
+
 import {decodificar} from "../../config/Jwt";
 import UsuarioBusiness from "../../business/UsuarioBusiness";
 
@@ -17,7 +17,7 @@ export default class UsuaruiosController {
 
         const usuarios = new Usuarios()
         const usuariosBusiness = new UsuarioBusiness()
-        const grupoUsuaruios = new  GrupoUsuarios()
+
 
         try {
 
@@ -25,8 +25,8 @@ export default class UsuaruiosController {
             usuarios.email = String(request.body.email)
             usuarios.senha = String(request.body.senha)
             usuarios.matricula = String(request.body.matricula)
-            grupoUsuaruios.id = Number(request.body.grupoUsuario)
-            usuarios.grupoUsuariosIdFk = grupoUsuaruios
+
+
 
             const resposta = await usuariosBusiness.cadastroUsuarios(usuarios)
             return   response.json( resposta )

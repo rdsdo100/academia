@@ -13,10 +13,10 @@ export class Telefones extends BaseEntity {
     @PrimaryGeneratedColumn()
     id : number
 
-    @Column()
+    @Column({length: 3})
     dd: string
 
-    @Column()
+    @Column({length: 10 , nullable: false})
     telefone: string
 
 /*    @CreateDateColumn({name: "updated_at"})

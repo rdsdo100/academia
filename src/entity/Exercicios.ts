@@ -5,7 +5,6 @@ import {
     PrimaryGeneratedColumn,
 
 } from "typeorm";
-import {Alunos} from "./Alunos";
 import {Treinos} from "./Treinos";
 
 
@@ -15,7 +14,7 @@ export class Exercicios extends BaseEntity {
     @PrimaryGeneratedColumn()
     id : number
 
-    @Column()
+    @Column({length: 50, nullable: false})
     nome:string
 
  /*   @CreateDateColumn({name: "updated_at"})

@@ -8,7 +8,7 @@ export class Telefones1608428745616 implements MigrationInterface {
 create table if not exists telefones (
                             id serial primary key,
                             dd varchar(3),
-                            telefone varchar(10)
+                            telefone varchar(10) not null
                     
 );
         `)
