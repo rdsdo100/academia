@@ -1,4 +1,4 @@
-import {buscarAlunoRepository, cadastrarAlunos} from "../../repository/AlunosRepository";
+import {buscarAlunoRepository, cadastrarAlunos} from "../../repository/alunosRepository";
 import {Pessoas} from "../../entity/Pessoas";
 import {Enderecos} from "../../entity/Enderecos";
 import {Emails} from "../../entity/Emails";

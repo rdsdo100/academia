@@ -1,5 +1,5 @@
 import {assinar} from "../config/Jwt";
-import {buscarUsuarioRepository} from "../repository/UsuarioRepository";
+import {buscarUsuarioRepository} from "../repository/usuarioRepository";
 
 export default class LoginBusiness {
 

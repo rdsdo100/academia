@@ -1,6 +1,6 @@
 import {Usuarios} from "../entity/Usuarios";
 
-import {cadastrarUsuarioRepository, deleteUsuarioIdRepository} from "../repository/UsuarioRepository";
+import {cadastrarUsuarioRepository, deleteUsuarioIdRepository} from "../repository/usuarioRepository";
 
 export default class UsuarioBusiness{
 

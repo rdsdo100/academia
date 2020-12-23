@@ -22,7 +22,6 @@ const cadastrarAlunos = async (pessoas: Pessoas ,
 
     try {
 
-        //cadastroAlunos = await queryRunner.manager.getRepository(Alunos).findOne()
         const retornoEnderecos = await queryRunner.manager.save(Enderecos, enderecos )
         const retornoEmails = await queryRunner.manager.save(Emails, emails )
         const retornoTelefones = await queryRunner.manager.save(Telefones, telefones )
