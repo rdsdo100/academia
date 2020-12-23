@@ -7,7 +7,7 @@ const treinoValidations = celebrate(
 
             }
         )
-    }
+    }, {abortEarly: false}
 )
 
 export {treinoValidations}

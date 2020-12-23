@@ -25,7 +25,7 @@ const medidasValidations = celebrate(
 
             }
         )
-    }
+    }, {abortEarly: false}
 )
 
 export {medidasValidations}

@@ -29,7 +29,7 @@ const alunosValidations = celebrate(
                 }
         }
         )
-    }
+    }, {abortEarly: false}
 )
 
 export {alunosValidations}
