@@ -4,6 +4,7 @@ import TestController from '../controller/TesteController';
 import UsuaruiosController from "../controller/usuario/UsuaruiosController";
 import LoginController from "../controller/usuario/LoginController";
 import AlunosController from "../controller/alunos/AlunosController";
+import MedidasController from "../controller/medidasController/MedidasController";
 
 const usuario = new UsuaruiosController()
 const login = new LoginController()
@@ -11,6 +12,7 @@ const inicio = new Inicio()
 const exemplos = new ExemplosController()
 const testController = new TestController()
 const alunos = new AlunosController
+const medidas = new MedidasController()
 
 
 export const routes = [
@@ -19,6 +21,7 @@ export const routes = [
     usuario,
     login,
     testController,
-    alunos
+    alunos,
+    medidas
 
 ]

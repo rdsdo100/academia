@@ -1,18 +1,25 @@
-import {ClassMiddleware, Controller} from "@overnightjs/core";
-import {decodificar} from "../../config/Jwt";
+import {ClassMiddleware, Controller, Get, Post} from "@overnightjs/core";
 import {Request, Response} from "express";
 import {Medidas} from "../../entity/Medidas";
-import {medidasValidations} from "../../validation/medidasValidations";
+import {Alunos} from "../../entity/Alunos";
 
-@Controller('medidas')
-@ClassMiddleware([decodificar, medidasValidations])
-
+@Controller('medida')
+@ClassMiddleware([/*decodificar, medidasValidations */])
 export default class MedidasController {
 
 
+    @Get()
+    async index(request: Request , response: Response){
+        console.log("medida")
+    }
+
+   @Post()
     async cadastrarMedidas(request: Request , response: Response){
 
         const medida = new Medidas()
+        const alunos = new Alunos()
+
+        alunos.id = Number(request.body.idAluno)
         medida.dataAvaliacao = new Date()
         medida.peso= Number(request.body.peso)
         medida.estatura = Number(request.body.estatura)
@@ -28,6 +35,8 @@ export default class MedidasController {
         medida.panturriliaDireita = Number(request.body.panturriliaDireita)
         medida.panturriliaEsquerda = Number(request.body.panturriliaEsquerda)
         medida.observacoes = String(request.body.observacoes)
+
+        console.log(medida)
 
 
     }
