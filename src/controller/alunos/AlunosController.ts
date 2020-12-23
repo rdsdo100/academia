@@ -4,20 +4,14 @@ import {Enderecos} from "../../entity/Enderecos";
 import {Pessoas} from "../../entity/Pessoas";
 import {Emails} from "../../entity/Emails";
 import {Telefones} from "../../entity/Telefones";
-import AlunosBuisiness from "../../business/alunosBuisiness/AlunosBuisiness";
-import {decodificar} from "../../config/Jwt";
+import AlunosBuisiness from "../../business/alunosBusiness/AlunosBuisiness";
+import {alunosValidations} from "../../validation/alunoValidations";
+
 
 
 
 @Controller('alunos')
-@ClassMiddleware([decodificar /*, celebrate({
-    [Segments.BODY]:Joi.object().keys({
-        name: Joi.string().required(),
-        email: Joi.string().required().email(),
-        whatsapp: Joi.number().required().min(10).max(11),
-        city: Joi.string().required(),
-        ug: Joi.string().required().length(2)
-    })*/])
+@ClassMiddleware([/*decodificar,*/ alunosValidations])
 export default class AlunosController{
 
     @Get()

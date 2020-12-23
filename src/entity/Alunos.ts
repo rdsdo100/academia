@@ -11,7 +11,6 @@ export class Alunos  extends BaseEntity {
     @PrimaryGeneratedColumn()
     id : number
 
-
     @ManyToOne(() => Pessoas, (pessoas) => pessoas.alunos, {eager: true})
     @JoinColumn([{name: 'pessoas_id_fk', referencedColumnName: "id"}])
     pessoasIdFK: Pessoas
@@ -21,8 +20,5 @@ export class Alunos  extends BaseEntity {
 
     @OneToMany(() => MedidasAlunos, (medidasAlunos) => medidasAlunos.alunosIdFK)
     medidasAlunos: MedidasAlunos[];
-
-
-
 
 }
