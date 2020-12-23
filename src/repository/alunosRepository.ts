@@ -44,10 +44,6 @@ const cadastrarAlunos = async (pessoas: Pessoas ,
     return  retornoAlunos
 }
 
-
-
-
-
 export {
     buscarAlunoRepository,
     cadastrarAlunos
