@@ -15,10 +15,7 @@ export class Enderecos1608428729482 implements MigrationInterface {
                                                       localidade varchar,
                                                       uf varchar,
                                                       ibge varchar,
-                                                      numero varchar,
-                                                      created_at timestamp default now() not null,
-                                                      updated_at timestamp default now() not null
-                                                      
+                                                      numero varchar
             );
 
         `)

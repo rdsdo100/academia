@@ -22,20 +22,27 @@ const cadastrarAlunos = async (pessoas: Pessoas ,
 
     try {
 
-        const retornoEnderecos = await queryRunner.manager.save(Enderecos, enderecos )
-        const retornoEmails = await queryRunner.manager.save(Emails, emails )
-        const retornoTelefones = await queryRunner.manager.save(Telefones, telefones )
+        const buscarPessoas = await queryRunner.manager.findOne(Pessoas , {cpf : pessoas.cpf})
 
-        pessoas.enderecosIdFK = retornoEnderecos
-        pessoas.emailsIdFK = retornoEmails
-        pessoas.telefonesIdFK = retornoTelefones
 
-        const retornoPessoas = await queryRunner.manager.save(Pessoas, pessoas )
-         retornoAlunos = await queryRunner.manager.save(Alunos, {pessoasIdFK : retornoPessoas} )
+        if (buscarPessoas?.cpf !== pessoas.cpf) {
 
+            const retornoEnderecos = await queryRunner.manager.save(Enderecos, enderecos)
+            const retornoEmails = await queryRunner.manager.save(Emails, emails)
+            const retornoTelefones = await queryRunner.manager.save(Telefones, telefones)
+
+            pessoas.enderecosIdFK = retornoEnderecos
+            pessoas.emailsIdFK = retornoEmails
+            pessoas.telefonesIdFK = retornoTelefones
+
+            const retornoPessoas = await queryRunner.manager.save(Pessoas, pessoas)
+            retornoAlunos = await queryRunner.manager.save(Alunos, {pessoasIdFK: retornoPessoas})
+        }else {
+            retornoAlunos = buscarPessoas
+        }
         await queryRunner.commitTransaction();
     } catch (err) {
-
+console.log(err)
         await queryRunner.rollbackTransaction();
     } finally {
         await queryRunner.release();

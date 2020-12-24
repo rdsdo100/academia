@@ -14,10 +14,9 @@ crEate table if not exists treinos (
                                       observacoes varchar,
                                       exercicios_id_fk integer,
                                       pessoas_id_fk integer,
-                                      constraint treinos_exercicios foreign key (exercicios_id_fk) references exercicios(id),
-                                      created_at timestamp default now() not null,
-                                      updated_at timestamp default now() not null
-);
+                                      constraint treinos_exercicios foreign key (exercicios_id_fk) references exercicios(id)
+                                      
+                                      );
         `)
 
     }

@@ -31,12 +31,6 @@ export class Treinos extends BaseEntity {
     @Column()
     observacoes: string
 
-    @CreateDateColumn({name: "updated_at"})
-    createdAt: Date;
-
-    @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;
-
     @ManyToOne(() => Exercicios, (exercicios) => exercicios.treino, {eager: true})
     @JoinColumn([{name: "exercicios_id_fK", referencedColumnName: "id"}])
     exerciciosIdFK: Pessoas

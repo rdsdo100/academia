@@ -7,9 +7,7 @@ export class Personals1608687984695 implements MigrationInterface {
             create table if not exists personals (
                 id            serial primary key,
                 pessoas_id_fk integer,
-                constraint personal_pessoas foreign key (pessoas_id_fk) references pessoas(id),
-                created_at timestamp default now() not null,
-                updated_at timestamp default now() not null
+                constraint personal_pessoas foreign key (pessoas_id_fk) references pessoas(id)
             );
   `)
     }

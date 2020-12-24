@@ -39,11 +39,6 @@ export class Enderecos extends BaseEntity {
     @Column()
     numero: string
 
-    @CreateDateColumn({name: "updated_at"})
-    createdAt: Date;
-
-    @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;
 
     @OneToMany(() => Pessoas, (pessoas) => pessoas.enderecosIdFK)
     pessoas: Pessoas[];

@@ -9,9 +9,8 @@ export class TreinosAlunos1608661260926 implements MigrationInterface {
                                 alunos_id_fk integer,
                                 treinos_id_fk integer,
                                 constraint treinos_alunos_alunos foreign key (alunos_id_fk) references alunos(id),
-                                constraint treinos_alunos_treinos foreign key (treinos_id_fk) references treinos(id),
-                                created_at    timestamp default now() not null,
-                                updated_at    timestamp default now() not null
+                                constraint treinos_alunos_treinos foreign key (treinos_id_fk) references treinos(id)
+                                
 );
         `)
     }

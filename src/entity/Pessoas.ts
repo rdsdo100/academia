@@ -24,7 +24,7 @@ export class Pessoas extends BaseEntity {
     @Column({length: 90, nullable: false})
     sobrenome: string
 
-    @Column({length: 11})
+    @Column({length: 11, unique: true})
     cpf: string
 
     @Column({name: 'data_nacimento', nullable: false , type: "date"})
@@ -35,12 +35,6 @@ export class Pessoas extends BaseEntity {
 
     @Column()
     ativo: boolean
-
-    @CreateDateColumn({name: "updated_at"})
-    createdAt: Date;
-
-    @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;
 
     @ManyToOne(() => Enderecos, (enderecos) => enderecos.pessoas, {eager: true})
     @JoinColumn([{name: 'enderecos_id_fk', referencedColumnName: "id"}])

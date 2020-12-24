@@ -16,12 +16,6 @@ export class Exercicios extends BaseEntity {
     @Column({length: 50, nullable: false})
     nome:string
 
-    @CreateDateColumn({name: "updated_at"})
-    createdAt: Date;
-
-    @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;
-
     @OneToMany(() => Treinos, (treino) => treino.exerciciosIdFK)
     treino: Treinos[];
 

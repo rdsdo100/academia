@@ -21,11 +21,8 @@ create table if not exists medidas (
                                        coxa_medial_esquerda decimal,
                                        panturrilia_direita decimal,
                                        panturrilia_esquerda decimal,
-                                       observacoes varchar,
-                                       created_at timestamp default now() not null,
-                                       updated_at timestamp default now() not null,
-                                       created_at timestamp default now() not null,
-                                       updated_at timestamp default now() not null
+                                       observacoes varchar                                       
+                                       
 );
         `)
 

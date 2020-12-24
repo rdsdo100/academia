@@ -9,7 +9,7 @@ create table if not exists pessoas (
                           id            serial primary key,
                           nome          varchar(80) not null,
                           sobrenome     varchar(90) not null,
-                          cpf           varchar(11),
+                          cpf           varchar(11) unique,
                           data_nacimento date not null,
                           data_cadastro  date not null,
                           ativo         boolean,

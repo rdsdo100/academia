@@ -9,10 +9,7 @@ export class MedidasAlunos1608661270898 implements MigrationInterface {
                                 alunos_id_fk integer,
                                 medidas_id_fk integer,
                                 constraint treinos_alunos_alunos foreign key (alunos_id_fk) references alunos(id),
-                                constraint treinos_alunos_medias foreign key (medidas_id_fk) references medidas (id),
-                                created_at    timestamp default now() not null,
-                                updated_at    timestamp default now() not null
-
+                                constraint treinos_alunos_medias foreign key (medidas_id_fk) references medidas (id)
 );
         `)
     }

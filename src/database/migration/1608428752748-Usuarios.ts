@@ -12,9 +12,7 @@ export class Usuarios1608428752748 implements MigrationInterface {
                                                     senha varchar(30) not null,
                                                     matricula varchar(30) not null,
                                                     grupo_usuarios_id_fk integer,
-                                                    pessoas_id_fk integer,
-                                                    created_at timestamp default now() not null,
-                                                    updated_at timestamp default now() not null
+                                                    pessoas_id_fk integer
                 );
 
         `)

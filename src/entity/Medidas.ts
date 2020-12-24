@@ -58,12 +58,6 @@ export class Medidas extends BaseEntity {
     @Column()
     observacoes: string
 
-    @CreateDateColumn({name: "updated_at"})
-    createdAt: Date;
-
-    @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;
-
     @OneToMany(() => MedidasAlunos, (medidasAlunos) => medidasAlunos.medidasIdFK)
     medidasAlunos: MedidasAlunos[];
 
