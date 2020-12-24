@@ -11,7 +11,6 @@ import {Telefones} from "./Telefones";
 import {Entity} from "typeorm";
 import {Alunos} from "./Alunos";
 
-
 @Entity()
 
 export class Pessoas extends BaseEntity {

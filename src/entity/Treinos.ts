@@ -10,7 +10,6 @@ import {Exercicios} from "./Exercicios";
 import {Pessoas} from "./Pessoas";
 import {TreinosAlunos} from "./TreinosAlunos";
 
-
 @Entity()
 export class Treinos extends BaseEntity {
 

@@ -13,7 +13,6 @@ import {Pessoas} from "./Pessoas";
 import {TreinosAlunos} from "./TreinosAlunos";
 import {MedidasAlunos} from "./MedidasAlunos";
 
-
 @Entity()
 export class Alunos  extends BaseEntity {
 

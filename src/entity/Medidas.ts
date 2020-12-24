@@ -7,7 +7,6 @@ import {
 } from "typeorm";
 import {MedidasAlunos} from "./MedidasAlunos";
 
-
 @Entity()
 export class Medidas extends BaseEntity {
 
