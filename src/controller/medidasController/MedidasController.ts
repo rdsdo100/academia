@@ -2,9 +2,12 @@ import {ClassMiddleware, Controller, Get, Post} from "@overnightjs/core";
 import {Request, Response} from "express";
 import {Medidas} from "../../entity/Medidas";
 import {Alunos} from "../../entity/Alunos";
+import {medidasValidations} from "../../validation/medidasValidations";
+import {cadastrarMedidas} from "../../repository/medidasAlunosRepository";
+import MedidasBusiness from "../../business/medidasBusiness/MedidasBusiness";
 
-@Controller('medida')
-@ClassMiddleware([/*decodificar, medidasValidations */])
+@Controller('medidas')
+@ClassMiddleware([/*decodificar,*/ medidasValidations ])
 export default class MedidasController {
 
 
@@ -20,6 +23,7 @@ export default class MedidasController {
         const alunos = new Alunos()
 
         alunos.id = Number(request.body.idAluno)
+
         medida.dataAvaliacao = new Date()
         medida.peso= Number(request.body.peso)
         medida.estatura = Number(request.body.estatura)
@@ -36,9 +40,13 @@ export default class MedidasController {
         medida.panturriliaEsquerda = Number(request.body.panturriliaEsquerda)
         medida.observacoes = String(request.body.observacoes)
 
-        console.log(medida)
 
 
+      const medidasBusiness = new MedidasBusiness()
+       const retorno = await medidasBusiness.cadastrarAlunos(medida , alunos)
+
+
+        response.json(retorno)
     }
 
 }

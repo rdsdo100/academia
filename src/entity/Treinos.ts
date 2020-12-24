@@ -1,9 +1,9 @@
 import {
     BaseEntity,
-    Column,
+    Column, CreateDateColumn,
     Entity, JoinColumn,
     ManyToOne, OneToMany,
-    PrimaryGeneratedColumn,
+    PrimaryGeneratedColumn, UpdateDateColumn,
 
 } from "typeorm";
 import {Exercicios} from "./Exercicios";
@@ -32,11 +32,11 @@ export class Treinos extends BaseEntity {
     @Column()
     observacoes: string
 
-/*    @CreateDateColumn({name: "updated_at"})
+    @CreateDateColumn({name: "updated_at"})
     createdAt: Date;
 
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;*/
+    updatedAt: Date;
 
     @ManyToOne(() => Exercicios, (exercicios) => exercicios.treino, {eager: true})
     @JoinColumn([{name: "exercicios_id_fK", referencedColumnName: "id"}])

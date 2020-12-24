@@ -1,9 +1,9 @@
 import {
     BaseEntity,
-    Column,
+    Column, CreateDateColumn,
     Entity,
     OneToMany,
-    PrimaryGeneratedColumn,
+    PrimaryGeneratedColumn, UpdateDateColumn,
 } from "typeorm";
 import {Pessoas} from "./Pessoas";
 
@@ -19,11 +19,11 @@ export class Telefones extends BaseEntity {
     @Column({length: 10 , nullable: false})
     telefone: string
 
-/*    @CreateDateColumn({name: "updated_at"})
+    @CreateDateColumn({name: "updated_at"})
     createdAt: Date;
 
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;*/
+    updatedAt: Date;
 
     @OneToMany(() => Pessoas, (pessoas) => pessoas.telefonesIdFK)
     pessoas: Pessoas[];

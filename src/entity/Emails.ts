@@ -18,11 +18,11 @@ export class Emails extends BaseEntity {
     @Column()
     email: string
 
- /*   @CreateDateColumn({name: "updated_at"})
+   @CreateDateColumn({name: "updated_at"})
     createdAt: Date;
 
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;*/
+    updatedAt: Date;
 
     @OneToMany(() => Pessoas, (pessoas) => pessoas.emailsIdFK)
     pessoas: Pessoas[];

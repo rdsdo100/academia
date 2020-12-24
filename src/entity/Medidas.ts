@@ -1,8 +1,8 @@
 import {
     BaseEntity,
-    Column,
+    Column, CreateDateColumn,
     Entity, OneToMany,
-    PrimaryGeneratedColumn
+    PrimaryGeneratedColumn, UpdateDateColumn
 
 } from "typeorm";
 import {MedidasAlunos} from "./MedidasAlunos";
@@ -14,7 +14,7 @@ export class Medidas extends BaseEntity {
     @PrimaryGeneratedColumn()
     id : number
 
-    @Column({type: "date"})
+    @Column({type: "date" ,name: "data_avaliacao" })
     dataAvaliacao: Date
 
     @Column()
@@ -23,16 +23,16 @@ export class Medidas extends BaseEntity {
     @Column()
     estatura: number
 
-    @Column()
+    @Column({name: "torax_normal"})
     toraxNormal: number
 
-    @Column()
+    @Column({name: "torax_expandido"})
     toraxExpandido: number
 
-    @Column()
+    @Column({name:"braco_direito_relaxado"})
     bracoDireitoRelaxado : number
 
-    @Column()
+    @Column({name:"braco_direito_expandido"})
     bracoDireitoExpandido : number
 
     @Column()
@@ -44,26 +44,26 @@ export class Medidas extends BaseEntity {
     @Column()
     quadril : number
 
-    @Column()
+    @Column({name:"coxa_medial_direira"})
     coxaMedialDireira : number
 
-    @Column()
+    @Column({name:"coxa_medial_esquerda"})
     coxaMedialEsquerda : number
 
-    @Column()
+    @Column({name: "panturrilia_direita"})
     panturriliaDireita: number
 
-    @Column()
+    @Column({name: "panturrilia_esquerda"})
     panturriliaEsquerda : number
 
     @Column()
     observacoes: string
 
-/*    @CreateDateColumn({name: "updated_at"})
+    @CreateDateColumn({name: "updated_at"})
     createdAt: Date;
 
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;*/
+    updatedAt: Date;
 
     @OneToMany(() => MedidasAlunos, (medidasAlunos) => medidasAlunos.medidasIdFK)
     medidasAlunos: MedidasAlunos[];

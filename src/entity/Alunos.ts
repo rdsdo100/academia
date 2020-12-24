@@ -1,4 +1,13 @@
-import {BaseEntity, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {
+    BaseEntity,
+    CreateDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
+} from "typeorm";
 
 import {Pessoas} from "./Pessoas";
 import {TreinosAlunos} from "./TreinosAlunos";
@@ -10,6 +19,12 @@ export class Alunos  extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id : number
+
+    @CreateDateColumn({name: "updated_at"})
+    createdAt: Date;
+
+    @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
+    updatedAt: Date;
 
     @ManyToOne(() => Pessoas, (pessoas) => pessoas.alunos, {eager: true})
     @JoinColumn([{name: 'pessoas_id_fk', referencedColumnName: "id"}])

@@ -6,7 +6,9 @@ export class Academia1600782688800 implements MigrationInterface {
 
         await  queryRunner.query(`
             create table if not exists academia (
-                id            serial primary key
+                id            serial primary key,
+                created_at timestamp default now() not null,
+                updated_at timestamp default now() not null
             );
   `)
 

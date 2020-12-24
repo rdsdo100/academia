@@ -22,7 +22,8 @@ create table if not exists medidas (
                                        panturrilia_direita decimal,
                                        panturrilia_esquerda decimal,
                                        observacoes varchar,
-                                       pessoas_id_fk integer,
+                                       created_at timestamp default now() not null,
+                                       updated_at timestamp default now() not null,
                                        created_at timestamp default now() not null,
                                        updated_at timestamp default now() not null
 );

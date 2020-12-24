@@ -1,7 +1,7 @@
 import {
     Column,
     Entity,
-    PrimaryGeneratedColumn, BaseEntity
+    PrimaryGeneratedColumn, BaseEntity, UpdateDateColumn, CreateDateColumn
 } from "typeorm";
 
 
@@ -24,10 +24,10 @@ export class Usuarios extends BaseEntity {
     @Column()
     matricula: string
 
- /*   @CreateDateColumn({name: "updated_at"})
+    @CreateDateColumn({name: "updated_at"})
     createdAt: Date;
 
     @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
-    updatedAt: Date;*/
+    updatedAt: Date;
 
 }

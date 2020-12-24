@@ -1,8 +1,8 @@
 import {
     BaseEntity,
-    Column, JoinColumn,
+    Column, CreateDateColumn, JoinColumn,
     ManyToOne, OneToMany,
-    PrimaryGeneratedColumn,
+    PrimaryGeneratedColumn, UpdateDateColumn,
 
 } from "typeorm";
 import {Enderecos} from "./Enderecos";
@@ -36,6 +36,12 @@ export class Pessoas extends BaseEntity {
 
     @Column()
     ativo: boolean
+
+    @CreateDateColumn({name: "updated_at"})
+    createdAt: Date;
+
+    @UpdateDateColumn({ type: "timestamp" , name:"updated_at" })
+    updatedAt: Date;
 
     @ManyToOne(() => Enderecos, (enderecos) => enderecos.pessoas, {eager: true})
     @JoinColumn([{name: 'enderecos_id_fk', referencedColumnName: "id"}])
