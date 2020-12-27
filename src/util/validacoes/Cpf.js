@@ -20,7 +20,7 @@ function iscpf(cpf) {
     dv[0] = dv[0] % 11
     if(dv[0] < 2){
         dv[0] = 0
-    }else {
+    }else { 
         dv[0] = 11 - dv[0]
     }
     dv[1] = dv[1] + (dv[0] * 2)

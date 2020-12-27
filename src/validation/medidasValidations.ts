@@ -6,23 +6,23 @@ const medidasValidations = celebrate(
 
             idAluno : Joi.number(),
             dataAvaliacao: Joi.date(),
-            peso: Joi.number(),
-            estatura: Joi.number(),
-            toraxNormal: Joi.number(),
-            toraxExpandido: Joi.number(),
-            bracoDireitoRelaxado : Joi.number(),
-            bracoDireitoExpandido : Joi.number(),
-            cintura : Joi.number(),
-            abdomem : Joi.number(),
-            quadril : Joi.number(),
-            coxaMedialDireira : Joi.number(),
-            coxaMedialEsquerda : Joi.number(),
-            panturriliaDireita: Joi.number(),
-            panturriliaEsquerda : Joi.number(),
+            peso: Joi.number().min(0),
+            estatura: Joi.number().min(0),
+            toraxNormal: Joi.number().min(0),
+            toraxExpandido: Joi.number().min(0),
+            bracoDireitoRelaxado : Joi.number().min(0),
+            bracoDireitoExpandido : Joi.number().min(0),
+            cintura : Joi.number().min(0),
+            abdomem : Joi.number().min(0),
+            quadril : Joi.number().min(0),
+            coxaMedialDireira : Joi.number().min(0),
+            coxaMedialEsquerda : Joi.number().min(0),
+            panturriliaDireita: Joi.number().min(0),
+            panturriliaEsquerda : Joi.number().min(0),
             observacoes: Joi.string(),
 
-
             }
+
         )
     }, {abortEarly: false}
 )
