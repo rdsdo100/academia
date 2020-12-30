@@ -1,5 +1,6 @@
 import {ClassMiddleware, Controller, Get, Post} from "@overnightjs/core";
 import {Request, Response} from "express";
+import ExerciciosBusiness from "../../business/exerciciosBusiness/ExerciciosBusiness";
 
 
 
@@ -10,7 +11,8 @@ export default class ExerciciosController {
 
     @Get()
     async index(request: Request, response: Response) {
-        console.log("Exercicios")
+        const exerciciosBusiness = new ExerciciosBusiness()
+        response.json(exerciciosBusiness.index())
     }
 
     @Post()

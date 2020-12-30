@@ -9,6 +9,7 @@ const buscarAlunoRepository = async ()=>{
     const usuarioRepository = getManager()
     return usuarioRepository.find(Alunos)
 }
+
 const cadastrarAlunos = async (pessoas: Pessoas ,
                                enderecos: Enderecos ,
                                emails: Emails ,
