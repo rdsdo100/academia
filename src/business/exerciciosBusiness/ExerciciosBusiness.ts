@@ -10,6 +10,7 @@ async index(){
 async cadasterarExercicios(nomeExercicios: string){
     return await cadastrarExercicios(nomeExercicios)
 
+
 }
 
 }

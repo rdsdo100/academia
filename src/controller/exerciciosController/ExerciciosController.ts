@@ -1,26 +1,30 @@
-import {ClassMiddleware, Controller, Get, Post} from "@overnightjs/core";
+import {Controller, Get, Post} from "@overnightjs/core";
 import {Request, Response} from "express";
 import ExerciciosBusiness from "../../business/exerciciosBusiness/ExerciciosBusiness";
 
-
-
 @Controller('exercicios')
-@ClassMiddleware([/*decodificar,*/  ])
+//@ClassMiddleware([/*decodificar,*/  ])
 export default class ExerciciosController {
-
 
     @Get()
     async index(request: Request, response: Response) {
         const exerciciosBusiness = new ExerciciosBusiness()
-        response.json(exerciciosBusiness.index())
+        const retorno = await exerciciosBusiness.index()
+
+        return response.json(retorno)
     }
 
-    @Post()
+  @Post()
     async cadastrarExercicios(request: Request, response: Response) {
 
+        let nomeExercicio = String(request.body.nomeExercicio)
+        const exerciciosBusiness = new ExerciciosBusiness()
+        const retorno  = await exerciciosBusiness.cadasterarExercicios(nomeExercicio)
+      return response.json(retorno)
+
     }
 
-    @Get()
+  @Get("buscarExercicios")
     async buscarExercicios (request: Request, response: Response){
 
     }

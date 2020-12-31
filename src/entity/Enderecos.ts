@@ -1,10 +1,9 @@
 import {
     BaseEntity,
     Column,
-    CreateDateColumn,
     Entity,
     OneToMany,
-    PrimaryGeneratedColumn, UpdateDateColumn,
+    PrimaryGeneratedColumn,
 
 } from "typeorm";
 import {Pessoas} from "./Pessoas";

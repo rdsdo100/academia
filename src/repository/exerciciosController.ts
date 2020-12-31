@@ -10,6 +10,10 @@ const buscarExercicios = async ()=>{
 
 const cadastrarExercicios = async (nomeExercicios: string)=>{
 
+    let retonoCadastroExercicios
+    const exercicio = new Exercicios()
+    exercicio.nome = String(nomeExercicios)
+
     const connection = getConnection();
     const queryRunner = connection.createQueryRunner();
     await queryRunner.connect();
@@ -17,14 +21,31 @@ const cadastrarExercicios = async (nomeExercicios: string)=>{
 
     try {
 
-        const buscarexercicios = await queryRunner.manager.findOne(Exercicios ,{nome: nomeExercicios })
+        const buscarexercicios = await queryRunner.manager.findOne(Exercicios ,{nome: exercicio.nome })
+
+
+
+        if (buscarexercicios?.nome !== nomeExercicios){
+            retonoCadastroExercicios = await queryRunner.manager.save(Exercicios , exercicio)
+
+            console.log(retonoCadastroExercicios)
+
+        }else {
+            retonoCadastroExercicios = {Error: "Exercicios não salvo!"}
+        }
 
         await queryRunner.commitTransaction();
     } catch (err) {
         await queryRunner.rollbackTransaction();
+        console.log(err)
     } finally {
         await queryRunner.release();
     }
+
+
+
+    console.log(retonoCadastroExercicios)
+    return retonoCadastroExercicios
 
 }
 
