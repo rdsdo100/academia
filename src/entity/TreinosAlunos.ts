@@ -1,11 +1,10 @@
 import {
-    BaseEntity,
-    CreateDateColumn,
+    BaseEntity, Column,
     Entity,
     JoinColumn,
     ManyToOne,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn
+    PrimaryGeneratedColumn
+
 } from "typeorm";
 import {Alunos} from "./Alunos";
 import {Treinos} from "./Treinos";
@@ -14,6 +13,9 @@ import {Treinos} from "./Treinos";
 export class TreinosAlunos  extends BaseEntity{
     @PrimaryGeneratedColumn()
     id : number
+
+    @Column()
+    nomeTreino: string
 
     @ManyToOne(() => Alunos, (alunos) => alunos.treinosAlunos, {eager: true})
     @JoinColumn([{name: 'alunos_id_fk', referencedColumnName: "id"}])

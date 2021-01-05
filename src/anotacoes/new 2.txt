@@ -1,0 +1,32 @@
+
+
+create table if not exists exercicios (
+                                          id   serial primary key,
+                                          nome varchar(50) not null
+);
+
+
+
+create table if not exists exercicios_treinos (
+                                                  id   serial primary key,
+                                                  serie int,
+                                                  vezes int,
+                                                  kilos decimal,
+                                                  tempo integer,
+                                                  observacoes varchar,
+                                                  exercicios_id_fk integer,
+                                                  constraint treinos_exercicios foreign key (exercicios_id_fk) references exercicios(id)
+
+);
+
+create table if not exists treinos (
+                                       id   serial primary key,
+                                       nome varchar(50),
+                                       observacoes varchar,
+                                       exercicios_treinos_id_fk integer,
+                                       constraint treinos_exercicios_treinos foreign key (exercicios_treinos_id_fk) references exercicios_treinos(id)
+
+);
+
+
+
