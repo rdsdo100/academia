@@ -23,12 +23,8 @@ const cadastrarExercicios = async (nomeExercicios: string)=>{
 
         const buscarexercicios = await queryRunner.manager.findOne(Exercicios ,{nome: exercicio.nome })
 
-
-
         if (buscarexercicios?.nome !== nomeExercicios){
-            retonoCadastroExercicios = await queryRunner.manager.save(Exercicios , exercicio)
-
-            console.log(retonoCadastroExercicios)
+            retonoCadastroExercicios = await queryRunner.manager.save(Exercicios , exercicio )
 
         }else {
             retonoCadastroExercicios = {Error: "Exercicios não salvo!"}
@@ -41,8 +37,6 @@ const cadastrarExercicios = async (nomeExercicios: string)=>{
     } finally {
         await queryRunner.release();
     }
-
-
 
     console.log(retonoCadastroExercicios)
     return retonoCadastroExercicios
