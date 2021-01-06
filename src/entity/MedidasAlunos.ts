@@ -1,11 +1,10 @@
 import {
     BaseEntity,
-    CreateDateColumn,
     Entity,
     JoinColumn,
     ManyToOne,
     PrimaryGeneratedColumn,
-    UpdateDateColumn
+
 } from "typeorm";
 import {Medidas} from "./Medidas";
 import {Alunos} from "./Alunos";

@@ -1,8 +1,8 @@
 import {
     BaseEntity,
-    Column, CreateDateColumn, JoinColumn,
+    Column, JoinColumn,
     ManyToOne, OneToMany,
-    PrimaryGeneratedColumn, UpdateDateColumn,
+    PrimaryGeneratedColumn,
 
 } from "typeorm";
 import {Enderecos} from "./Enderecos";
