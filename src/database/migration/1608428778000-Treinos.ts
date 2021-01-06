@@ -8,9 +8,8 @@ export class Treinos1608428778000 implements MigrationInterface {
             create table if not exists treinos (
                                                    id   serial primary key,
                                                    nome varchar(50),
-                observacoes varchar,
-                exercicios_treinos_id_fk integer,
-                constraint treinos_exercicios_treinos foreign key (exercicios_treinos_id_fk) references exercicios_treinos(id)
+                                                 observacoes varchar
+                                                    
 
                 );
         `)
