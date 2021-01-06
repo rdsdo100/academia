@@ -14,10 +14,14 @@ export class ExerciciosTreinos1608428778090 implements MigrationInterface {
                                                               observacoes varchar,
                                                               exercicios_id_fk integer,
                                                               treinos_id_fk integer,
+                                                              series_treinos_id_fk integer,
                                                               constraint exercicios_treinos_exercicios foreign key (exercicios_id_fk) references exercicios(id),
-                                                              constraint treinos_exercicios_treinos foreign key (treinos_id_fk) references treinos(id)
+                                                              constraint exercicios_treinos_treinos foreign key (treinos_id_fk) references treinos(id),
+                                                              constraint exercicios_treinos_exercicios_treinos foreign key (series_treinos_id_fk) references series_treinos(id)
+
 
                 );
+       
         `)
 
 
