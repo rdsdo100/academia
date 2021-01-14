@@ -6,4 +6,11 @@ import {decodificar} from "../../config/Jwt";
 
 export default class TreinosController {
 
+    async  buscarTreinos(){
+
+    }
+    async  cadastrarTreinos(){
+
+    }
+
 }

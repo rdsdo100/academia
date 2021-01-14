@@ -7,10 +7,6 @@ export class ExerciciosTreinos1608428778090 implements MigrationInterface {
         await  queryRunner.query(`
             create table if not exists exercicios_treinos (
                                                               id   serial primary key,
-                                                              serie int,
-                                                              vezes int,
-                                                              kilos decimal,
-                                                              tempo integer,
                                                               observacoes varchar,
                                                               exercicios_id_fk integer,
                                                               treinos_id_fk integer,
