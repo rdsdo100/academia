@@ -1,15 +1,24 @@
-import {ClassMiddleware, Controller} from "@overnightjs/core";
+import {ClassMiddleware, Controller, Get, Post} from "@overnightjs/core";
 import {decodificar} from "../../config/Jwt";
+import {Request, Response} from "express";
 
 @Controller('treino')
 @ClassMiddleware([decodificar ])
 
 export default class TreinosController {
 
-    async  buscarTreinos(){
+    @Get()
+    async  index(request: Request , response: Response){
 
     }
-    async  cadastrarTreinos(){
+
+    @Get("treino_dia")
+    async  buscarTreinos(request: Request , response: Response){
+
+
+    }
+    @Post()
+    async  cadastrarTreinos(request: Request , response: Response){
 
     }
 

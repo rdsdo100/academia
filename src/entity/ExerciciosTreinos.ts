@@ -7,14 +7,6 @@ export class ExerciciosTreinos extends BaseEntity {
     id : number
 
     @Column()
-    serie: number
-    @Column()
-    vezes: number
-    @Column()
-    kilos: number
-    @Column()
-    tempo: number
-    @Column()
     observacoes: string
 
 
