@@ -15,7 +15,7 @@ export class Exercicios extends BaseEntity {
     @Column({length: 50, nullable: false})
     nome:string
 
-    @OneToMany(() => Treinos, (treino) => treino.exerciciosIdFK)
-    treino: Treinos[];
+ /*   @OneToMany(() => Treinos, (treino) => treino.exerciciosIdFK)
+    treino: Treinos[];*/
 
 }

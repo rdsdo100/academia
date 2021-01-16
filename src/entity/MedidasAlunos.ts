@@ -9,7 +9,7 @@ import {
 import {Medidas} from "./Medidas";
 import {Alunos} from "./Alunos";
 
-@Entity()
+@Entity({name: "medidas_alunos"})
 export class MedidasAlunos  extends BaseEntity{
     @PrimaryGeneratedColumn()
     id : number

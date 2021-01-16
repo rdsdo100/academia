@@ -17,23 +17,14 @@ export class Treinos extends BaseEntity {
     id : number
 
     @Column()
-    serie: number
-
-    @Column()
-    vezes: number
-
-    @Column()
-    kilos: number
-
-    @Column()
-    tempo: number
+    nome:string
 
     @Column()
     observacoes: string
 
-    @ManyToOne(() => Exercicios, (exercicios) => exercicios.treino, {eager: true})
+    /*@ManyToOne(() => Exercicios, (exercicios) => exercicios.treino, {eager: true})
     @JoinColumn([{name: "exercicios_id_fK", referencedColumnName: "id"}])
-    exerciciosIdFK: Pessoas
+    exerciciosIdFK: Pessoas*/
 
     @OneToMany(() => TreinosAlunos, (treinosAlunos) => treinosAlunos.treinosIdFK)
     treinosAlunos: TreinosAlunos[];
