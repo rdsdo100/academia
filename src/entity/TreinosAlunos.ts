@@ -9,7 +9,7 @@ import {
 import {Alunos} from "./Alunos";
 import {Treinos} from "./Treinos";
 
-@Entity()
+@Entity({name: "treinos_alunos"})
 export class TreinosAlunos  extends BaseEntity{
     @PrimaryGeneratedColumn()
     id : number

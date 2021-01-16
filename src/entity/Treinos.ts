@@ -1,14 +1,14 @@
 import {
     BaseEntity,
     Column,
-    Entity, JoinColumn,
-    ManyToOne, OneToMany,
-    PrimaryGeneratedColumn,
+    Entity,
+    OneToMany,
+    PrimaryGeneratedColumn
 
 } from "typeorm";
-import {Exercicios} from "./Exercicios";
-import {Pessoas} from "./Pessoas";
+
 import {TreinosAlunos} from "./TreinosAlunos";
+import {ExerciciosTreinos} from "./ExerciciosTreinos";
 
 @Entity()
 export class Treinos extends BaseEntity {
@@ -22,11 +22,10 @@ export class Treinos extends BaseEntity {
     @Column()
     observacoes: string
 
-    /*@ManyToOne(() => Exercicios, (exercicios) => exercicios.treino, {eager: true})
-    @JoinColumn([{name: "exercicios_id_fK", referencedColumnName: "id"}])
-    exerciciosIdFK: Pessoas*/
-
     @OneToMany(() => TreinosAlunos, (treinosAlunos) => treinosAlunos.treinosIdFK)
     treinosAlunos: TreinosAlunos[];
+
+    @OneToMany(() => ExerciciosTreinos, (exerciciosTreinos) => exerciciosTreinos.treinosIdFK)
+    exerciciosTreinos: ExerciciosTreinos[];
 
 }

@@ -1,6 +1,7 @@
-import {BaseEntity, Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {ExerciciosTreinos} from "./ExerciciosTreinos";
 
-@Entity()
+@Entity({name: "series_treinos"})
 export class SeriesTreinos extends BaseEntity {
 
     @PrimaryGeneratedColumn()
@@ -20,5 +21,9 @@ export class SeriesTreinos extends BaseEntity {
 
     @Column()
     interbalo: number
+
+    @OneToMany(() => ExerciciosTreinos, (exerciciosTreinos) => exerciciosTreinos.seriesTreinosIdFK)
+    exerciciosTreinos: ExerciciosTreinos[];
+
 
 }

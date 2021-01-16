@@ -7,7 +7,8 @@ export class Exercicios1608428769369 implements MigrationInterface {
         await  queryRunner.query(`
 create table if not exists exercicios (
                                           id   serial primary key,
-                                          nome varchar(50) not null
+                                          nome varchar(50) not null,
+                                          exercicio_url_image varchar(500)
 );
         `)
 
