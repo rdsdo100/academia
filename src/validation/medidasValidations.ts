@@ -12,6 +12,8 @@ const medidasValidations = celebrate(
             toraxExpandido: Joi.number().min(0),
             bracoDireitoRelaxado : Joi.number().min(0),
             bracoDireitoExpandido : Joi.number().min(0),
+            bracoEsquerdoRelaxado : Joi.number().min(0),
+            bracoEsquerdoExpandido : Joi.number().min(0),
             cintura : Joi.number().min(0),
             abdomem : Joi.number().min(0),
             quadril : Joi.number().min(0),

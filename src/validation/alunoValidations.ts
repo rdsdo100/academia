@@ -7,7 +7,7 @@ const alunosValidations = celebrate(
             pessoa: {
                 nome: Joi.string().required(),
                 sobrenome: Joi.string().required(),
-                cpf: Joi.string().required().length(11),
+                cpf: Joi.string().length(11),
                 dataNacimento: Joi.date()
             },
                 endereco : {
