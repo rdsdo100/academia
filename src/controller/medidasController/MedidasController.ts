@@ -3,7 +3,6 @@ import {Request, Response} from "express";
 import {Medidas} from "../../entity/Medidas";
 import {Alunos} from "../../entity/Alunos";
 import {medidasValidations} from "../../validation/medidasValidations";
-import {cadastrarMedidas} from "../../repository/medidasAlunosRepository";
 import MedidasBusiness from "../../business/medidasBusiness/MedidasBusiness";
 
 @Controller('medidas')
@@ -31,6 +30,8 @@ export default class MedidasController {
         medida.toraxExpandido = Number(request.body.toraxExpandido)
         medida.bracoDireitoRelaxado = Number(request.body.bracoDireitoRelaxado)
         medida.bracoDireitoExpandido = Number(request.body.bracoDireitoExpandido)
+       medida.bracoEsquerdoRelaxado = Number(request.body.bracoDireitoRelaxado)
+       medida.bracoEsquerdoExpandido = Number(request.body.bracoEsquerdoExpandido)
         medida.cintura = Number(request.body.cintura)
         medida.abdomem = Number(request.body.abdomem)
         medida.quadril = Number(request.body.quadril)

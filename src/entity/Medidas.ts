@@ -34,6 +34,12 @@ export class Medidas extends BaseEntity {
     @Column({name:"braco_direito_expandido"})
     bracoDireitoExpandido : number
 
+    @Column({name:"braco_esquerdo_relaxado"})
+    bracoEsquerdoRelaxado : number
+
+    @Column({name:"braco_esquerdo_expandido"})
+    bracoEsquerdoExpandido : number
+
     @Column()
     cintura : number
 

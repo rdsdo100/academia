@@ -14,6 +14,8 @@ create table if not exists medidas (
                                        torax_expandido decimal,
                                        braco_direito_relaxado decimal,
                                        braco_direito_expandido decimal,
+                                       braco_esquerdo_relaxado decimal,
+                                       braco_esquerdo_expandido decimal,
                                        cintura decimal,
                                        abdomem decimal,
                                        quadril decimal,
