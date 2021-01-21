@@ -8,7 +8,7 @@ import {
 } from "typeorm";
 
 import {TreinosAlunos} from "./TreinosAlunos";
-import {ExerciciosTreinos} from "./ExerciciosTreinos";
+import {SeriesExercicios} from "./SeriesExercicios";
 
 @Entity()
 export class Treinos extends BaseEntity {
@@ -25,7 +25,7 @@ export class Treinos extends BaseEntity {
     @OneToMany(() => TreinosAlunos, (treinosAlunos) => treinosAlunos.treinosIdFK)
     treinosAlunos: TreinosAlunos[];
 
-    @OneToMany(() => ExerciciosTreinos, (exerciciosTreinos) => exerciciosTreinos.treinosIdFK)
-    exerciciosTreinos: ExerciciosTreinos[];
+    @OneToMany(() => SeriesExercicios, (seriesExercicios) => seriesExercicios.exerciciosIdFK)
+    seriesExercicios: SeriesExercicios[];
 
 }

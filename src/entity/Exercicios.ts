@@ -4,7 +4,8 @@ import {
     Entity, OneToMany,
     PrimaryGeneratedColumn
 } from "typeorm";
-import {ExerciciosTreinos} from "./ExerciciosTreinos";
+import {SeriesExercicios} from "./SeriesExercicios";
+
 
 @Entity()
 export class Exercicios extends BaseEntity {
@@ -18,7 +19,7 @@ export class Exercicios extends BaseEntity {
     @Column({name: "exercicio_url_image" , length: 500})
     exercicioUrlImage: string
 
-    @OneToMany(() => ExerciciosTreinos, (exerciciosTreinos) => exerciciosTreinos.exerciciosIdFK)
-    exerciciosTreinos: ExerciciosTreinos[];
+    @OneToMany(() => SeriesExercicios, (seriesExercicios) => seriesExercicios.exerciciosIdFK)
+    seriesExercicios: SeriesExercicios[];
 
 }
