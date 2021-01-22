@@ -99,6 +99,10 @@ npx ts-node ./node_modules/typeorm/cli.js migration:revert                     =
 
 ===================================================================================================================================================
 
+    types migrations:
+    https://typeorm.delightful.studio/interfaces/_schema_builder_options_tablecolumnoptions_.tablecolumnoptions.html#isgenerated
+
+    gerar entity:
     https://github.com/Kononnable/typeorm-model-generator
 
    npm i -g typeorm-model-generator
