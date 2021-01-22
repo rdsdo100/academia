@@ -13,16 +13,16 @@ export class SeriesExercicios extends BaseEntity {
     serie: number
 
     @Column()
-    vezes: number
+    vezes: string
 
     @Column()
-    kilos: number
+    kilos: string
 
     @Column()
     tempo: number
 
     @Column()
-    interbalo: number
+    intervalo: number
 
     @ManyToOne(() => Exercicios, (exercicios) => exercicios.seriesExercicios, {eager: true})
     @JoinColumn([{name: 'exercicios_id_fk', referencedColumnName: "id"}])
@@ -35,3 +35,4 @@ export class SeriesExercicios extends BaseEntity {
 
 
 }
+

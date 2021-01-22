@@ -8,10 +8,10 @@ export class SeriesExercicios1608428778080 implements MigrationInterface {
             create table if not exists series_exercicios (
                                                               id   serial primary key,
                                                               serie int,
-                                                              vezes int,
-                                                              kilos decimal,
+                                                              vezes varchar,
+                                                              kilos varchar,
                                                               tempo integer,
-                                                              interbalo integer,
+                                                              intervalo integer,
                                                               exercicios_id_fk integer,
                                                               treinos_id_fk integer,
                                                               constraint series_treinos_exercicios foreign key (exercicios_id_fk) references exercicios(id),
