@@ -28,7 +28,7 @@ export class MedidasAlunos1608661270898 implements MigrationInterface {
             columnNames: ["alunos_id_fk"],
             referencedColumnNames: ["id"],
             referencedTableName: "alunos",
-            name: 'treinos_alunos_alunos'
+            name: 'treinos_alunos_aluno'
         }));
 
         await queryRunner.createForeignKey("medidas_alunos", new TableForeignKey({
