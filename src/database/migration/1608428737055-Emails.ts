@@ -1,15 +1,27 @@
-import {MigrationInterface, QueryRunner} from "typeorm";
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class Emails1608428737055 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
 
-        await  queryRunner.query(`
-            create  table if not exists emails (
-                                                   id serial primary key,
-                                                   email varchar(150)                                                 
-            );
-        `)
+
+        await  queryRunner.createTable( new Table({
+            name: "emails",
+            columns:[{
+                name: "id",
+                type: "int",
+                isPrimary: true,
+                isGenerated: true
+            },
+                {
+                    name: "email",
+                    type: 'varchar',
+                    length: '150'
+                }
+
+            ]
+        }))
+
 
     }
 

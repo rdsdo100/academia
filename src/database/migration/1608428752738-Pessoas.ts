@@ -1,26 +1,86 @@
-import {MigrationInterface, QueryRunner} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
 export class Pessoas1608428752738 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
 
-        await  queryRunner.query(`
-create table if not exists pessoas (
-                          id            serial primary key,
-                          nome          varchar(80) not null,
-                          sobrenome     varchar(90) not null,
-                          cpf           varchar(11) unique,
-                          data_nacimento date not null,
-                          data_cadastro  date not null,
-                          ativo         boolean,
-                          enderecos_id_fk integer,
-                          emails_id_fk integer,
-                          telefones_id_fk integer,
-                          constraint pessoas_enderecos foreign key (enderecos_id_fk) references enderecos(id),
-                          constraint pessoas_emails foreign key (emails_id_fk) references emails(id),
-                          constraint pessoas_telefones foreign key (telefones_id_fk) references telefones(id)
-);
-        `)
+        await  queryRunner.createTable( new Table({
+            name: "pessoas",
+            columns:[{
+                name: "id",
+                type: "int",
+                isPrimary: true,
+                isGenerated: true
+            },
+                {
+                    name: "nome",
+                    type: 'varchar',
+                    length: '50'
+                },
+                {
+                    name: "sobrenome",
+                    type: 'varchar',
+                    length: '50'
+                },
+                {
+                    name: "cpf",
+                    type: 'varchar',
+                    length: '11'
+                },
+                {
+                    name: "data_nacimento",
+                    type: 'date'
+                },
+                {
+                    name: "data_cadastro",
+                    type: 'date'
+
+                }, {
+                    name: "ativo",
+                    type: 'boolean'
+                },
+                {
+                    name: 'enderecos_id_fk',
+                    type: 'int'
+                },
+                {
+                    name: "emails_id_fk",
+                    type: 'int'
+                },
+                {
+                    name: 'telefones_id_fk',
+                    type: 'int'
+                }
+
+
+
+            ]
+        }));
+       await queryRunner.createForeignKey("pessoas", new TableForeignKey({
+            columnNames: ["enderecos_id_fk"],
+            referencedColumnNames: ["id"],
+            referencedTableName: "enderecos",
+           name: 'pessoas_enderecos'
+
+        }));
+
+        await queryRunner.createForeignKey("pessoas", new TableForeignKey({
+            columnNames: ["emails_id_fk"],
+            referencedColumnNames: ["id"],
+            referencedTableName: "emails",
+            name: 'pessoas_emails'
+
+        }));
+
+        await queryRunner.createForeignKey("pessoas", new TableForeignKey({
+            columnNames: ["telefones_id_fk"],
+            referencedColumnNames: ["id"],
+            referencedTableName: "telefones",
+            name: 'pessoas_telefones'
+
+        }));
+
+
 
     }
 

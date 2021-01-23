@@ -1,32 +1,93 @@
-import {MigrationInterface, QueryRunner} from "typeorm";
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class Medidas1608428760145 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
 
-        await  queryRunner.query(`
-create table if not exists medidas (
-                                       id   serial primary key,
-                                       data_avaliacao date,
-                                       peso decimal,
-                                       estatura decimal,
-                                       torax_normal decimal,
-                                       torax_expandido decimal,
-                                       braco_direito_relaxado decimal,
-                                       braco_direito_expandido decimal,
-                                       braco_esquerdo_relaxado decimal,
-                                       braco_esquerdo_expandido decimal,
-                                       cintura decimal,
-                                       abdomem decimal,
-                                       quadril decimal,
-                                       coxa_medial_direira decimal,
-                                       coxa_medial_esquerda decimal,
-                                       panturrilia_direita decimal,
-                                       panturrilia_esquerda decimal,
-                                       observacoes varchar                                       
-                                       
-);
-        `)
+        await queryRunner.createTable(new Table({
+                name: 'medidas',
+                columns: [
+                    {
+                        name: 'id',
+                        type: 'int',
+                        isPrimary: true,
+                        isGenerated:true
+                    },
+
+                    {
+                        name:"data_avaliacao",
+                        type: 'date',
+                        isNullable: false
+                    },
+                    {
+                        name: 'peso',
+                        type: 'decimal',
+                        isNullable: true
+                    },
+                    {
+                        name: "estatura",
+                        type: "decimal"
+                    },
+                    {
+                        name: "torax_normal",
+                        type: "decimal"
+                    },
+                    {
+                        name: "torax_expandido",
+                        type: "decimal"
+                    },
+                    {
+                        name: "braco_direito_relaxado",
+                        type: "decimal"
+                    },
+                    {
+                        name: "braco_direito_expandido",
+                        type: "decimal"
+                    },
+                    {
+                        name: "braco_esquerdo_relaxado",
+                        type: "decimal"
+                    },
+                    {
+                        name: "braco_esquerdo_expandido",
+                        type: "decimal"
+                    },
+                    {
+                        name: "cintura",
+                        type: "decimal"
+                    },
+                    {
+                        name: "abdomem",
+                        type: "decimal"
+                    },
+                    {
+                        name: "quadril",
+                        type: "decimal"
+                    },
+                    {
+                        name: "coxa_medial_direira",
+                        type: "decimal"
+                    },
+                    {
+                        name: "coxa_medial_esquerda",
+                        type: "decimal"
+                    },
+                    {
+                        name: "panturrilia_direita",
+                        type: "decimal"
+                    },
+                    {
+                        name: "panturrilia_esquerda",
+                        type: "decimal"
+                    },
+                    {
+                        name: 'observacoes',
+                        type: 'varchar',
+                        isNullable: true
+                    }
+                ]
+            })
+        )
 
     }
 

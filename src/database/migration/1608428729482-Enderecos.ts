@@ -1,24 +1,61 @@
-import {MigrationInterface, QueryRunner} from "typeorm";
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class Enderecos1608428729482 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await  queryRunner.query(`
 
+        await  queryRunner.createTable( new Table({
+                name: "enderecos",
+                columns:[{
+                    name: "id",
+                    type: "int",
+                    isPrimary: true,
+                    isGenerated: true
+                },
+                    {
+                        name: "cep",
+                        type: 'varchar',
+                        length: '8'
+                    },
+                    {
+                        name: "logradouro",
+                        type: 'varchar',
+                        length: '90'
+                    },
+                    {
+                        name: "complemento",
+                        type: 'varchar',
+                        length: '90'
+                    },
+                    {
+                        name: "bairro",
+                        type: 'varchar',
+                        length: '40'
+                    },
+                    {
+                        name: "localidade",
+                        type: 'varchar',
+                        length: '20'
+                    }, {
+                        name: "uf",
+                        type: 'varchar',
+                        length: '2'
+                    },
+                    {
+                        name: "ibge",
+                        type: 'varchar',
+                        length: '6'
+                    },
+                    {
+                        name: "numero",
+                        type: 'varchar',
+                        length: '5'
+                    },
 
-            create  table if not exists enderecos (
-                                                      id serial primary key,
-                                                      cep varchar,
-                                                      logradouro varchar,
-                                                      complemento varchar,
-                                                      bairro varchar,
-                                                      localidade varchar,
-                                                      uf varchar,
-                                                      ibge varchar,
-                                                      numero varchar
-            );
+                ]
+            })
+        )
 
-        `)
 
     }
 

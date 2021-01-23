@@ -1,16 +1,31 @@
-import {MigrationInterface, QueryRunner} from "typeorm";
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class Exercicios1608428769369 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
 
-        await  queryRunner.query(`
-create table if not exists exercicios (
-                                          id   serial primary key,
-                                          nome varchar(50) not null,
-                                          exercicio_url_image varchar(500)
-);
-        `)
+        await queryRunner.createTable(new Table({
+            name: 'exercicios',
+            columns: [
+                {
+                    name: 'id',
+                    type: 'int',
+                    isPrimary: true,
+                    isGenerated:true
+                },
+                {
+                    name: 'nome',
+                    type: 'varchar',
+                    length: '50'
+                },
+                {
+                    name: 'exercicio_url_image',
+                    type: 'varchar',
+                    length: '500',
+                    isNullable: true
+                }
+            ]
+        }))
 
     }
 

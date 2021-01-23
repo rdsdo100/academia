@@ -1,17 +1,44 @@
-import {MigrationInterface, QueryRunner} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
 export class MedidasAlunos1608661270898 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`
-        create table medidas_alunos (
-                                id serial primary key ,
-                                alunos_id_fk integer,
-                                medidas_id_fk integer,
-                                constraint treinos_alunos_alunos foreign key (alunos_id_fk) references alunos(id),
-                                constraint treinos_alunos_medias foreign key (medidas_id_fk) references medidas (id)
-);
-        `)
+
+        await queryRunner.createTable(new  Table({
+            name: 'medidas_alunos',
+            columns: [
+                {
+                    name: 'id',
+                    type: 'int',
+                    isPrimary: true,
+                    isGenerated: true
+                },
+                {
+                    name: 'alunos_id_fk',
+                    type: 'int'
+                },
+                {
+                    name: 'medidas_id_fk',
+                    type: 'int'
+                }
+            ]
+        }))
+
+        await queryRunner.createForeignKey("medidas_alunos", new TableForeignKey({
+            columnNames: ["alunos_id_fk"],
+            referencedColumnNames: ["id"],
+            referencedTableName: "alunos",
+            name: 'treinos_alunos_alunos'
+        }));
+
+        await queryRunner.createForeignKey("medidas_alunos", new TableForeignKey({
+            columnNames: ["medidas_id_fk"],
+            referencedColumnNames: ["id"],
+            referencedTableName: "medidas",
+            name: 'treinos_alunos_medias'
+        }));
+
+
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

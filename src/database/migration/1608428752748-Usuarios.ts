@@ -3,46 +3,54 @@ import {MigrationInterface, QueryRunner, Table} from "typeorm";
 export class Usuarios1608428752748 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        /*await  queryRunner.query(`
-            create table if not exists usuarios (
-                                                    id serial not null primary key,
-                                                    nome_usuario varchar(50) not null,
-                                                    email varchar(90) not null unique,
-                                                    senha varchar(30) not null,
-                                                    matricula varchar(30) not null,
-                                                    grupo_usuarios_id_fk integer,
-                                                    pessoas_id_fk integer
-                );
-        `)*/
-await  queryRunner.createTable( new Table({
-    name: "usuarios",
-    columns:[{
-        name: "id",
-        type: "int",
-        isPrimary: true,
-        isGenerated: true
 
+        await  queryRunner.createTable( new Table({
+            name: "usuarios",
+            columns:[{
+                name: "id",
+                type: "int",
+                isPrimary: true,
+                isGenerated: true
+            },
+                {
+                    name: 'nome_usuario',
+                    type: "varchar",
+                    length: '50',
+                    isNullable: true,
+                    isUnique: true
+                },
+                {
+                    name: 'email',
+                    type: 'varchar',
+                    length: '90',
+                    isNullable: true,
+                    isUnique: true
+                },
+                {
+                    name: 'senha',
+                    type: 'varchar',
+                    length: '30',
+                    isNullable: true
+                },
+                {
+                    name: 'matricula',
+                    type: 'varchar',
+                    length: '30',
+                    isNullable: true
+                }
 
+            ]
 
-    },
-        {
-            name: 'nome_usuario',
-            type: "varchar",
-            length: '50'
         }
-
-    ]
-
-    }
-), true)
+        ), true)
 
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
 
         await  queryRunner.query(`
-        alter table usuarios
-    drop constraint if exists usuarios_grupo_usuarios_id_fk cascade;
+            alter table usuarios
+            drop constraint if exists usuarios_grupo_usuarios_id_fk cascade;
 
         `)
 
