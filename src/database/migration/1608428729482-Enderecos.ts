@@ -10,7 +10,8 @@ export class Enderecos1608428729482 implements MigrationInterface {
                     name: "id",
                     type: "int",
                     isPrimary: true,
-                    isGenerated: true
+                    isGenerated: true,
+                    generationStrategy: 'increment'
                 },
                     {
                         name: "cep",

@@ -23,6 +23,7 @@ module.exports = {
       subscribersDir: process.env.TYPEORM_SUBSCRIBERS_DIR
    }
 }
+
 /*
 
 module.exports = {
@@ -44,4 +45,5 @@ module.exports = {
       migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
       subscribersDir: process.env.TYPEORM_SUBSCRIBERS_DIR
    }
-}*/
+}
+*/

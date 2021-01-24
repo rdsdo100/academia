@@ -11,7 +11,8 @@ export class Emails1608428737055 implements MigrationInterface {
                 name: "id",
                 type: "int",
                 isPrimary: true,
-                isGenerated: true
+                isGenerated: true,
+                generationStrategy: 'increment'
             },
                 {
                     name: "email",

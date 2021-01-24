@@ -10,7 +10,8 @@ export class Usuarios1608428752748 implements MigrationInterface {
                 name: "id",
                 type: "int",
                 isPrimary: true,
-                isGenerated: true
+                isGenerated: true,
+                generationStrategy: 'increment'
             },
                 {
                     name: 'nome_usuario',

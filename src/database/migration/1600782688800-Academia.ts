@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableIndex} from "typeorm";
 
 export class Academia1600782688800 implements MigrationInterface {
 
@@ -11,7 +11,9 @@ export class Academia1600782688800 implements MigrationInterface {
                     name: 'id',
                     type: 'int',
                     isPrimary: true,
-                    isGenerated: true
+                    isGenerated: true,
+                    generationStrategy: 'increment'
+
                 },
                 {
                     name: 'nome_fantazia',
@@ -24,7 +26,8 @@ export class Academia1600782688800 implements MigrationInterface {
                     length: '60'
                 },
             ]
-        }))
+        }));
+
 
     }
 

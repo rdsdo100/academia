@@ -11,7 +11,7 @@ import {TreinosAlunos} from "./TreinosAlunos";
 import {SeriesExercicios} from "./SeriesExercicios";
 
 @Entity()
-export class Treinos extends BaseEntity {
+export class Treinos extends BaseEntity  {
 
     @PrimaryGeneratedColumn()
     id : number

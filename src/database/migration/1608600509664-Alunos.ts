@@ -11,7 +11,8 @@ export class Alunos1608600509664 implements MigrationInterface {
                     name: 'id',
                     type: 'int',
                     isPrimary: true,
-                    isGenerated: true
+                    isGenerated: true,
+                    generationStrategy: 'increment'
                 },
                 {
                     name: 'pessoas_id_fk',

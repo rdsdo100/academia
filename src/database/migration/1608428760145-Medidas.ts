@@ -11,7 +11,8 @@ export class Medidas1608428760145 implements MigrationInterface {
                         name: 'id',
                         type: 'int',
                         isPrimary: true,
-                        isGenerated:true
+                        isGenerated:true,
+                        generationStrategy: 'increment'
                     },
 
                     {

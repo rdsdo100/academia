@@ -11,7 +11,8 @@ export class Telefones1608428745616 implements MigrationInterface {
                 name: "id",
                 type: "int",
                 isPrimary: true,
-                isGenerated: true
+                isGenerated: true,
+                generationStrategy: 'increment'
             },
                 {
                     name: "dd",

@@ -11,7 +11,8 @@ export class MedidasAlunos1608661270898 implements MigrationInterface {
                     name: 'id',
                     type: 'int',
                     isPrimary: true,
-                    isGenerated: true
+                    isGenerated: true,
+                    generationStrategy: 'increment'
                 },
                 {
                     name: 'alunos_id_fk',

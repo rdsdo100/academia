@@ -10,7 +10,8 @@ export class Pessoas1608428752738 implements MigrationInterface {
                 name: "id",
                 type: "int",
                 isPrimary: true,
-                isGenerated: true
+                isGenerated: true,
+                generationStrategy: 'increment'
             },
                 {
                     name: "nome",

@@ -11,7 +11,8 @@ export class SeriesExercicios1608428778080 implements MigrationInterface {
                     name: 'id',
                     type: 'int',
                     isPrimary: true,
-                    isGenerated: true
+                    isGenerated: true,
+                    generationStrategy: 'increment'
                 },
                 {
                     name: 'serie',
