@@ -1,25 +1,19 @@
-import {
-    Column,
-    Entity,
-    PrimaryGeneratedColumn, BaseEntity
-} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
 
 @Entity()
 export class Usuarios extends BaseEntity {
-
     @PrimaryGeneratedColumn()
-    id: number
+    id: number;
 
-    @Column({name: "nome_usuario"})
-    nomeUsuario: string
+    @Column({ name: 'nome_usuario' })
+    nomeUsuario: string;
 
-    @Column({unique:true})
-    email: string
-
-    @Column()
-    senha: string
+    @Column({ unique: true })
+    email: string;
 
     @Column()
-    matricula: string
+    senha: string;
 
+    @Column()
+    matricula: string;
 }

@@ -1,24 +1,18 @@
-import {assinar} from "../config/Jwt";
-import {buscarUsuarioRepository} from "../repository/usuarioRepository";
+import { assinar } from '../config/Jwt';
+import { buscarUsuarioRepository } from '../repository/usuarioRepository';
 
 export default class LoginBusiness {
+    async index() {}
 
-    async index(){
+    async login(nomeUsuario: string, senha: string) {
+        let authorization: string;
 
-    }
+        const getUsuario = await buscarUsuarioRepository(nomeUsuario);
 
-    async login(nomeUsuario: string , senha : string) {
-        let authorization: string
-
-            const getUsuario = await buscarUsuarioRepository(nomeUsuario)
-
-            if ((getUsuario?.nomeUsuario === nomeUsuario)&& (getUsuario.senha === senha)){
-
-                 return authorization =  assinar(
-                    Number(getUsuario?.id)
-                    , String(getUsuario?.nomeUsuario))
-            } else {
-                return 'Error'
-            }
+        if (getUsuario?.nomeUsuario === nomeUsuario && getUsuario.senha === senha) {
+            return (authorization = assinar(Number(getUsuario?.id), String(getUsuario?.nomeUsuario)));
+        } else {
+            return 'Error';
+        }
     }
 }

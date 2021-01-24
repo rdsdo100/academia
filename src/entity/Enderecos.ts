@@ -1,45 +1,35 @@
-import {
-    BaseEntity,
-    Column,
-    Entity,
-    OneToMany,
-    PrimaryGeneratedColumn,
-
-} from "typeorm";
-import {Pessoas} from "./Pessoas";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Pessoas } from './Pessoas';
 
 @Entity()
 export class Enderecos extends BaseEntity {
-
     @PrimaryGeneratedColumn()
-    id : number
+    id: number;
 
     @Column()
-    cep : string
+    cep: string;
 
     @Column()
-    logradouro : string
+    logradouro: string;
 
     @Column()
-    complemento : string
+    complemento: string;
 
     @Column()
-    bairro : string
+    bairro: string;
 
     @Column()
-    localidade: string
+    localidade: string;
 
     @Column()
-    uf: string
+    uf: string;
 
     @Column()
-    ibge : string
+    ibge: string;
 
     @Column()
-    numero: string
-
+    numero: string;
 
     @OneToMany(() => Pessoas, (pessoas) => pessoas.enderecosIdFK)
     pessoas: Pessoas[];
-
 }

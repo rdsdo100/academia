@@ -1,13 +1,4 @@
 export default class TreinosBusiness {
-
-    async  buscarTreinos(){
-
-    }
-    async  cadastrarTreinos(){
-
-
-
-    }
-
-
+    async buscarTreinos() {}
+    async cadastrarTreinos() {}
 }

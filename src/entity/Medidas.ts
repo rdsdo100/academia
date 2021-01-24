@@ -1,71 +1,62 @@
-import {
-    BaseEntity,
-    Column,
-    Entity, OneToMany,
-    PrimaryGeneratedColumn
-
-} from "typeorm";
-import {MedidasAlunos} from "./MedidasAlunos";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { MedidasAlunos } from './MedidasAlunos';
 
 @Entity()
 export class Medidas extends BaseEntity {
-
     @PrimaryGeneratedColumn()
-    id : number
+    id: number;
 
-    @Column({type: "date" ,name: "data_avaliacao" })
-    dataAvaliacao: Date
-
-    @Column()
-    peso: number
+    @Column({ type: 'date', name: 'data_avaliacao' })
+    dataAvaliacao: Date;
 
     @Column()
-    estatura: number
-
-    @Column({name: "torax_normal"})
-    toraxNormal: number
-
-    @Column({name: "torax_expandido"})
-    toraxExpandido: number
-
-    @Column({name:"braco_direito_relaxado"})
-    bracoDireitoRelaxado : number
-
-    @Column({name:"braco_direito_expandido"})
-    bracoDireitoExpandido : number
-
-    @Column({name:"braco_esquerdo_relaxado"})
-    bracoEsquerdoRelaxado : number
-
-    @Column({name:"braco_esquerdo_expandido"})
-    bracoEsquerdoExpandido : number
+    peso: number;
 
     @Column()
-    cintura : number
+    estatura: number;
+
+    @Column({ name: 'torax_normal' })
+    toraxNormal: number;
+
+    @Column({ name: 'torax_expandido' })
+    toraxExpandido: number;
+
+    @Column({ name: 'braco_direito_relaxado' })
+    bracoDireitoRelaxado: number;
+
+    @Column({ name: 'braco_direito_expandido' })
+    bracoDireitoExpandido: number;
+
+    @Column({ name: 'braco_esquerdo_relaxado' })
+    bracoEsquerdoRelaxado: number;
+
+    @Column({ name: 'braco_esquerdo_expandido' })
+    bracoEsquerdoExpandido: number;
 
     @Column()
-    abdomem : number
+    cintura: number;
 
     @Column()
-    quadril : number
-
-    @Column({name:"coxa_medial_direira"})
-    coxaMedialDireira : number
-
-    @Column({name:"coxa_medial_esquerda"})
-    coxaMedialEsquerda : number
-
-    @Column({name: "panturrilia_direita"})
-    panturriliaDireita: number
-
-    @Column({name: "panturrilia_esquerda"})
-    panturriliaEsquerda : number
+    abdomem: number;
 
     @Column()
-    observacoes: string
+    quadril: number;
+
+    @Column({ name: 'coxa_medial_direira' })
+    coxaMedialDireira: number;
+
+    @Column({ name: 'coxa_medial_esquerda' })
+    coxaMedialEsquerda: number;
+
+    @Column({ name: 'panturrilia_direita' })
+    panturriliaDireita: number;
+
+    @Column({ name: 'panturrilia_esquerda' })
+    panturriliaEsquerda: number;
+
+    @Column()
+    observacoes: string;
 
     @OneToMany(() => MedidasAlunos, (medidasAlunos) => medidasAlunos.medidasIdFK)
     medidasAlunos: MedidasAlunos[];
-
-
 }

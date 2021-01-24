@@ -1,57 +1,42 @@
-import {ClassMiddleware, Controller, Delete, Post} from "@overnightjs/core";
-import { Usuarios } from "../../entity/Usuarios";
-import {Request , Response} from 'express'
+import { ClassMiddleware, Controller, Delete, Post } from '@overnightjs/core';
+import { Usuarios } from '../../entity/Usuarios';
+import { Request, Response } from 'express';
 
-import {decodificar} from "../../config/Jwt";
-import UsuarioBusiness from "../../business/UsuarioBusiness";
-
+import { decodificar } from '../../config/Jwt';
+import UsuarioBusiness from '../../business/UsuarioBusiness';
 
 @Controller('user')
 @ClassMiddleware([decodificar])
 export default class UsuaruiosController {
-
-  
-
     @Post()
-    async cadastroUsuarios(request: Request , response: Response){
-
-        const usuarios = new Usuarios()
-        const usuariosBusiness = new UsuarioBusiness()
-
+    async cadastroUsuarios(request: Request, response: Response) {
+        const usuarios = new Usuarios();
+        const usuariosBusiness = new UsuarioBusiness();
 
         try {
+            usuarios.nomeUsuario = String(request.body.nome);
+            usuarios.email = String(request.body.email);
+            usuarios.senha = String(request.body.senha);
+            usuarios.matricula = String(request.body.matricula);
 
-            usuarios.nomeUsuario = String(request.body.nome)
-            usuarios.email = String(request.body.email)
-            usuarios.senha = String(request.body.senha)
-            usuarios.matricula = String(request.body.matricula)
-
-
-
-            const resposta = await usuariosBusiness.cadastroUsuarios(usuarios)
-            return   response.json( resposta )
+            const resposta = await usuariosBusiness.cadastroUsuarios(usuarios);
+            return response.json(resposta);
         } catch (err) {
-            return  response.json( {
-                mesage : err.mesage ,
-                err} )
+            return response.json({
+                mesage: err.mesage,
+                err,
+            });
         }
-
     }
 
     @Delete(':id')
-    async deletarUsuario(request: Request , response: Response){
-        const deletar = Number(request.params.id)
+    async deletarUsuario(request: Request, response: Response) {
+        const deletar = Number(request.params.id);
 
+        const usuariosBusiness = new UsuarioBusiness();
 
-        const usuariosBusiness = new UsuarioBusiness()
+        const resposta = await usuariosBusiness.deletarUsuario(deletar);
 
-        const resposta = await  usuariosBusiness.deletarUsuario(deletar)
-
-        response.json( resposta )
-
-
+        response.json(resposta);
     }
-
-
-
 }

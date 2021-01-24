@@ -1,13 +1,10 @@
-import {celebrate, Joi, Segments} from "celebrate";
+import { celebrate, Joi, Segments } from 'celebrate';
 
 const treinoValidations = celebrate(
     {
-        [Segments.BODY]:Joi.object().keys({
+        [Segments.BODY]: Joi.object().keys({}),
+    },
+    { abortEarly: false },
+);
 
-
-            }
-        )
-    }, {abortEarly: false}
-)
-
-export {treinoValidations}
+export { treinoValidations };

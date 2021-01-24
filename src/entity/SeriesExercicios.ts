@@ -1,38 +1,32 @@
-import {BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
-import {Exercicios} from "./Exercicios";
-import {Treinos} from "./Treinos";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Exercicios } from './Exercicios';
+import { Treinos } from './Treinos';
 
-
-@Entity({name: "series_Exercicios"})
+@Entity({ name: 'series_Exercicios' })
 export class SeriesExercicios extends BaseEntity {
-
     @PrimaryGeneratedColumn()
-    id: number
+    id: number;
 
     @Column()
-    serie: number
+    serie: number;
 
     @Column()
-    vezes: string
+    vezes: string;
 
     @Column()
-    kilos: string
+    kilos: string;
 
     @Column()
-    tempo: number
+    tempo: number;
 
     @Column()
-    intervalo: number
+    intervalo: number;
 
-    @ManyToOne(() => Exercicios, (exercicios) => exercicios.seriesExercicios, {eager: true})
-    @JoinColumn([{name: 'exercicios_id_fk', referencedColumnName: "id"}])
-    exerciciosIdFK: Exercicios
+    @ManyToOne(() => Exercicios, (exercicios) => exercicios.seriesExercicios, { eager: true })
+    @JoinColumn([{ name: 'exercicios_id_fk', referencedColumnName: 'id' }])
+    exerciciosIdFK: Exercicios;
 
-    @ManyToOne(() => Treinos, (treinos) => treinos.seriesExercicios, {eager: true})
-    @JoinColumn([{name: 'treinos_id_fk', referencedColumnName: "id"}])
-    treinosIdFK: Treinos
-
-
-
+    @ManyToOne(() => Treinos, (treinos) => treinos.seriesExercicios, { eager: true })
+    @JoinColumn([{ name: 'treinos_id_fk', referencedColumnName: 'id' }])
+    treinosIdFK: Treinos;
 }
-

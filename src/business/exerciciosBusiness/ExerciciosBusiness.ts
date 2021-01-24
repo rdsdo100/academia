@@ -1,16 +1,11 @@
-import {buscarExercicios, cadastrarExercicios} from "../../repository/exerciciosController";
+import { buscarExercicios, cadastrarExercicios } from '../../repository/exerciciosController';
 
-export default class ExerciciosBusiness{
+export default class ExerciciosBusiness {
+    async index() {
+        return await buscarExercicios();
+    }
 
-
-async index(){
-    return await buscarExercicios()
-}
-
-async cadasterarExercicios(nomeExercicios: string){
-    return await cadastrarExercicios(nomeExercicios)
-
-
-}
-
+    async cadasterarExercicios(nomeExercicios: string) {
+        return await cadastrarExercicios(nomeExercicios);
+    }
 }

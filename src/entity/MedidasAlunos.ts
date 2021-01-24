@@ -1,24 +1,17 @@
-import {
-    BaseEntity,
-    Entity,
-    JoinColumn,
-    ManyToOne,
-    PrimaryGeneratedColumn,
+import { BaseEntity, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Medidas } from './Medidas';
+import { Alunos } from './Alunos';
 
-} from "typeorm";
-import {Medidas} from "./Medidas";
-import {Alunos} from "./Alunos";
-
-@Entity({name: "medidas_alunos"})
-export class MedidasAlunos  extends BaseEntity{
+@Entity({ name: 'medidas_alunos' })
+export class MedidasAlunos extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id : number
+    id: number;
 
-    @ManyToOne(() => Alunos, (alunos) => alunos.treinosAlunos, {eager: true})
-    @JoinColumn([{name: 'alunos_id_fk', referencedColumnName: "id"}])
-    alunosIdFK: Alunos
+    @ManyToOne(() => Alunos, (alunos) => alunos.treinosAlunos, { eager: true })
+    @JoinColumn([{ name: 'alunos_id_fk', referencedColumnName: 'id' }])
+    alunosIdFK: Alunos;
 
-    @ManyToOne(() => Medidas, (medidas) => medidas.medidasAlunos, {eager: true})
-    @JoinColumn([{name: 'medidas_id_fk', referencedColumnName: "id"}])
-    medidasIdFK: Medidas
+    @ManyToOne(() => Medidas, (medidas) => medidas.medidasAlunos, { eager: true })
+    @JoinColumn([{ name: 'medidas_id_fk', referencedColumnName: 'id' }])
+    medidasIdFK: Medidas;
 }

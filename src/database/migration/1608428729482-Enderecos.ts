@@ -1,66 +1,62 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class Enderecos1608428729482 implements MigrationInterface {
-
     public async up(queryRunner: QueryRunner): Promise<void> {
-
-        await  queryRunner.createTable( new Table({
-                name: "enderecos",
-                columns:[{
-                    name: "id",
-                    type: "int",
-                    isPrimary: true,
-                    isGenerated: true,
-                    generationStrategy: 'increment'
-                },
+        await queryRunner.createTable(
+            new Table({
+                name: 'enderecos',
+                columns: [
                     {
-                        name: "cep",
-                        type: 'varchar',
-                        length: '8'
+                        name: 'id',
+                        type: 'int',
+                        isPrimary: true,
+                        isGenerated: true,
+                        generationStrategy: 'increment',
                     },
                     {
-                        name: "logradouro",
+                        name: 'cep',
                         type: 'varchar',
-                        length: '90'
+                        length: '8',
                     },
                     {
-                        name: "complemento",
+                        name: 'logradouro',
                         type: 'varchar',
-                        length: '90'
+                        length: '90',
                     },
                     {
-                        name: "bairro",
+                        name: 'complemento',
                         type: 'varchar',
-                        length: '40'
+                        length: '90',
                     },
                     {
-                        name: "localidade",
+                        name: 'bairro',
                         type: 'varchar',
-                        length: '20'
-                    }, {
-                        name: "uf",
-                        type: 'varchar',
-                        length: '2'
+                        length: '40',
                     },
                     {
-                        name: "ibge",
+                        name: 'localidade',
                         type: 'varchar',
-                        length: '6'
+                        length: '20',
                     },
                     {
-                        name: "numero",
+                        name: 'uf',
                         type: 'varchar',
-                        length: '5'
+                        length: '2',
                     },
-
-                ]
-            })
-        )
-
-
+                    {
+                        name: 'ibge',
+                        type: 'varchar',
+                        length: '6',
+                    },
+                    {
+                        name: 'numero',
+                        type: 'varchar',
+                        length: '5',
+                    },
+                ],
+            }),
+        );
     }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-    }
-
+    public async down(queryRunner: QueryRunner): Promise<void> {}
 }

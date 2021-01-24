@@ -1,38 +1,25 @@
-import {NextFunction, Request, Response} from "express";
-import jwt from 'jsonwebtoken'
+import { NextFunction, Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
 
+export function assinar(id: number, nomeUsuario: string) {
+    const token = jwt.sign({ id, nomeUsuario }, String(process.env.JWT_TOKEN), { expiresIn: '1d' });
+    return token;
+}
 
-   export function assinar(id:number , nomeUsuario:string  ){
+export function decodificar(request: Request, response: Response, next: NextFunction) {
+    let authorization = String(request.headers.authorization);
 
-        const token = jwt.sign(
-            {id, nomeUsuario  } ,
-            String(process.env.JWT_TOKEN)  ,
-            {expiresIn: '1d'})
-      return token
+    jwt.verify(authorization, String(process.env.JWT_TOKEN), (err: any, decoded: any) => {
+        if (err) {
+            return response.json({
+                err,
+                menssage: 'invalido!!!!',
+                isvalid: false,
+            });
+        }
 
-    }
+        request.body.decoded = decoded;
 
-    export function decodificar(request:Request , response: Response, next:NextFunction){
-
-        let authorization=  String(request.headers.authorization)
-
-        jwt.verify(authorization ,
-            String(process.env.JWT_TOKEN),
-            (err:any , decoded: any) =>{
-            if(err){
-                return response.json({
-                    err ,
-                    menssage: "invalido!!!!" ,
-                isvalid: false
-
-                })
-
-            }
-
-            request.body.decoded = decoded
-
-            return next()
-
-        })
-
-    }
+        return next();
+    });
+}
