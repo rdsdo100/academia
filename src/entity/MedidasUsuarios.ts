@@ -3,7 +3,7 @@ import { Medidas } from './Medidas';
 import { Alunos } from './Alunos';
 
 @Entity({ name: 'medidas_alunos' })
-export class MedidasAlunos extends BaseEntity {
+export class MedidasUsuarios extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 

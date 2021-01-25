@@ -1,8 +1,8 @@
 import { BaseEntity, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Pessoas } from './Pessoas';
-import { TreinosAlunos } from './TreinosAlunos';
-import { MedidasAlunos } from './MedidasAlunos';
+import { TreinosUsuarios } from './TreinosUsuarios';
+import { MedidasUsuarios } from './MedidasUsuarios';
 
 @Entity()
 export class Alunos extends BaseEntity {
@@ -13,9 +13,9 @@ export class Alunos extends BaseEntity {
     @JoinColumn([{ name: 'pessoas_id_fk', referencedColumnName: 'id' }])
     pessoasIdFK: Pessoas;
 
-    @OneToMany(() => TreinosAlunos, (treinosAlunos) => treinosAlunos.alunosIdFK)
-    treinosAlunos: TreinosAlunos[];
+    @OneToMany(() => TreinosUsuarios, (treinosUsuarios) => treinosUsuarios.alunosIdFK)
+    treinosUsuarios: TreinosUsuarios[];
 
-    @OneToMany(() => MedidasAlunos, (medidasAlunos) => medidasAlunos.alunosIdFK)
-    medidasAlunos: MedidasAlunos[];
+    @OneToMany(() => MedidasUsuarios, (medidasAlunos) => medidasAlunos.alunosIdFK)
+    medidasUsuarios: MedidasUsuarios[];
 }

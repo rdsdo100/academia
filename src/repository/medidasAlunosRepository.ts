@@ -1,11 +1,11 @@
 import { getConnection } from 'typeorm';
 import { Alunos } from '../entity/Alunos';
 import { Medidas } from '../entity/Medidas';
-import { MedidasAlunos } from '../entity/MedidasAlunos';
+import { MedidasUsuarios } from '../entity/MedidasUsuarios';
 
 const cadastrarMedidas = async (medidas: Medidas, alunos: Alunos) => {
     let salvarAlunoMedidas;
-    let medidasAlunos = new MedidasAlunos();
+    let medidasAlunos = new MedidasUsuarios();
 
     const connection = getConnection();
     const queryRunner = connection.createQueryRunner();
@@ -20,7 +20,7 @@ const cadastrarMedidas = async (medidas: Medidas, alunos: Alunos) => {
         if (buscarAlunos?.id) {
             medidasAlunos.alunosIdFK = buscarAlunos;
             medidasAlunos.medidasIdFK = retornoMedidas;
-            salvarAlunoMedidas = await queryRunner.manager.save(MedidasAlunos, medidasAlunos);
+            salvarAlunoMedidas = await queryRunner.manager.save(MedidasUsuarios, medidasAlunos);
         }
 
         await queryRunner.commitTransaction();

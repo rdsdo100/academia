@@ -3,7 +3,7 @@ import { decodificar } from '../../config/Jwt';
 import { Request, Response } from 'express';
 import { Treinos } from '../../entity/Treinos';
 import { Exercicios } from '../../entity/Exercicios';
-import { TreinosAlunos } from '../../entity/TreinosAlunos';
+import { TreinosUsuarios } from '../../entity/TreinosUsuarios';
 import { SeriesExercicios } from '../../entity/SeriesExercicios';
 import { Alunos } from '../../entity/Alunos';
 
@@ -19,7 +19,7 @@ export default class TreinosController {
     async cadastrarTreinos(request: Request, response: Response) {
         const exercicios = new Exercicios();
         const serieExercicios = new SeriesExercicios();
-        const treinosAlunos = new TreinosAlunos();
+        const treinosAlunos = new TreinosUsuarios();
         const treinos = new Treinos();
         const aluno = new Alunos();
 

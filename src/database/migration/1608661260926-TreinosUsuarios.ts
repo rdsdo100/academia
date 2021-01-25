@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
-export class MedidasAlunos1608661270898 implements MigrationInterface {
+export class TreinosUsuarios1608661260926 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'medidas_alunos',
+                name: 'treinos_usuarios',
                 columns: [
                     {
                         name: 'id',
@@ -14,11 +14,11 @@ export class MedidasAlunos1608661270898 implements MigrationInterface {
                         generationStrategy: 'increment',
                     },
                     {
-                        name: 'alunos_id_fk',
+                        name: 'usuarios_id_fk',
                         type: 'int',
                     },
                     {
-                        name: 'medidas_id_fk',
+                        name: 'treinos_id_fk',
                         type: 'int',
                     },
                 ],
@@ -26,22 +26,22 @@ export class MedidasAlunos1608661270898 implements MigrationInterface {
         );
 
         await queryRunner.createForeignKey(
-            'medidas_alunos',
+            'treinos_usuarios',
             new TableForeignKey({
-                columnNames: ['alunos_id_fk'],
+                columnNames: ['usuarios_id_fk'],
                 referencedColumnNames: ['id'],
                 referencedTableName: 'alunos',
-                name: 'treinos_alunos_aluno',
+                name: 'treinos_alunos_alunos',
             }),
         );
 
         await queryRunner.createForeignKey(
-            'medidas_alunos',
+            'treinos_usuarios',
             new TableForeignKey({
-                columnNames: ['medidas_id_fk'],
+                columnNames: ['treinos_id_fk'],
                 referencedColumnNames: ['id'],
-                referencedTableName: 'medidas',
-                name: 'treinos_alunos_medias',
+                referencedTableName: 'treinos',
+                name: 'treinos_alunos_treinos',
             }),
         );
     }

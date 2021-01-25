@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { MedidasAlunos } from './MedidasAlunos';
+import { MedidasUsuarios } from './MedidasUsuarios';
 
 @Entity()
 export class Medidas extends BaseEntity {
@@ -57,6 +57,6 @@ export class Medidas extends BaseEntity {
     @Column()
     observacoes: string;
 
-    @OneToMany(() => MedidasAlunos, (medidasAlunos) => medidasAlunos.medidasIdFK)
-    medidasAlunos: MedidasAlunos[];
+    @OneToMany(() => MedidasUsuarios, (medidasAlunos) => medidasAlunos.medidasIdFK)
+    medidasAlunos: MedidasUsuarios[];
 }
