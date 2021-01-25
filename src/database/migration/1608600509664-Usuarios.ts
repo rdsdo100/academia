@@ -1,6 +1,6 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
-export class Usuarios1608428752748 implements MigrationInterface {
+export class Usuarios1608600509634 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
@@ -12,6 +12,10 @@ export class Usuarios1608428752748 implements MigrationInterface {
                         isPrimary: true,
                         isGenerated: true,
                         generationStrategy: 'increment',
+                    },
+                    {
+                        name: 'pessoas_id_fk',
+                        type: 'int',
                     },
                     {
                         name: 'nome_usuario',
@@ -39,21 +43,21 @@ export class Usuarios1608428752748 implements MigrationInterface {
                         length: '30',
                         isNullable: true,
                     },
+
                 ],
             }),
-            true,
+        );
+
+        await queryRunner.createForeignKey(
+            'alunos',
+            new TableForeignKey({
+                columnNames: ['pessoas_id_fk'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'pessoas',
+                name: 'alunos_pessoas',
+            }),
         );
     }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`
-            alter table usuarios
-            drop constraint if exists usuarios_grupo_usuarios_id_fk cascade;
-
-        `);
-
-        await queryRunner.query(`
-        drop table usuarios
-        `);
-    }
+    public async down(queryRunner: QueryRunner): Promise<void> {}
 }
