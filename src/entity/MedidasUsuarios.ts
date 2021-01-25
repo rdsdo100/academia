@@ -2,16 +2,16 @@ import { BaseEntity, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } fro
 import { Medidas } from './Medidas';
 import { Alunos } from './Alunos';
 
-@Entity({ name: 'medidas_alunos' })
+@Entity({ name: 'medidas_usuarios' })
 export class MedidasUsuarios extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Alunos, (alunos) => alunos.treinosAlunos, { eager: true })
-    @JoinColumn([{ name: 'alunos_id_fk', referencedColumnName: 'id' }])
+    @ManyToOne(() => Alunos, (alunos) => alunos.treinosUsuarios, { eager: true })
+    @JoinColumn([{ name: 'usuarios_id_fk', referencedColumnName: 'id' }])
     alunosIdFK: Alunos;
 
-    @ManyToOne(() => Medidas, (medidas) => medidas.medidasAlunos, { eager: true })
+    @ManyToOne(() => Medidas, (medidas) => medidas.medidasUsuarios, { eager: true })
     @JoinColumn([{ name: 'medidas_id_fk', referencedColumnName: 'id' }])
     medidasIdFK: Medidas;
 }

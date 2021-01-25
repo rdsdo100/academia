@@ -57,6 +57,6 @@ export class Medidas extends BaseEntity {
     @Column()
     observacoes: string;
 
-    @OneToMany(() => MedidasUsuarios, (medidasAlunos) => medidasAlunos.medidasIdFK)
-    medidasAlunos: MedidasUsuarios[];
+    @OneToMany(() => MedidasUsuarios, (medidasusuarios) => medidasusuarios.medidasIdFK)
+    medidasUsuarios: MedidasUsuarios[];
 }
