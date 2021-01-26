@@ -29,13 +29,13 @@ export default class TreinosController {
 
         treinos.nome = String(request.body.treino);
 
-        serieExercicios.serie = Number(request.body.serie);
+        /*serieExercicios.serie = Number(request.body.serie);
         serieExercicios.vezes = String(request.body.vezes);
         serieExercicios.kilos = String(request.body.kilos);
         serieExercicios.intervalo = Number(request.body.intervalo);
         serieExercicios.tempo = Number(request.body.tempo);
-
+*/
         treinosusuarios.treinosIdFK = treinos;
-        treinosusuarios.alunosIdFK = usuario;
+        treinosusuarios.usuariosIdFK = usuario;
     }
 }
