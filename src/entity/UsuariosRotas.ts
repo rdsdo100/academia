@@ -1,7 +1,22 @@
-import {Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Enderecos} from "./Enderecos";
+import {Usuarios} from "./Usuarios";
+import {RotasPermissoes} from "./RotasPermissoes";
+
 
 @Entity({name: 'usuarios_rotas'})
 export class UsuariosRotas {
     @PrimaryGeneratedColumn()
     id: number;
+
+
+    @ManyToOne(() => Usuarios, (usuarios) => usuarios.usuariosRotas, { eager: true })
+    @JoinColumn([{ name: 'usuarios_id_fk', referencedColumnName: 'id' }])
+    usuariosIdFK: Enderecos;
+
+    @ManyToOne(() => RotasPermissoes, (rotasPermissoes) => rotasPermissoes.usuariosRotas, { eager: true })
+    @JoinColumn([{ name: 'rotas_permissoes_id_fk', referencedColumnName: 'id' }])
+    rotasPermissoesIdFK: Enderecos;
+
+
 }

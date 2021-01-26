@@ -3,6 +3,7 @@ import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGe
 import { Pessoas } from './Pessoas';
 import { TreinosUsuarios } from './TreinosUsuarios';
 import { MedidasUsuarios } from './MedidasUsuarios';
+import {UsuariosRotas} from "./UsuariosRotas";
 
 @Entity()
 export class Usuarios extends BaseEntity {
@@ -30,4 +31,9 @@ export class Usuarios extends BaseEntity {
 
     @OneToMany(() => MedidasUsuarios, (medidasAlunos) => medidasAlunos.usuariosIdFK)
     medidasUsuarios: MedidasUsuarios[];
+
+    @OneToMany(() => UsuariosRotas, (usuariosRotas) => usuariosRotas.usuariosIdFK)
+    usuariosRotas: UsuariosRotas[];
+
+
 }
