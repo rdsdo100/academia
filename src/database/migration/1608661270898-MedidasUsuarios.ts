@@ -30,8 +30,8 @@ export class MedidasUsuarios1608661270898 implements MigrationInterface {
             new TableForeignKey({
                 columnNames: ['usuarios_id_fk'],
                 referencedColumnNames: ['id'],
-                referencedTableName: 'alunos',
-                name: 'treinos_alunos_aluno',
+                referencedTableName: 'usuarios',
+                name: 'treinos_usuarios_usuarios',
             }),
         );
 
@@ -41,7 +41,7 @@ export class MedidasUsuarios1608661270898 implements MigrationInterface {
                 columnNames: ['medidas_id_fk'],
                 referencedColumnNames: ['id'],
                 referencedTableName: 'medidas',
-                name: 'treinos_alunos_medias',
+                name: 'treinos_usuarios_medias',
             }),
         );
     }

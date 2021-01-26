@@ -1,5 +1,5 @@
 import { getConnection, getManager } from 'typeorm';
-import { Alunos } from '../entity/Alunos';
+import { Alunos } from '../entity/Usuarios';
 import { Pessoas } from '../entity/Pessoas';
 import { Enderecos } from '../entity/Enderecos';
 import { Emails } from '../entity/Emails';

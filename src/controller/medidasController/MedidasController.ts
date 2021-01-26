@@ -1,9 +1,9 @@
 import { ClassMiddleware, Controller, Get, Post } from '@overnightjs/core';
 import { Request, Response } from 'express';
 import { Medidas } from '../../entity/Medidas';
-import { Alunos } from '../../entity/Alunos';
 import { medidasValidations } from '../../validation/medidasValidations';
 import MedidasBusiness from '../../business/medidasBusiness/MedidasBusiness';
+import {Usuarios} from "../../entity/Usuarios";
 
 @Controller('medidas')
 @ClassMiddleware([/*decodificar,*/ medidasValidations])
@@ -16,9 +16,9 @@ export default class MedidasController {
     @Post()
     async cadastrarMedidas(request: Request, response: Response) {
         const medida = new Medidas();
-        const alunos = new Alunos();
+        const usuario = new Usuarios();
 
-        alunos.id = Number(request.body.idAluno);
+        usuario.id = Number(request.body.idAluno);
 
         medida.dataAvaliacao = new Date();
         medida.peso = Number(request.body.peso);
@@ -39,7 +39,7 @@ export default class MedidasController {
         medida.observacoes = String(request.body.observacoes);
 
         const medidasBusiness = new MedidasBusiness();
-        const retorno = await medidasBusiness.cadastrarAlunos(medida, alunos);
+        const retorno = await medidasBusiness.cadastrarAlunos(medida, usuario);
 
         response.json(retorno);
     }

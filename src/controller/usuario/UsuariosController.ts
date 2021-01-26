@@ -4,12 +4,13 @@ import { Enderecos } from '../../entity/Enderecos';
 import { Pessoas } from '../../entity/Pessoas';
 import { Emails } from '../../entity/Emails';
 import { Telefones } from '../../entity/Telefones';
-import AlunosBuisiness from '../../business/alunosBusiness/AlunosBuisiness';
+import UsuariosBuisiness from '../../business/alunosBusiness/UsuariosBuisiness';
 import { alunosValidations } from '../../validation/alunoValidations';
+import {Usuarios} from "../../entity/Usuarios";
 
 @Controller('alunos')
 @ClassMiddleware([/*decodificar,*/ alunosValidations])
-export default class AlunosController {
+export default class UsuariosController {
     @Get()
     async index(request: Request, response: Response) {}
 
@@ -19,6 +20,7 @@ export default class AlunosController {
         const telefones = new Telefones();
         const emails = new Emails();
         const enderecos = new Enderecos();
+        const usuarios = new Usuarios()
 
         pessoas.nome = String(request.body.pessoa.nome);
         pessoas.sobrenome = String(request.body.pessoa.sobrenome);
@@ -40,9 +42,9 @@ export default class AlunosController {
         telefones.telefone = String(request.body.telefone.telefone);
 
         emails.email = String(request.body.email.email);
-        const alunosBuisiness = new AlunosBuisiness();
+        const usuariosBuisiness = new UsuariosBuisiness();
 
-        const retorno = await alunosBuisiness.cadastrarAlunos(pessoas, enderecos, emails, telefones);
+        const retorno = await usuariosBuisiness.cadastrarAlunos(pessoas, enderecos, emails, telefones);
 
         return response.json(retorno);
     }

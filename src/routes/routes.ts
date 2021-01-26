@@ -1,19 +1,28 @@
 import ExemplosController from '../controller/ExemplosController';
 import Inicio from '../controller/Inicio';
 import TestController from '../controller/TesteController';
-import UsuaruiosController from '../controller/usuario/UsuaruiosController';
 import LoginController from '../controller/usuario/LoginController';
-import AlunosController from '../controller/alunos/AlunosController';
+import UsuariosController from '../controller/usuario/UsuariosController';
 import MedidasController from '../controller/medidasController/MedidasController';
 import ExerciciosController from '../controller/exerciciosController/ExerciciosController';
 
-const usuario = new UsuaruiosController();
+
+const usuarios = new UsuariosController()
 const login = new LoginController();
 const inicio = new Inicio();
 const exemplos = new ExemplosController();
 const testController = new TestController();
-const alunos = new AlunosController();
+const alunos = new UsuariosController();
 const medidas = new MedidasController();
 const exercicios = new ExerciciosController();
 
-export const routes = [inicio, exemplos, usuario, login, testController, alunos, medidas, exercicios];
+export const routes = [
+    inicio,
+    usuarios,
+    exemplos,
+    login,
+    testController,
+    alunos,
+    medidas,
+    exercicios
+];

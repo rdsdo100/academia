@@ -1,5 +1,5 @@
 import { getConnection } from 'typeorm';
-import { Alunos } from '../entity/Alunos';
+import { Alunos } from '../entity/Usuarios';
 import { Medidas } from '../entity/Medidas';
 import { MedidasUsuarios } from '../entity/MedidasUsuarios';
 

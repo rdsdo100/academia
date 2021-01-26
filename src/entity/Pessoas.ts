@@ -3,7 +3,7 @@ import { Enderecos } from './Enderecos';
 import { Emails } from './Emails';
 import { Telefones } from './Telefones';
 import { Entity } from 'typeorm';
-import { Alunos } from './Alunos';
+import { Alunos } from './Usuarios';
 
 @Entity()
 export class Pessoas extends BaseEntity {

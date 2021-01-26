@@ -5,7 +5,8 @@ import { Treinos } from '../../entity/Treinos';
 import { Exercicios } from '../../entity/Exercicios';
 import { TreinosUsuarios } from '../../entity/TreinosUsuarios';
 import { SeriesExercicios } from '../../entity/SeriesExercicios';
-import { Alunos } from '../../entity/Alunos';
+import {Usuarios} from "../../entity/Usuarios";
+
 
 @Controller('treino')
 @ClassMiddleware([decodificar])
@@ -19,13 +20,13 @@ export default class TreinosController {
     async cadastrarTreinos(request: Request, response: Response) {
         const exercicios = new Exercicios();
         const serieExercicios = new SeriesExercicios();
-        const treinosAlunos = new TreinosUsuarios();
+        const treinosusuarios = new TreinosUsuarios();
         const treinos = new Treinos();
-        const aluno = new Alunos();
+        const usuario = new Usuarios()
 
         exercicios.id = Number(request.body.exerciciosId);
 
-        aluno.id = Number(request.body.alunoId);
+        usuario.id = Number(request.body.alunoId);
 
         treinos.nome = String(request.body.treino);
 
@@ -35,7 +36,7 @@ export default class TreinosController {
         serieExercicios.intervalo = Number(request.body.intervalo);
         serieExercicios.tempo = Number(request.body.tempo);
 
-        treinosAlunos.treinosIdFK = treinos;
-        treinosAlunos.alunosIdFK = aluno;
+        treinosusuarios.treinosIdFK = treinos;
+        treinosusuarios.alunosIdFK = usuario;
     }
 }

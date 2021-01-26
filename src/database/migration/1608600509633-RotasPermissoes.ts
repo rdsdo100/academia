@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class TipoUsuario1611582898529 implements MigrationInterface {
+export class RotasPermissoes1608600509633 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'tipo_usuarios',
+                name: 'rotas_permissoes',
                 columns: [
                     {
                         name: 'id',
@@ -15,7 +15,14 @@ export class TipoUsuario1611582898529 implements MigrationInterface {
                         generationStrategy: 'increment',
                     },
                     {
-                        name: 'tipo_usuario',
+                        name: 'nome_rota',
+                        type: 'varchar',
+                        length: '50',
+                        isNullable: true,
+                        isUnique: true,
+                    },
+                    {
+                        name: 'caminho_rota',
                         type: 'varchar',
                         length: '50',
                         isNullable: true,

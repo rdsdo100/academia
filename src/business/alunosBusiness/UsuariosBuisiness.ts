@@ -5,7 +5,7 @@ import { Emails } from '../../entity/Emails';
 import { Telefones } from '../../entity/Telefones';
 import { formatNome } from '../../util/formatNomes';
 
-export default class AlunosBuisiness {
+export default class UsuariosBuisiness {
     async index() {
         const alunos = await buscarAlunoRepository();
         return alunos;
@@ -16,8 +16,8 @@ export default class AlunosBuisiness {
         pessoas.nome = formatNome(pessoas.nome);
         pessoas.sobrenome = formatNome(pessoas.sobrenome);
 
-        const alunos = await cadastrarAlunos(pessoas, enderecos, emails, telefones);
+        const usuario = await cadastrarAlunos(pessoas, enderecos, emails, telefones);
 
-        return alunos;
+        return usuario;
     }
 }

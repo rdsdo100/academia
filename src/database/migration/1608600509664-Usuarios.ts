@@ -49,12 +49,12 @@ export class Usuarios1608600509634 implements MigrationInterface {
         );
 
         await queryRunner.createForeignKey(
-            'alunos',
+            'usuarios',
             new TableForeignKey({
                 columnNames: ['pessoas_id_fk'],
                 referencedColumnNames: ['id'],
                 referencedTableName: 'pessoas',
-                name: 'alunos_pessoas',
+                name: 'usuarios_pessoas',
             }),
         );
     }
