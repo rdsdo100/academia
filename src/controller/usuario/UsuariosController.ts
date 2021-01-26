@@ -4,9 +4,9 @@ import { Enderecos } from '../../entity/Enderecos';
 import { Pessoas } from '../../entity/Pessoas';
 import { Emails } from '../../entity/Emails';
 import { Telefones } from '../../entity/Telefones';
-import UsuariosBuisiness from '../../business/alunosBusiness/UsuariosBuisiness';
+import UsuariosBuisiness from '../../business/usuariosBusiness/UsuariosBuisiness';
 import { alunosValidations } from '../../validation/alunoValidations';
-import {Usuarios} from "../../entity/Usuarios";
+import { Usuarios } from '../../entity/Usuarios';
 
 @Controller('alunos')
 @ClassMiddleware([/*decodificar,*/ alunosValidations])
@@ -20,7 +20,7 @@ export default class UsuariosController {
         const telefones = new Telefones();
         const emails = new Emails();
         const enderecos = new Enderecos();
-        const usuarios = new Usuarios()
+        const usuarios = new Usuarios();
 
         pessoas.nome = String(request.body.pessoa.nome);
         pessoas.sobrenome = String(request.body.pessoa.sobrenome);

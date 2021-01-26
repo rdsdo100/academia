@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { Medidas } from '../../entity/Medidas';
 import { medidasValidations } from '../../validation/medidasValidations';
 import MedidasBusiness from '../../business/medidasBusiness/MedidasBusiness';
-import {Usuarios} from "../../entity/Usuarios";
+import { Usuarios } from '../../entity/Usuarios';
 
 @Controller('medidas')
 @ClassMiddleware([/*decodificar,*/ medidasValidations])

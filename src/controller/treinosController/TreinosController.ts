@@ -5,8 +5,7 @@ import { Treinos } from '../../entity/Treinos';
 import { Exercicios } from '../../entity/Exercicios';
 import { TreinosUsuarios } from '../../entity/TreinosUsuarios';
 import { SeriesExercicios } from '../../entity/SeriesExercicios';
-import {Usuarios} from "../../entity/Usuarios";
-
+import { Usuarios } from '../../entity/Usuarios';
 
 @Controller('treino')
 @ClassMiddleware([decodificar])
@@ -22,7 +21,7 @@ export default class TreinosController {
         const serieExercicios = new SeriesExercicios();
         const treinosusuarios = new TreinosUsuarios();
         const treinos = new Treinos();
-        const usuario = new Usuarios()
+        const usuario = new Usuarios();
 
         exercicios.id = Number(request.body.exerciciosId);
 

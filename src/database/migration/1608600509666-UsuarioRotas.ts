@@ -1,7 +1,6 @@
-import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
 export class UsuarioRotas1608600509666 implements MigrationInterface {
-
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
@@ -22,28 +21,29 @@ export class UsuarioRotas1608600509666 implements MigrationInterface {
                         name: 'rotas_permissoes_id_fk',
                         type: 'int',
                     },
-
                 ],
             }),
         );
 
-        await queryRunner.createForeignKey('usuarios_rotas' , new TableForeignKey({
-            columnNames: ['usuarios_id_fk'],
-            referencedColumnNames: ['id'],
-            referencedTableName: 'usuarios',
-            name: 'usuarios_rotas_usuarios',
-        }));
-        await queryRunner.createForeignKey('usuarios_rotas' , new TableForeignKey({
-            columnNames: ['rotas_permissoes_id_fk'],
-            referencedColumnNames: ['id'],
-            referencedTableName: 'rotas_permissoes',
-            name: 'usuarios_rotas_rotas_permissoes',
-        }));
-
-
+        await queryRunner.createForeignKey(
+            'usuarios_rotas',
+            new TableForeignKey({
+                columnNames: ['usuarios_id_fk'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'usuarios',
+                name: 'usuarios_rotas_usuarios',
+            }),
+        );
+        await queryRunner.createForeignKey(
+            'usuarios_rotas',
+            new TableForeignKey({
+                columnNames: ['rotas_permissoes_id_fk'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'rotas_permissoes',
+                name: 'usuarios_rotas_rotas_permissoes',
+            }),
+        );
     }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-    }
-
+    public async down(queryRunner: QueryRunner): Promise<void> {}
 }

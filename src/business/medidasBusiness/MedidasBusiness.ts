@@ -1,7 +1,6 @@
-import { cadastrarMedidas } from '../../repository/medidasAlunosRepository';
+import { cadastrarMedidas } from '../../repository/medidasUsuariosRepository';
 import { Medidas } from '../../entity/Medidas';
-import {Usuarios} from "../../entity/Usuarios";
-
+import { Usuarios } from '../../entity/Usuarios';
 
 export default class MedidasBusiness {
     async cadastrarAlunos(medidas: Medidas, usuario: Usuarios) {

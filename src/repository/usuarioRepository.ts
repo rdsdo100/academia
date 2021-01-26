@@ -1,7 +1,11 @@
 import { getConnection, getManager } from 'typeorm';
 import { Usuarios } from '../entity/Usuarios';
+import { Pessoas } from '../entity/Pessoas';
+import { Enderecos } from '../entity/Enderecos';
+import { Emails } from '../entity/Emails';
+import { Telefones } from '../entity/Telefones';
 
-const cadastrarUsuarioRepository = async (usuario: Usuarios): Promise<object> => {
+/*const cadastrarUsuarioRepository = async (usuario: Usuarios): Promise<object> => {
     let usuarioRetorno;
     const connection = getConnection();
     const queryRunner = connection.createQueryRunner();
@@ -23,7 +27,7 @@ const cadastrarUsuarioRepository = async (usuario: Usuarios): Promise<object> =>
     }
 
     return { ...usuarioRetorno };
-};
+};*/
 
 const buscarUsuarioRepository = async (nomeUsuario: string) => {
     const usuarioRepository = getManager();
@@ -64,11 +68,57 @@ const deleteUsuarioIdRepository = async (idUsuario: number) => {
     return usuarioRetorno;
 };
 
+const buscarUsuariosRepository = async () => {
+    const usuarioRepository = getManager();
+    return usuarioRepository.find(Usuarios);
+};
+
+const cadastrarUsuariosRepository = async (
+    pessoas: Pessoas,
+    enderecos: Enderecos,
+    emails: Emails,
+    telefones: Telefones,
+) => {
+    let retornoUsuarioss;
+    const connection = getConnection();
+    const queryRunner = connection.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+        const buscarPessoas = await queryRunner.manager.findOne(Pessoas, { cpf: pessoas.cpf });
+
+        if (buscarPessoas?.cpf !== pessoas.cpf) {
+            const retornoEnderecos = await queryRunner.manager.save(Enderecos, enderecos);
+            const retornoEmails = await queryRunner.manager.save(Emails, emails);
+            const retornoTelefones = await queryRunner.manager.save(Telefones, telefones);
+
+            pessoas.enderecosIdFK = retornoEnderecos;
+            pessoas.emailsIdFK = retornoEmails;
+            pessoas.telefonesIdFK = retornoTelefones;
+
+            const retornoPessoas = await queryRunner.manager.save(Pessoas, pessoas);
+            retornoUsuarioss = await queryRunner.manager.save(Usuarios, { pessoasIdFK: retornoPessoas });
+        } else {
+            retornoUsuarioss = buscarPessoas;
+        }
+        await queryRunner.commitTransaction();
+    } catch (err) {
+        console.log(err);
+        await queryRunner.rollbackTransaction();
+    } finally {
+        await queryRunner.release();
+    }
+
+    return retornoUsuarioss;
+};
+
 export {
-    cadastrarUsuarioRepository,
     buscarUsuarioRepository,
     buscarUsuarioIdRepository,
     listUsuarioRepository,
     updateUsuarioRepository,
     deleteUsuarioIdRepository,
+    buscarUsuariosRepository,
+    cadastrarUsuariosRepository,
 };

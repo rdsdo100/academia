@@ -1,17 +1,14 @@
-import { getConnection, getManager } from 'typeorm';
-import { Alunos } from '../entity/Usuarios';
+import { getConnection } from 'typeorm';
+import { Usuarios } from '../entity/Usuarios';
 import { Pessoas } from '../entity/Pessoas';
 import { Enderecos } from '../entity/Enderecos';
 import { Emails } from '../entity/Emails';
 import { Telefones } from '../entity/Telefones';
 
-const buscarAlunoRepository = async () => {
-    const usuarioRepository = getManager();
-    return usuarioRepository.find(Alunos);
-};
+const cadastrarTreino = () => {};
 
 const cadastrarAlunos = async (pessoas: Pessoas, enderecos: Enderecos, emails: Emails, telefones: Telefones) => {
-    let retornoAlunos;
+    let retornoUsuarioss;
     const connection = getConnection();
     const queryRunner = connection.createQueryRunner();
     await queryRunner.connect();
@@ -30,9 +27,9 @@ const cadastrarAlunos = async (pessoas: Pessoas, enderecos: Enderecos, emails: E
             pessoas.telefonesIdFK = retornoTelefones;
 
             const retornoPessoas = await queryRunner.manager.save(Pessoas, pessoas);
-            retornoAlunos = await queryRunner.manager.save(Alunos, { pessoasIdFK: retornoPessoas });
+            retornoUsuarioss = await queryRunner.manager.save(Usuarios, { pessoasIdFK: retornoPessoas });
         } else {
-            retornoAlunos = buscarPessoas;
+            retornoUsuarioss = buscarPessoas;
         }
         await queryRunner.commitTransaction();
     } catch (err) {
@@ -42,7 +39,5 @@ const cadastrarAlunos = async (pessoas: Pessoas, enderecos: Enderecos, emails: E
         await queryRunner.release();
     }
 
-    return retornoAlunos;
+    return retornoUsuarioss;
 };
-
-export { buscarAlunoRepository, cadastrarAlunos };

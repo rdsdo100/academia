@@ -43,7 +43,6 @@ export class Usuarios1608600509634 implements MigrationInterface {
                         length: '30',
                         isNullable: true,
                     },
-
                 ],
             }),
         );

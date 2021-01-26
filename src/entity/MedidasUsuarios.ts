@@ -1,6 +1,6 @@
 import { BaseEntity, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Medidas } from './Medidas';
-import {Usuarios} from './Usuarios';
+import { Usuarios } from './Usuarios';
 
 @Entity({ name: 'medidas_usuarios' })
 export class MedidasUsuarios extends BaseEntity {
