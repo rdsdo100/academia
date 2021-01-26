@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Alunos } from './Usuarios';
+import {Usuarios} from './Usuarios';
 import { Treinos } from './Treinos';
 
 @Entity({ name: 'treinos_usuarios' })
@@ -10,9 +10,9 @@ export class TreinosUsuarios extends BaseEntity {
     @Column()
     nomeTreino: string;
 
-    @ManyToOne(() => Alunos, (alunos) => alunos.treinosUsuarios, { eager: true })
+    @ManyToOne(() => Usuarios, (usuarios) => usuarios.treinosUsuarios, { eager: true })
     @JoinColumn([{ name: 'usuarios_id_fk', referencedColumnName: 'id' }])
-    alunosIdFK: Alunos;
+    usuariosIdFK: Usuarios;
 
     @ManyToOne(() => Treinos, (treinos) => treinos.treinosUsuarios, { eager: true })
     @JoinColumn([{ name: 'treinos_id_fk', referencedColumnName: 'id' }])

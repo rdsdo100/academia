@@ -3,7 +3,8 @@ import { Enderecos } from './Enderecos';
 import { Emails } from './Emails';
 import { Telefones } from './Telefones';
 import { Entity } from 'typeorm';
-import { Alunos } from './Usuarios';
+import {Usuarios} from "./Usuarios";
+
 
 @Entity()
 export class Pessoas extends BaseEntity {
@@ -40,6 +41,6 @@ export class Pessoas extends BaseEntity {
     @JoinColumn([{ name: 'telefones_id_fk', referencedColumnName: 'id' }])
     telefonesIdFK: Telefones;
 
-    @OneToMany(() => Alunos, (alunos) => alunos.pessoasIdFK)
-    alunos: Alunos[];
+    @OneToMany(() => Usuarios, (usuarios) => usuarios.pessoasIdFK)
+    usuarios: Usuarios[];
 }

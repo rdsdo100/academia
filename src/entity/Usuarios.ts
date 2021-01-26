@@ -21,13 +21,13 @@ export class Usuarios extends BaseEntity {
     @Column({length:30})
     matricula: string
 
-    @ManyToOne(() => Pessoas, (pessoas) => pessoas.alunos, { eager: true })
+    @ManyToOne(() => Pessoas, (pessoas) => pessoas.usuarios, { eager: true })
     @JoinColumn([{ name: 'pessoas_id_fk', referencedColumnName: 'id' }])
     pessoasIdFK: Pessoas;
 
-    @OneToMany(() => TreinosUsuarios, (treinosUsuarios) => treinosUsuarios.alunosIdFK)
+    @OneToMany(() => TreinosUsuarios, (treinosUsuarios) => treinosUsuarios.usuariosIdFK)
     treinosUsuarios: TreinosUsuarios[];
 
-    @OneToMany(() => MedidasUsuarios, (medidasAlunos) => medidasAlunos.alunosIdFK)
+    @OneToMany(() => MedidasUsuarios, (medidasAlunos) => medidasAlunos.usuariosIdFK)
     medidasUsuarios: MedidasUsuarios[];
 }
