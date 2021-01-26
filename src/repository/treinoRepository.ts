@@ -10,7 +10,7 @@ const cadastrarTreino = async () => {
     await queryRunner.startTransaction();
 
     try {
-        const buscarPessoas = await queryRunner.manager.findOne(Pessoas, {});
+        const buscarTreinos = await queryRunner.manager.findOne(Pessoas, {});
 
 
         await queryRunner.commitTransaction();

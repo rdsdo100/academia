@@ -34,7 +34,7 @@ insert into pessoas (
     cpf,
     data_nacimento,
     data_cadastro,
-    ativo,
+
     enderecos_id_fk,
     emails_id_fk,
     telefones_id_fk) values
@@ -44,13 +44,22 @@ insert into pessoas (
     '00000000100',
     '1993-03-04',
     '2020-01-20',
-    true,
     1,
     1,
     1
 );
 
-insert into alunos (pessoas_id_fk) values (1);
+insert into tipos_usuarios (tipo_usuario) values ('administrador');
+
+insert into usuarios (nome_usuario, email, senha, matricula, ativo, pessoas_id_fk, tipos_usuarios_id_fk) values
+('root',
+ 'rdsdo2011@gmail.com',
+ 'root',
+ '1',
+ true,
+ 1,
+ 1
+);
 
 insert into medidas (
     data_avaliacao,
@@ -91,8 +100,8 @@ insert into medidas (
 
 );
 
-insert into  medidas_alunos (
-    alunos_id_fk,
+insert into  medidas_usuarios (
+    usuarios_id_fk,
     medidas_id_fk) values
 (
     1,
@@ -135,17 +144,17 @@ insert into exercicios (
 (31,'Scoot'),
 (32,'Inveso');
 
-insert into treinos (nome) values ('Treino A');
-insert into treinos (nome) values ('Treino B');
-insert into treinos (nome) values ('Treino C');
-insert into treinos (nome) values ('Treino D');
-insert into treinos (nome) values ('Treino E');
+insert into treinos (nome) values ('Treino A'),
+                                  ('Treino B'),
+                                  ('Treino C'),
+                                  ('Treino D'),
+                                  ('Treino E');
 
-insert into treinos_alunos (alunos_id_fk, treinos_id_fk) VALUES (1,1);
-insert into treinos_alunos (alunos_id_fk, treinos_id_fk) VALUES (1,2);
-insert into treinos_alunos (alunos_id_fk, treinos_id_fk) VALUES (1,3);
-insert into treinos_alunos (alunos_id_fk, treinos_id_fk) VALUES (1,4);
-insert into treinos_alunos (alunos_id_fk, treinos_id_fk) VALUES (1,5);
+insert into treinos_usuarios (usuarios_id_fk, treinos_id_fk) VALUES (1,1),
+                                                                    (1,2),
+                                                                    (1,3),
+                                                                    (1,4),
+                                                                    (1,5);
 
 insert into series_exercicios (serie,
                                vezes,
