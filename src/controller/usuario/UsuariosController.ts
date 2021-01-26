@@ -7,6 +7,8 @@ import { Telefones } from '../../entity/Telefones';
 import UsuariosBuisiness from '../../business/usuariosBusiness/UsuariosBuisiness';
 import { alunosValidations } from '../../validation/alunoValidations';
 import { Usuarios } from '../../entity/Usuarios';
+import {Column} from "typeorm";
+import {TiposUsuarios} from "../../entity/TiposUsuarios";
 
 @Controller('alunos')
 @ClassMiddleware([/*decodificar,*/ alunosValidations])
@@ -21,13 +23,13 @@ export default class UsuariosController {
         const emails = new Emails();
         const enderecos = new Enderecos();
         const usuarios = new Usuarios();
+        const tiposUsuarios = new TiposUsuarios()
 
         pessoas.nome = String(request.body.pessoa.nome);
         pessoas.sobrenome = String(request.body.pessoa.sobrenome);
         pessoas.cpf = String(request.body.pessoa.cpf);
         pessoas.dataCadastro = new Date();
         pessoas.dataNacimento = new Date();
-        pessoas.ativo = true;
 
         enderecos.cep = String(request.body.endereco.cep);
         enderecos.logradouro = String(request.body.endereco.logradouro);
@@ -42,9 +44,23 @@ export default class UsuariosController {
         telefones.telefone = String(request.body.telefone.telefone);
 
         emails.email = String(request.body.email.email);
+
+        tiposUsuarios.id =Number(request.body.usuarios.tiposUsuarios)
+
+        usuarios.nomeUsuario = String(request.body.usuarios.nomeUsuario)
+        usuarios.email = String(request.body.email.email);
+        usuarios.senha = String(request.body.usuarios.senha)
+        usuarios.ativo = true
+        usuarios.pessoasIdFK = pessoas
+        usuarios.tiposUsuariosIdFK = tiposUsuarios
+
+
+
+
+
         const usuariosBuisiness = new UsuariosBuisiness();
 
-        const retorno = await usuariosBuisiness.cadastrarAlunos(pessoas, enderecos, emails, telefones);
+        const retorno = await usuariosBuisiness.cadastrarAlunos(pessoas, enderecos, emails, telefones , usuarios);
 
         return response.json(retorno);
     }

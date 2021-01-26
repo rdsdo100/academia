@@ -14,10 +14,6 @@ export class Usuarios1608600509634 implements MigrationInterface {
                         generationStrategy: 'increment',
                     },
                     {
-                        name: 'pessoas_id_fk',
-                        type: 'int',
-                    },
-                    {
                         name: 'nome_usuario',
                         type: 'varchar',
                         length: '50',
@@ -43,6 +39,18 @@ export class Usuarios1608600509634 implements MigrationInterface {
                         length: '30',
                         isNullable: true,
                     },
+                    {
+                        name: 'ativo',
+                        type: 'boolean',
+                    },
+                    {
+                        name: 'pessoas_id_fk',
+                        type: 'int',
+                    },
+                    {
+                        name: 'tipos_usuarios_id_fk',
+                        type: 'int',
+                    },
                 ],
             }),
         );
@@ -56,6 +64,16 @@ export class Usuarios1608600509634 implements MigrationInterface {
                 name: 'usuarios_pessoas',
             }),
         );
+        await queryRunner.createForeignKey(
+            'usuarios',
+            new TableForeignKey({
+                columnNames: ['tipos_usuarios_id_fk'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'tipos_usuarios',
+                name: 'usuario_tipos_usuarios',
+            }),
+        );
+
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {}

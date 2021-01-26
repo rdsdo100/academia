@@ -5,30 +5,6 @@ import { Enderecos } from '../entity/Enderecos';
 import { Emails } from '../entity/Emails';
 import { Telefones } from '../entity/Telefones';
 
-/*const cadastrarUsuarioRepository = async (usuario: Usuarios): Promise<object> => {
-    let usuarioRetorno;
-    const connection = getConnection();
-    const queryRunner = connection.createQueryRunner();
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
-
-    try {
-        usuarioRetorno = await queryRunner.manager.findOne(Usuarios, { nomeUsuario: usuario.nomeUsuario });
-        if (!(usuarioRetorno?.nomeUsuario === '')) {
-            usuarioRetorno = await queryRunner.manager.save(usuario);
-        } else {
-            usuarioRetorno = { mensage: 'usuario não cadastrodo!', ...usuario };
-        }
-        await queryRunner.commitTransaction();
-    } catch (err) {
-        await queryRunner.rollbackTransaction();
-    } finally {
-        await queryRunner.release();
-    }
-
-    return { ...usuarioRetorno };
-};*/
-
 const buscarUsuarioRepository = async (nomeUsuario: string) => {
     const usuarioRepository = getManager();
     return usuarioRepository.findOne(Usuarios, { nomeUsuario: nomeUsuario });
@@ -49,23 +25,8 @@ const updateUsuarioRepository = async (usuarios: Usuarios) => {
 };
 
 const deleteUsuarioIdRepository = async (idUsuario: number) => {
-    const usuarioRepository = getManager();
 
-    let usuarioRetorno;
-    try {
-        usuarioRetorno = await usuarioRepository.delete(Usuarios, idUsuario);
-        if (Number(usuarioRetorno?.affected) >= 1) {
-            usuarioRetorno = { ...usuarioRetorno, mesage: 'Usuário deletado!' };
-        } else {
-            usuarioRetorno = { mesage: 'Usuário Não Deletado!' };
-        }
-    } catch (err) {
-        return {
-            mesage: err.mesage,
-            err,
-        };
-    }
-    return usuarioRetorno;
+
 };
 
 const buscarUsuariosRepository = async () => {
@@ -78,17 +39,23 @@ const cadastrarUsuariosRepository = async (
     enderecos: Enderecos,
     emails: Emails,
     telefones: Telefones,
+    usuarios: Usuarios
 ) => {
-    let retornoUsuarioss;
+    let retornoUsuarios;
+    let usuarioRetorno;
+    let retornoPessoas
     const connection = getConnection();
     const queryRunner = connection.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
 
     try {
+
+        usuarioRetorno = await queryRunner.manager.findOne(Usuarios, { nomeUsuario: usuarios.nomeUsuario });
+
         const buscarPessoas = await queryRunner.manager.findOne(Pessoas, { cpf: pessoas.cpf });
 
-        if (buscarPessoas?.cpf !== pessoas.cpf) {
+        if ((buscarPessoas?.cpf !== pessoas.cpf) && (!(usuarioRetorno?.nomeUsuario === ''))) {
             const retornoEnderecos = await queryRunner.manager.save(Enderecos, enderecos);
             const retornoEmails = await queryRunner.manager.save(Emails, emails);
             const retornoTelefones = await queryRunner.manager.save(Telefones, telefones);
@@ -97,10 +64,14 @@ const cadastrarUsuariosRepository = async (
             pessoas.emailsIdFK = retornoEmails;
             pessoas.telefonesIdFK = retornoTelefones;
 
-            const retornoPessoas = await queryRunner.manager.save(Pessoas, pessoas);
-            retornoUsuarioss = await queryRunner.manager.save(Usuarios, { pessoasIdFK: retornoPessoas });
+            retornoPessoas = await queryRunner.manager.save(Pessoas, pessoas);
+
+            usuarios.pessoasIdFK = retornoPessoas
+            usuarioRetorno = await queryRunner.manager.save(usuarios);
+
+            retornoUsuarios = await queryRunner.manager.save(Usuarios, { pessoasIdFK: retornoPessoas });
         } else {
-            retornoUsuarioss = buscarPessoas;
+            retornoUsuarios = buscarPessoas;
         }
         await queryRunner.commitTransaction();
     } catch (err) {
@@ -110,7 +81,7 @@ const cadastrarUsuariosRepository = async (
         await queryRunner.release();
     }
 
-    return retornoUsuarioss;
+    return usuarioRetorno;
 };
 
 export {

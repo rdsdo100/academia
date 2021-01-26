@@ -37,10 +37,6 @@ export class Pessoas1608428752738 implements MigrationInterface {
                         type: 'date',
                     },
                     {
-                        name: 'ativo',
-                        type: 'boolean',
-                    },
-                    {
                         name: 'enderecos_id_fk',
                         type: 'int',
                     },

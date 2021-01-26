@@ -25,9 +25,6 @@ export class Pessoas extends BaseEntity {
         @Column({ name: 'data_cadastro', nullable: false, type: 'date' })
         dataCadastro: Date;
 
-        @Column()
-        ativo: boolean;
-
        @ManyToOne(() => Enderecos, (enderecos) => enderecos.pessoas, { eager: true })
        @JoinColumn([{ name: 'enderecos_id_fk', referencedColumnName: 'id' }])
        enderecosIdFK: Enderecos;

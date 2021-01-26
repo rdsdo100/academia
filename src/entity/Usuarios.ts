@@ -4,6 +4,7 @@ import { Pessoas } from './Pessoas';
 import { TreinosUsuarios } from './TreinosUsuarios';
 import { MedidasUsuarios } from './MedidasUsuarios';
 import {UsuariosRotas} from "./UsuariosRotas";
+import {TiposUsuarios} from "./TiposUsuarios";
 
 @Entity()
 export class Usuarios extends BaseEntity {
@@ -22,9 +23,16 @@ export class Usuarios extends BaseEntity {
     @Column({ length: 30 })
     matricula: string;
 
+    @Column()
+    ativo: boolean;
+
     @ManyToOne(() => Pessoas, (pessoas) => pessoas.usuarios, { eager: true })
     @JoinColumn([{ name: 'pessoas_id_fk', referencedColumnName: 'id' }])
     pessoasIdFK: Pessoas;
+
+    @ManyToOne(() => TiposUsuarios, (tiposUsuarios) => tiposUsuarios.tipoUsuario, { eager: true })
+    @JoinColumn([{ name: 'tipos_usuarios_IdFK_id_fk', referencedColumnName: 'id' }])
+    tiposUsuariosIdFK: TiposUsuarios;
 
     @OneToMany(() => TreinosUsuarios, (treinosUsuarios) => treinosUsuarios.usuariosIdFK)
     treinosUsuarios: TreinosUsuarios[];
