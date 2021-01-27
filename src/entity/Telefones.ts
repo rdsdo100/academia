@@ -1,5 +1,6 @@
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Pessoas } from './Pessoas';
+import {Academias} from "./Academias";
 
 @Entity()
 export class Telefones extends BaseEntity {
@@ -14,4 +15,7 @@ export class Telefones extends BaseEntity {
 
     @OneToMany(() => Pessoas, (pessoas) => pessoas.telefonesIdFK)
     pessoas: Pessoas[];
+
+    @OneToMany(() => Academias, (academias) => academias.telefonesIdFK)
+    academias: Academias[];
 }
