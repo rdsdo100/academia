@@ -24,6 +24,21 @@ export class Academias1608428752720 implements MigrationInterface {
                         length: '60',
                     },
                     {
+                        name: 'cpf_cnpj',
+                        type: 'varchar',
+                        length: '14',
+                    },
+                    {
+                        name: 'ativo',
+                        type: 'boolean',
+                        default: true
+                    },
+                    {
+                        name: 'bloqueado',
+                        type: 'boolean',
+                        default: true
+                    },
+                    {
                         name: 'enderecos_id_fk',
                         type: 'int',
                     },

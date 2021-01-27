@@ -27,6 +27,9 @@ export class Usuarios extends BaseEntity {
     @Column()
     ativo: boolean;
 
+    @Column()
+    bloqueado: boolean;
+
     @ManyToOne(() => Pessoas, (pessoas) => pessoas.usuarios, { eager: true })
     @JoinColumn([{ name: 'pessoas_id_fk', referencedColumnName: 'id' }])
     pessoasIdFK: Pessoas;

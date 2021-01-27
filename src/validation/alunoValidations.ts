@@ -1,6 +1,6 @@
 import { celebrate, Joi, Segments } from 'celebrate';
 
-const alunosValidations = celebrate(
+const usuariosValidations = celebrate(
     {
         [Segments.BODY]: Joi.object().keys({
             pessoa: {

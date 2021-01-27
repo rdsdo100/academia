@@ -42,6 +42,12 @@ export class Usuarios1608600509634 implements MigrationInterface {
                     {
                         name: 'ativo',
                         type: 'boolean',
+                        default: true
+                    },
+                    {
+                        name: 'bloqueado',
+                        type: 'boolean',
+                        default: true
                     },
                     {
                         name: 'pessoas_id_fk',

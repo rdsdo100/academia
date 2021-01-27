@@ -7,10 +7,9 @@ import { Telefones } from '../../entity/Telefones';
 import UsuariosBuisiness from '../../business/usuariosBusiness/UsuariosBuisiness';
 import { alunosValidations } from '../../validation/alunoValidations';
 import { Usuarios } from '../../entity/Usuarios';
-import {Column} from "typeorm";
 import {TiposUsuarios} from "../../entity/TiposUsuarios";
 
-@Controller('alunos')
+@Controller('user')
 @ClassMiddleware([/*decodificar,*/ alunosValidations])
 export default class UsuariosController {
     @Get()
@@ -53,10 +52,6 @@ export default class UsuariosController {
         usuarios.ativo = true
         usuarios.pessoasIdFK = pessoas
         usuarios.tiposUsuariosIdFK = tiposUsuarios
-
-
-
-
 
         const usuariosBuisiness = new UsuariosBuisiness();
 

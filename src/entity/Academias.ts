@@ -15,6 +15,15 @@ export class Academias extends BaseEntity {
     @Column({name:'nome_razao_social' , length: 60})
     nomeRazaoSocial: string
 
+    @Column({name:'cpf_cnpj' , length: 14, unique: true })
+    cpfCnpj: string;
+
+    @Column()
+    ativo: boolean;
+
+    @Column()
+    bloqueado: boolean;
+
     @ManyToOne(() => Enderecos, (enderecos) => enderecos.academias, { eager: true })
     @JoinColumn([{ name: 'enderecos_id_fk', referencedColumnName: 'id' }])
     enderecosIdFK: Enderecos;

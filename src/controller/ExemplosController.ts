@@ -6,7 +6,7 @@ export default class ExemplosController {
     @Get()
     exemplo(_: Request, response: Response) {
         return response.json({
-            rotasExemplos: ['/usuarios', '/login'],
+            rotasExemplos: ['/usuarios'],
         });
     }
 
@@ -26,12 +26,138 @@ export default class ExemplosController {
                             heades: {},
                             params: '',
                             body: {
-                                nome: 'string',
-                                email: 'string',
-                                senha: 'string',
-                                matricula: 'string',
-                                grupoUsuario: 'number',
-                            },
+
+                                "pessoa" : {
+                                    "nome" :"",
+                                    "obrenome":"",
+                                    "cpf":"",
+                                    "dataNacimento":""
+                                },
+
+                                "endereco" : {
+                                    "cep":"",
+                                    "logradouro":"",
+                                    "complemento":"",
+                                    "bairro":"",
+                                    "localidade":"",
+                                    "uf":"",
+                                    "ibge":"",
+                                    "numero":""
+                                },
+
+                                "telefone": {
+                                    "dd":"",
+                                    "telefone":""
+                                },
+
+                                "email": {
+                                    "email":""
+                                },
+
+                                "tiposUsuario": {
+                                    "iposUsuarios":""
+                                },
+
+                                "usuario": {
+                                    "nomeUsuario": "",
+                                    "senha": ""
+                                }
+                        },
+                    },
+                    delete: {
+                        heades: {},
+                        params: '/number',
+                        body: {},
+                    },
+                    update: {
+                        heades: {},
+                        params: '/number',
+                        body: {},
+                    },
+                },
+            },
+            tipoUsuario: {
+                rota: '/tipo-usuario',
+                requisicao: {
+                    get: {
+                        heades: {},
+                        params: '',
+                        body: {},
+                    },
+                    post: {
+                        heades: {},
+                        params: '',
+                        body: {},
+                    },
+                    delete: {
+                        heades: {},
+                        params: '/number',
+                        body: {},
+                    },
+                    update: {
+                        heades: {},
+                        params: '/number',
+                        body: {},
+                    },
+                },
+            },
+        },
+    });
+}
+
+    @Get('academia')
+    exemploAcademias(_: Request, response: Response) {
+        response.json({
+            usuarios: {
+                usuarios: {
+                    rota: '/user',
+                    requisicao: {
+                        get: {
+                            heades: {},
+                            params: '',
+                            body: {},
+                        },
+                        post: {
+                            heades: {},
+                            params: '',
+                            body: {
+
+                                "academia" : {
+                                    "nomeFantazia":"",
+                                    "nomeRazaoSocial":"",
+                                    "cpfCnpj":""
+                                },
+
+                                "endereco" : {
+                                    "cep":"",
+                                    "logradouro":"",
+                                    "complemento":"",
+                                    "bairro":"",
+                                    "localidade":"",
+                                    "uf":"",
+                                    "ibge":"",
+                                    "numero":""
+                                },
+
+                                "telefone": {
+                                    "dd":"",
+                                    "telefone":""
+                                },
+
+                                "email": {
+                                    "email":""
+                                },
+
+                                "tiposUsuario": {
+                                    "iposUsuarios":""
+                                },
+
+                                "usuario": {
+                                    "nomeUsuario":"",
+                                    "senha":""
+                                }
+
+                            }
                         },
                         delete: {
                             heades: {},
@@ -45,8 +171,8 @@ export default class ExemplosController {
                         },
                     },
                 },
-                gupoUsuario: {
-                    rota: '/gupo-usuario',
+                tipoUsuario: {
+                    rota: '/tipo-usuario',
                     requisicao: {
                         get: {
                             heades: {},
@@ -74,8 +200,4 @@ export default class ExemplosController {
         });
     }
 
-    @Get('login')
-    exemploLogin(_: Request, response: Response) {
-        response.json({});
-    }
 }
