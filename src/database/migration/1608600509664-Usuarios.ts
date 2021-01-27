@@ -51,6 +51,10 @@ export class Usuarios1608600509634 implements MigrationInterface {
                         name: 'tipos_usuarios_id_fk',
                         type: 'int',
                     },
+                    {
+                        name: 'academias_id_fk',
+                        type: 'int',
+                    },
                 ],
             }),
         );
@@ -70,7 +74,17 @@ export class Usuarios1608600509634 implements MigrationInterface {
                 columnNames: ['tipos_usuarios_id_fk'],
                 referencedColumnNames: ['id'],
                 referencedTableName: 'tipos_usuarios',
-                name: 'usuario_tipos_usuarios',
+                name: 'usuarios_tipos_usuarios',
+            }),
+        );
+
+        await queryRunner.createForeignKey(
+            'usuarios',
+            new TableForeignKey({
+                columnNames: ['academias_id_fk'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'academias',
+                name: 'usuario_academias',
             }),
         );
 
