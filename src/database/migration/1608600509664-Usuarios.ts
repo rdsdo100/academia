@@ -42,12 +42,12 @@ export class Usuarios1608600509634 implements MigrationInterface {
                     {
                         name: 'ativo',
                         type: 'boolean',
-                        default: true
+                        default: true,
                     },
                     {
                         name: 'bloqueado',
                         type: 'boolean',
-                        default: true
+                        default: true,
                     },
                     {
                         name: 'pessoas_id_fk',
@@ -93,7 +93,6 @@ export class Usuarios1608600509634 implements MigrationInterface {
                 name: 'usuario_academias',
             }),
         );
-
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {}

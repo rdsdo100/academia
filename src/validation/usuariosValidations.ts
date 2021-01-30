@@ -26,9 +26,19 @@ const usuariosValidations = celebrate(
                 dd: Joi.string().max(3).min(2),
                 telefone: Joi.string().max(9).min(8),
             },
+            tipoUsuario: {
+                ipoUsuario: Joi.number(),
+            },
+            academia: {
+                IdAcademias: Joi.number(),
+            },
+            usuario: {
+                nomeUsuario: Joi.string().required(),
+                senha: Joi.string().required(),
+            },
         }),
     },
     { abortEarly: false },
 );
 
-export { alunosValidations };
+export { usuariosValidations };

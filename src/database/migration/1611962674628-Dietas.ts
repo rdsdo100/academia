@@ -1,7 +1,6 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class Dietas1611962674628 implements MigrationInterface {
-
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
@@ -17,21 +16,20 @@ export class Dietas1611962674628 implements MigrationInterface {
                     {
                         name: 'nome_dieta',
                         type: 'varchar',
-                        length: '100'
+                        length: '100',
                     },
                     {
                         name: 'ativo',
-                        type: 'boolean'
+                        type: 'boolean',
                     },
                     {
                         name: 'data_criacao',
-                        type: 'date'
-                    }
-                ]
-            }));
+                        type: 'date',
+                    },
+                ],
+            }),
+        );
     }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-    }
-
+    public async down(queryRunner: QueryRunner): Promise<void> {}
 }

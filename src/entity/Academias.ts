@@ -1,21 +1,21 @@
-import {BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
-import {Usuarios} from "./Usuarios";
-import {Enderecos} from "./Enderecos";
-import {Emails} from "./Emails";
-import {Telefones} from "./Telefones";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Usuarios } from './Usuarios';
+import { Enderecos } from './Enderecos';
+import { Emails } from './Emails';
+import { Telefones } from './Telefones';
 
 @Entity()
 export class Academias extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({name:'nome_fantazia' , length: 60})
-    nomeFantazia: string
+    @Column({ name: 'nome_fantazia', length: 60 })
+    nomeFantazia: string;
 
-    @Column({name:'nome_razao_social' , length: 60})
-    nomeRazaoSocial: string
+    @Column({ name: 'nome_razao_social', length: 60 })
+    nomeRazaoSocial: string;
 
-    @Column({name:'cpf_cnpj' , length: 14, unique: true })
+    @Column({ name: 'cpf_cnpj', length: 14, unique: true })
     cpfCnpj: string;
 
     @Column()
@@ -38,5 +38,4 @@ export class Academias extends BaseEntity {
 
     @OneToMany(() => Usuarios, (usuarios) => usuarios.academiasIdFK)
     usuarios: Usuarios[];
-
 }

@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table, TableForeignKey, TableIndex} from 'typeorm';
+import { MigrationInterface, QueryRunner, Table, TableForeignKey, TableIndex } from 'typeorm';
 
 export class Academias1608428752720 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
@@ -31,12 +31,12 @@ export class Academias1608428752720 implements MigrationInterface {
                     {
                         name: 'ativo',
                         type: 'boolean',
-                        default: true
+                        default: true,
                     },
                     {
                         name: 'bloqueado',
                         type: 'boolean',
-                        default: true
+                        default: true,
                     },
                     {
                         name: 'enderecos_id_fk',
@@ -50,7 +50,6 @@ export class Academias1608428752720 implements MigrationInterface {
                         name: 'telefones_id_fk',
                         type: 'int',
                     },
-
                 ],
             }),
         );

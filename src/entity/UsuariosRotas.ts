@@ -1,14 +1,12 @@
-import {BaseEntity, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
-import {Enderecos} from "./Enderecos";
-import {Usuarios} from "./Usuarios";
-import {RotasPermissoes} from "./RotasPermissoes";
+import { BaseEntity, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Enderecos } from './Enderecos';
+import { Usuarios } from './Usuarios';
+import { RotasPermissoes } from './RotasPermissoes';
 
-
-@Entity({name: 'usuarios_rotas'})
-export class UsuariosRotas extends BaseEntity{
+@Entity({ name: 'usuarios_rotas' })
+export class UsuariosRotas extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
-
 
     @ManyToOne(() => Usuarios, (usuarios) => usuarios.usuariosRotas, { eager: true })
     @JoinColumn([{ name: 'usuarios_id_fk', referencedColumnName: 'id' }])
@@ -17,6 +15,4 @@ export class UsuariosRotas extends BaseEntity{
     @ManyToOne(() => RotasPermissoes, (rotasPermissoes) => rotasPermissoes.usuariosRotas, { eager: true })
     @JoinColumn([{ name: 'rotas_permissoes_id_fk', referencedColumnName: 'id' }])
     rotasPermissoesIdFK: Enderecos;
-
-
 }

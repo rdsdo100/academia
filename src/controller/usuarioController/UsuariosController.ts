@@ -1,16 +1,16 @@
-import { ClassMiddleware, Controller, Get, Post } from '@overnightjs/core';
+import { Controller, Get, Post } from '@overnightjs/core';
 import { Request, Response } from 'express';
 import { Enderecos } from '../../entity/Enderecos';
 import { Pessoas } from '../../entity/Pessoas';
 import { Emails } from '../../entity/Emails';
 import { Telefones } from '../../entity/Telefones';
 import UsuariosBuisiness from '../../business/usuariosBusiness/UsuariosBuisiness';
-import { alunosValidations } from '../../validation/alunoValidations';
 import { Usuarios } from '../../entity/Usuarios';
-import {TiposUsuarios} from "../../entity/TiposUsuarios";
+import { TiposUsuarios } from '../../entity/TiposUsuarios';
+import { Academias } from '../../entity/Academias';
 
 @Controller('user')
-@ClassMiddleware([/*decodificar,*/ alunosValidations])
+//@ClassMiddleware([decodificar,usuariosValidations ])
 export default class UsuariosController {
     @Get()
     async index(request: Request, response: Response) {}
@@ -22,7 +22,8 @@ export default class UsuariosController {
         const emails = new Emails();
         const enderecos = new Enderecos();
         const usuarios = new Usuarios();
-        const tiposUsuarios = new TiposUsuarios()
+        const tiposUsuarios = new TiposUsuarios();
+        const academias = new Academias();
 
         pessoas.nome = String(request.body.pessoa.nome);
         pessoas.sobrenome = String(request.body.pessoa.sobrenome);
@@ -44,18 +45,23 @@ export default class UsuariosController {
 
         emails.email = String(request.body.email.email);
 
-        tiposUsuarios.id =Number(request.body.usuarios.tiposUsuarios)
+        tiposUsuarios.id = Number(request.body.tipoUsuario.tiposUsuario);
 
-        usuarios.nomeUsuario = String(request.body.usuarios.nomeUsuario)
+        academias.id = Number(request.body.academia.IdAcademias);
+
+        usuarios.nomeUsuario = String(request.body.usuario.nomeUsuario);
         usuarios.email = String(request.body.email.email);
-        usuarios.senha = String(request.body.usuarios.senha)
-        usuarios.ativo = true
-        usuarios.pessoasIdFK = pessoas
-        usuarios.tiposUsuariosIdFK = tiposUsuarios
+        usuarios.senha = String(request.body.usuario.senha);
+        usuarios.ativo = true;
+        usuarios.pessoasIdFK = pessoas;
+        usuarios.tiposUsuariosIdFK = tiposUsuarios;
+        usuarios.academiasIdFK = academias;
 
         const usuariosBuisiness = new UsuariosBuisiness();
 
-        const retorno = await usuariosBuisiness.cadastrarAlunos(pessoas, enderecos, emails, telefones , usuarios);
+        console.log(pessoas, emails, telefones, usuarios);
+
+        const retorno = await usuariosBuisiness.cadastrarAlunos(pessoas, enderecos, emails, telefones, usuarios);
 
         return response.json(retorno);
     }

@@ -23,10 +23,7 @@ export class TiposUsuarios1608600509634 implements MigrationInterface {
                 ],
             }),
         );
-
-    };
-
-
+    }
 
     public async down(queryRunner: QueryRunner): Promise<void> {}
 }

@@ -26,138 +26,42 @@ export default class ExemplosController {
                             heades: {},
                             params: '',
                             body: {
-
-                                "pessoa" : {
-                                    "nome" :"",
-                                    "obrenome":"",
-                                    "cpf":"",
-                                    "dataNacimento":""
+                                pessoa: {
+                                    nome: '',
+                                    obrenome: '',
+                                    cpf: '',
+                                    dataNacimento: '',
                                 },
 
-                                "endereco" : {
-                                    "cep":"",
-                                    "logradouro":"",
-                                    "complemento":"",
-                                    "bairro":"",
-                                    "localidade":"",
-                                    "uf":"",
-                                    "ibge":"",
-                                    "numero":""
+                                endereco: {
+                                    cep: '',
+                                    logradouro: '',
+                                    complemento: '',
+                                    bairro: '',
+                                    localidade: '',
+                                    uf: '',
+                                    ibge: '',
+                                    numero: '',
                                 },
 
-                                "telefone": {
-                                    "dd":"",
-                                    "telefone":""
+                                telefone: {
+                                    dd: '',
+                                    telefone: '',
                                 },
 
-                                "email": {
-                                    "email":""
+                                email: {
+                                    email: '',
                                 },
 
-                                "tiposUsuario": {
-                                    "iposUsuarios":""
+                                tiposUsuario: {
+                                    iposUsuarios: '',
                                 },
 
-                                "usuario": {
-                                    "nomeUsuario": "",
-                                    "senha": ""
-                                }
-                        },
-                    },
-                    delete: {
-                        heades: {},
-                        params: '/number',
-                        body: {},
-                    },
-                    update: {
-                        heades: {},
-                        params: '/number',
-                        body: {},
-                    },
-                },
-            },
-            tipoUsuario: {
-                rota: '/tipo-usuario',
-                requisicao: {
-                    get: {
-                        heades: {},
-                        params: '',
-                        body: {},
-                    },
-                    post: {
-                        heades: {},
-                        params: '',
-                        body: {},
-                    },
-                    delete: {
-                        heades: {},
-                        params: '/number',
-                        body: {},
-                    },
-                    update: {
-                        heades: {},
-                        params: '/number',
-                        body: {},
-                    },
-                },
-            },
-        },
-    });
-}
-
-    @Get('academia')
-    exemploAcademias(_: Request, response: Response) {
-        response.json({
-            usuarios: {
-                usuarios: {
-                    rota: '/user',
-                    requisicao: {
-                        get: {
-                            heades: {},
-                            params: '',
-                            body: {},
-                        },
-                        post: {
-                            heades: {},
-                            params: '',
-                            body: {
-
-                                "academia" : {
-                                    "nomeFantazia":"",
-                                    "nomeRazaoSocial":"",
-                                    "cpfCnpj":""
+                                usuario: {
+                                    nomeUsuario: '',
+                                    senha: '',
                                 },
-
-                                "endereco" : {
-                                    "cep":"",
-                                    "logradouro":"",
-                                    "complemento":"",
-                                    "bairro":"",
-                                    "localidade":"",
-                                    "uf":"",
-                                    "ibge":"",
-                                    "numero":""
-                                },
-
-                                "telefone": {
-                                    "dd":"",
-                                    "telefone":""
-                                },
-
-                                "email": {
-                                    "email":""
-                                },
-
-                                "tiposUsuario": {
-                                    "iposUsuarios":""
-                                },
-
-                                "usuario": {
-                                    "nomeUsuario":"",
-                                    "senha":""
-                                }
-
-                            }
+                            },
                         },
                         delete: {
                             heades: {},
@@ -200,4 +104,96 @@ export default class ExemplosController {
         });
     }
 
+    @Get('academia')
+    exemploAcademias(_: Request, response: Response) {
+        response.json({
+            usuarios: {
+                usuarios: {
+                    rota: '/user',
+                    requisicao: {
+                        get: {
+                            heades: {},
+                            params: '',
+                            body: {},
+                        },
+                        post: {
+                            heades: {},
+                            params: '',
+                            body: {
+                                academia: {
+                                    nomeFantazia: '',
+                                    nomeRazaoSocial: '',
+                                    cpfCnpj: '',
+                                },
+
+                                endereco: {
+                                    cep: '',
+                                    logradouro: '',
+                                    complemento: '',
+                                    bairro: '',
+                                    localidade: '',
+                                    uf: '',
+                                    ibge: '',
+                                    numero: '',
+                                },
+
+                                telefone: {
+                                    dd: '',
+                                    telefone: '',
+                                },
+
+                                email: {
+                                    email: '',
+                                },
+
+                                tiposUsuario: {
+                                    iposUsuarios: '',
+                                },
+
+                                usuario: {
+                                    nomeUsuario: '',
+                                    senha: '',
+                                },
+                            },
+                        },
+                        delete: {
+                            heades: {},
+                            params: '/number',
+                            body: {},
+                        },
+                        update: {
+                            heades: {},
+                            params: '/number',
+                            body: {},
+                        },
+                    },
+                },
+                tipoUsuario: {
+                    rota: '/tipo-usuario',
+                    requisicao: {
+                        get: {
+                            heades: {},
+                            params: '',
+                            body: {},
+                        },
+                        post: {
+                            heades: {},
+                            params: '',
+                            body: {},
+                        },
+                        delete: {
+                            heades: {},
+                            params: '/number',
+                            body: {},
+                        },
+                        update: {
+                            heades: {},
+                            params: '/number',
+                            body: {},
+                        },
+                    },
+                },
+            },
+        });
+    }
 }

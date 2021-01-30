@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Pessoas } from './Pessoas';
-import {Academias} from "./Academias";
+import { Academias } from './Academias';
 
 @Entity()
 export class Enderecos extends BaseEntity {

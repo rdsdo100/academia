@@ -24,10 +24,7 @@ const updateUsuarioRepository = async (usuarios: Usuarios) => {
     const usuarioRepository = getManager();
 };
 
-const deleteUsuarioIdRepository = async (idUsuario: number) => {
-
-
-};
+const deleteUsuarioIdRepository = async (idUsuario: number) => {};
 
 const buscarUsuariosRepository = async () => {
     const usuarioRepository = getManager();
@@ -39,23 +36,22 @@ const cadastrarUsuariosRepository = async (
     enderecos: Enderecos,
     emails: Emails,
     telefones: Telefones,
-    usuarios: Usuarios
+    usuarios: Usuarios,
 ) => {
     let retornoUsuarios;
     let usuarioRetorno;
-    let retornoPessoas
+    let retornoPessoas;
     const connection = getConnection();
     const queryRunner = connection.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
 
     try {
-
         usuarioRetorno = await queryRunner.manager.findOne(Usuarios, { nomeUsuario: usuarios.nomeUsuario });
 
         const buscarPessoas = await queryRunner.manager.findOne(Pessoas, { cpf: pessoas.cpf });
 
-        if ((buscarPessoas?.cpf !== pessoas.cpf) && (!(usuarioRetorno?.nomeUsuario === ''))) {
+        if (buscarPessoas?.cpf !== pessoas.cpf && !(usuarioRetorno?.nomeUsuario === '')) {
             const retornoEnderecos = await queryRunner.manager.save(Enderecos, enderecos);
             const retornoEmails = await queryRunner.manager.save(Emails, emails);
             const retornoTelefones = await queryRunner.manager.save(Telefones, telefones);
@@ -66,7 +62,7 @@ const cadastrarUsuariosRepository = async (
 
             retornoPessoas = await queryRunner.manager.save(Pessoas, pessoas);
 
-            usuarios.pessoasIdFK = retornoPessoas
+            usuarios.pessoasIdFK = retornoPessoas;
             usuarioRetorno = await queryRunner.manager.save(usuarios);
 
             retornoUsuarios = await queryRunner.manager.save(Usuarios, { pessoasIdFK: retornoPessoas });

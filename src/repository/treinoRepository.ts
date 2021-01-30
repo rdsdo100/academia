@@ -1,9 +1,7 @@
 import { getConnection } from 'typeorm';
 import { Pessoas } from '../entity/Pessoas';
 
-
 const cadastrarTreino = async () => {
-
     const connection = getConnection();
     const queryRunner = connection.createQueryRunner();
     await queryRunner.connect();
@@ -12,7 +10,6 @@ const cadastrarTreino = async () => {
     try {
         const buscarTreinos = await queryRunner.manager.findOne(Pessoas, {});
 
-
         await queryRunner.commitTransaction();
     } catch (err) {
         console.log(err);
@@ -20,6 +17,4 @@ const cadastrarTreino = async () => {
     } finally {
         await queryRunner.release();
     }
-
-
 };
