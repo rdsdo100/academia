@@ -1,11 +1,11 @@
-import {Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {BaseEntity, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import {Enderecos} from "./Enderecos";
 import {Usuarios} from "./Usuarios";
 import {RotasPermissoes} from "./RotasPermissoes";
 
 
 @Entity({name: 'usuarios_rotas'})
-export class UsuariosRotas {
+export class UsuariosRotas extends BaseEntity{
     @PrimaryGeneratedColumn()
     id: number;
 

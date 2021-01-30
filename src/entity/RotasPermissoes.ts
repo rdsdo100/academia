@@ -1,10 +1,8 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {Pessoas} from "./Pessoas";
-import {Usuarios} from "./Usuarios";
+import {BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {UsuariosRotas} from "./UsuariosRotas";
 
 @Entity({name: 'rotas_permissoes'})
-export class RotasPermissoes {
+export class RotasPermissoes extends BaseEntity{
     @PrimaryGeneratedColumn()
     id: number;
 

@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
 export class UsuariosDietas1611962690754 implements MigrationInterface {
 
@@ -25,6 +25,24 @@ export class UsuariosDietas1611962690754 implements MigrationInterface {
                     ]
                 }
             )
+        );
+        await queryRunner.createForeignKey(
+            'usuarios_dietas',
+            new TableForeignKey({
+                columnNames: ['usuario_id_fk'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'usuarios',
+                name: 'usuarios_dietas_usuarios',
+            }),
+        );
+        await queryRunner.createForeignKey(
+            'usuarios_dietas',
+            new TableForeignKey({
+                columnNames: ['dietas_id_fk'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'dietas',
+                name: 'usuarios_dietas__dietas',
+            }),
         );
     }
 

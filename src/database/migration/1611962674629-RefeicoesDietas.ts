@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
 export class RefeicoesDietas1611962674629 implements MigrationInterface {
 
@@ -35,10 +35,32 @@ export class RefeicoesDietas1611962674629 implements MigrationInterface {
                         {
                             name: 'dietas_id_fk',
                             type: 'int',
+                        },
+                        {
+                            name: 'tipos_refeicoes_id_fk',
+                            type: 'int',
                         }
                     ]
                 }
             )
+        );
+        await queryRunner.createForeignKey(
+            'refeicoes_dietas',
+            new TableForeignKey({
+                columnNames: ['dietas_id_fk'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'dietas',
+                name: 'refeicoes_dietas_dietas',
+            }),
+        );
+        await queryRunner.createForeignKey(
+            'refeicoes_dietas',
+            new TableForeignKey({
+                columnNames: ['tipos_refeicoes_id_fk'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'tipos_refeicoes',
+                name: 'refeicoes_dietas_tipos_refeicoes_id_fk',
+            }),
         );
     }
 
