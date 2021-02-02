@@ -33,23 +33,37 @@ const cadastrarAcademiasRepository = async (
 
 ) => {
     let buscarAcademia
-    let usuarioRetorno;
+    let retornoEnderecos
+    let retornoEmails
+    let retornoTelefones
     const connection = getConnection();
     const queryRunner = connection.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
 
     try {
+        buscarAcademia = await queryRunner.manager.findOne(Academias, {cpfCnpj: academia.cpfCnpj});
+        if (buscarAcademia?.cpfCnpj !== academia.cpfCnpj){
+            retornoEnderecos = await queryRunner.manager.save(Enderecos , enderecos)
+            retornoEmails = await queryRunner.manager.save(Emails , emails)
+            retornoTelefones = await queryRunner.manager.save(Telefones , telefones)
 
+            academia.enderecosIdFK = retornoEnderecos
+            academia.emailsIdFK = retornoEmails
+            academia.telefonesIdFK = retornoTelefones
 
+            buscarAcademia = await queryRunner.manager.save(Academias, academia)
 
-         buscarAcademia = await queryRunner.manager.findOne(Academias, {});
-
-
-
-
+}
+        else {
+            return {
+                buscarAcademia,
+                message: "Cnpj ou Cpf de Academia Já cadastrada!"
+            }
+        }
 
         await queryRunner.commitTransaction();
+
     } catch (err) {
         console.log(err);
         await queryRunner.rollbackTransaction();
@@ -57,7 +71,7 @@ const cadastrarAcademiasRepository = async (
         await queryRunner.release();
     }
 
-    return usuarioRetorno;
+    return buscarAcademia ;
 };
 
-export {};
+export {cadastrarAcademiasRepository};

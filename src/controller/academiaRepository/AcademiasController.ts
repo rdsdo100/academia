@@ -4,6 +4,7 @@ import { Enderecos } from '../../entity/Enderecos';
 import { Emails } from '../../entity/Emails';
 import { Telefones } from '../../entity/Telefones';
 import { Academias } from '../../entity/Academias';
+import AcademiaBusiness from "../../business/academiaBusiness/AcademiaBusiness";
 
 @Controller('academia')
 
@@ -37,10 +38,15 @@ export default class AcademiasController {
         academia.cpfCnpj = String(request.body.academia.cpfCnpj);
 
 
-        
-        return response.json({
+        const academiaBusiness = new AcademiaBusiness()
+        const retorno = await academiaBusiness.cadastroAcadamia(
+            enderecos,
+            telefones,
+            emails,
+            academia
 
+            )
 
-        });
+        return response.json(retorno);
     }
 }
