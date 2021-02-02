@@ -6,7 +6,6 @@ import LoginBusiness from '../../business/usuariosBusiness/LoginBusiness';
 export default class LoginController {
     @Get()
     async login(request: Request, response: Response) {
-
         let authorization: string = '';
         const loginBusiness = new LoginBusiness();
         const user = String(request.headers.user);

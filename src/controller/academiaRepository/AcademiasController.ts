@@ -4,19 +4,17 @@ import { Enderecos } from '../../entity/Enderecos';
 import { Emails } from '../../entity/Emails';
 import { Telefones } from '../../entity/Telefones';
 import { Academias } from '../../entity/Academias';
-import AcademiaBusiness from "../../business/academiaBusiness/AcademiaBusiness";
+import AcademiaBusiness from '../../business/academiaBusiness/AcademiaBusiness';
 
 @Controller('academia')
-
 export default class AcademiasController {
-
     @Get()
     async index(request: Request, response: Response) {}
 
     @Post()
     async cadastrPessoas(request: Request, response: Response) {
-       const  telefones = new Telefones();
-        const  emails = new Emails();
+        const telefones = new Telefones();
+        const emails = new Emails();
         const enderecos = new Enderecos();
         const academia = new Academias();
         enderecos.cep = String(request.body.endereco.cep);
@@ -37,15 +35,8 @@ export default class AcademiasController {
         academia.nomeRazaoSocial = String(request.body.academia.nomeRazaoSocial);
         academia.cpfCnpj = String(request.body.academia.cpfCnpj);
 
-
-        const academiaBusiness = new AcademiaBusiness()
-        const retorno = await academiaBusiness.cadastroAcadamia(
-            enderecos,
-            telefones,
-            emails,
-            academia
-
-            )
+        const academiaBusiness = new AcademiaBusiness();
+        const retorno = await academiaBusiness.cadastroAcadamia(enderecos, telefones, emails, academia);
 
         return response.json(retorno);
     }

@@ -14,17 +14,12 @@ export default class UsuariosBuisiness {
         enderecos: Enderecos,
         emails: Emails,
         telefones: Telefones,
-        usuarios: Usuarios
+        usuarios: Usuarios,
     ) {
         pessoas.nome = formatNome(pessoas.nome);
         pessoas.sobrenome = formatNome(pessoas.sobrenome);
 
-        const usuario = await cadastrarUsuariosRepository(
-            pessoas,
-            enderecos,
-            emails,
-            telefones,
-            usuarios);
+        const usuario = await cadastrarUsuariosRepository(pessoas, enderecos, emails, telefones, usuarios);
 
         return usuario;
     }

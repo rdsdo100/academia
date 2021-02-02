@@ -58,12 +58,10 @@ export default class UsuariosController {
 
         const usuariosBuisiness = new UsuariosBuisiness();
 
-        console.log(pessoas,
-            enderecos, emails, telefones, usuarios , tiposUsuarios , academias);
+        console.log(pessoas, enderecos, emails, telefones, usuarios, tiposUsuarios, academias);
 
-       const retorno = await usuariosBuisiness.cadastrarAlunos(pessoas,
-            enderecos, emails, telefones, usuarios);
+        const retorno = await usuariosBuisiness.cadastrarAlunos(pessoas, enderecos, emails, telefones, usuarios);
 
-       return response.json(retorno);
+        return response.json(retorno);
     }
 }

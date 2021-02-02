@@ -1,8 +1,8 @@
-import {getConnection, getManager} from 'typeorm';
+import { getConnection, getManager } from 'typeorm';
 import { Academias } from '../entity/Academias';
-import {Enderecos} from "../entity/Enderecos";
-import {Emails} from "../entity/Emails";
-import {Telefones} from "../entity/Telefones";
+import { Enderecos } from '../entity/Enderecos';
+import { Emails } from '../entity/Emails';
+import { Telefones } from '../entity/Telefones';
 
 const buscarAcademiasIdRepository = async (idAcademia: number) => {
     const usuarioRepository = getManager();
@@ -29,41 +29,37 @@ const cadastrarAcademiasRepository = async (
     academia: Academias,
     enderecos: Enderecos,
     emails: Emails,
-    telefones: Telefones
-
+    telefones: Telefones,
 ) => {
-    let buscarAcademia
-    let retornoEnderecos
-    let retornoEmails
-    let retornoTelefones
+    let buscarAcademia;
+    let retornoEnderecos;
+    let retornoEmails;
+    let retornoTelefones;
     const connection = getConnection();
     const queryRunner = connection.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
 
     try {
-        buscarAcademia = await queryRunner.manager.findOne(Academias, {cpfCnpj: academia.cpfCnpj});
-        if (buscarAcademia?.cpfCnpj !== academia.cpfCnpj){
-            retornoEnderecos = await queryRunner.manager.save(Enderecos , enderecos)
-            retornoEmails = await queryRunner.manager.save(Emails , emails)
-            retornoTelefones = await queryRunner.manager.save(Telefones , telefones)
+        buscarAcademia = await queryRunner.manager.findOne(Academias, { cpfCnpj: academia.cpfCnpj });
+        if (buscarAcademia?.cpfCnpj !== academia.cpfCnpj) {
+            retornoEnderecos = await queryRunner.manager.save(Enderecos, enderecos);
+            retornoEmails = await queryRunner.manager.save(Emails, emails);
+            retornoTelefones = await queryRunner.manager.save(Telefones, telefones);
 
-            academia.enderecosIdFK = retornoEnderecos
-            academia.emailsIdFK = retornoEmails
-            academia.telefonesIdFK = retornoTelefones
+            academia.enderecosIdFK = retornoEnderecos;
+            academia.emailsIdFK = retornoEmails;
+            academia.telefonesIdFK = retornoTelefones;
 
-            buscarAcademia = await queryRunner.manager.save(Academias, academia)
-
-}
-        else {
+            buscarAcademia = await queryRunner.manager.save(Academias, academia);
+        } else {
             return {
                 buscarAcademia,
-                message: "Cnpj ou Cpf de Academia Já cadastrada!"
-            }
+                message: 'Cnpj ou Cpf de Academia Já cadastrada!',
+            };
         }
 
         await queryRunner.commitTransaction();
-
     } catch (err) {
         console.log(err);
         await queryRunner.rollbackTransaction();
@@ -71,7 +67,7 @@ const cadastrarAcademiasRepository = async (
         await queryRunner.release();
     }
 
-    return buscarAcademia ;
+    return buscarAcademia;
 };
 
-export {cadastrarAcademiasRepository};
+export { cadastrarAcademiasRepository };
