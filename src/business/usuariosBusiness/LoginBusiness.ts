@@ -1,5 +1,5 @@
-import { assinar } from '../config/Jwt';
-import { buscarUsuarioRepository } from '../repository/usuarioRepository';
+import { assinar } from '../../config/Jwt';
+import { buscarUsuarioRepository } from '../../repository/usuarioRepository';
 
 export default class LoginBusiness {
     async index() {}
@@ -9,7 +9,7 @@ export default class LoginBusiness {
 
         const getUsuario = await buscarUsuarioRepository(nomeUsuario);
 
-        if (getUsuario?.nomeUsuario === nomeUsuario && getUsuario.senha === senha) {
+        if (getUsuario?.nomeUsuario === nomeUsuario && getUsuario?.senha === senha) {
             return (authorization = assinar(Number(getUsuario?.id),
                 String(getUsuario?.nomeUsuario),
                 Number(getUsuario.academiasIdFK)));

@@ -45,7 +45,7 @@ export default class UsuariosController {
 
         emails.email = String(request.body.email.email);
 
-        tiposUsuarios.id = Number(request.body.tipoUsuario.tiposUsuario);
+        tiposUsuarios.id = Number(request.body.tipoUsuario.tipoUsuario);
 
         academias.id = Number(request.body.academia.IdAcademias);
 
@@ -53,16 +53,17 @@ export default class UsuariosController {
         usuarios.email = String(request.body.email.email);
         usuarios.senha = String(request.body.usuario.senha);
         usuarios.ativo = true;
-        usuarios.pessoasIdFK = pessoas;
         usuarios.tiposUsuariosIdFK = tiposUsuarios;
         usuarios.academiasIdFK = academias;
 
         const usuariosBuisiness = new UsuariosBuisiness();
 
-        console.log(pessoas, emails, telefones, usuarios);
+        console.log(pessoas,
+            enderecos, emails, telefones, usuarios , tiposUsuarios , academias);
 
-        const retorno = await usuariosBuisiness.cadastrarAlunos(pessoas, enderecos, emails, telefones, usuarios);
+       const retorno = await usuariosBuisiness.cadastrarAlunos(pessoas,
+            enderecos, emails, telefones, usuarios);
 
-        return response.json(retorno);
+       return response.json(retorno);
     }
 }

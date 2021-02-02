@@ -35,7 +35,7 @@ export class Usuarios extends BaseEntity {
     pessoasIdFK: Pessoas;
 
     @ManyToOne(() => TiposUsuarios, (tiposUsuarios) => tiposUsuarios.tipoUsuario, { eager: true })
-    @JoinColumn([{ name: 'tipos_usuarios_IdFK_id_fk', referencedColumnName: 'id' }])
+    @JoinColumn([{ name: 'tipos_usuarios_id_fk', referencedColumnName: 'id' }])
     tiposUsuariosIdFK: TiposUsuarios;
 
     @ManyToOne(() => Academias, (academias) => academias.usuarios, { eager: true })

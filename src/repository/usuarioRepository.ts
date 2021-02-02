@@ -5,6 +5,7 @@ import { Enderecos } from '../entity/Enderecos';
 import { Emails } from '../entity/Emails';
 import { Telefones } from '../entity/Telefones';
 
+
 const buscarUsuarioRepository = async (nomeUsuario: string) => {
     const usuarioRepository = getManager();
     return usuarioRepository.findOne(Usuarios, { nomeUsuario: nomeUsuario });
@@ -47,6 +48,7 @@ const cadastrarUsuariosRepository = async (
     await queryRunner.startTransaction();
 
     try {
+
         usuarioRetorno = await queryRunner.manager.findOne(Usuarios, { nomeUsuario: usuarios.nomeUsuario });
 
         const buscarPessoas = await queryRunner.manager.findOne(Pessoas, { cpf: pessoas.cpf });
@@ -55,6 +57,7 @@ const cadastrarUsuariosRepository = async (
             const retornoEnderecos = await queryRunner.manager.save(Enderecos, enderecos);
             const retornoEmails = await queryRunner.manager.save(Emails, emails);
             const retornoTelefones = await queryRunner.manager.save(Telefones, telefones);
+
 
             pessoas.enderecosIdFK = retornoEnderecos;
             pessoas.emailsIdFK = retornoEmails;

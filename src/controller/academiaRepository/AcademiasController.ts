@@ -36,6 +36,8 @@ export default class AcademiasController {
         academia.nomeRazaoSocial = String(request.body.academia.nomeRazaoSocial);
         academia.cpfCnpj = String(request.body.academia.cpfCnpj);
 
+
+        
         return response.json({
 
 
