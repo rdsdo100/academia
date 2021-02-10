@@ -15,7 +15,12 @@ const buscarPermissoesRtasUusariosRepository = async () => {
             .getRepository(UsuariosRotas)
             .createQueryBuilder('usuarios_rotas')
 
-
+/*
+    select u.nome_usuario , rp.nome_rota , rp.caminho_rota from usuarios_rotas as ur
+    left join usuarios u on u.id = ur.usuarios_id_fk
+    left join rotas_permissoes rp on rp.id = ur.rotas_permissoes_id_fk
+    where ur.usuarios_id_fk = 1
+*/
 
         await queryRunner.commitTransaction();
     } catch (err) {
