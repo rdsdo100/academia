@@ -28,13 +28,60 @@ insert into telefones (
  '991544066'
 );
 
+insert into academias (nome_fantazia,
+                       nome_razao_social,
+                       cpf_cnpj,
+                       ativo,
+                       bloqueado,
+                       enderecos_id_fk,
+                       emails_id_fk,
+                       telefones_id_fk) values (
+                                                   'teste',
+                                                   'teste',
+                                                   '1234567891011',
+                                                   true ,
+                                                   true,
+                                                   1,
+                                                   1,
+                                                   1
+                                               );
+
+insert into enderecos (
+    cep,
+    logradouro,
+    complemento,
+    bairro,
+    localidade,
+    uf,
+    ibge,
+    numero) values
+(
+    '7546000',
+    'Rua santa marta',
+    'qd: 10 lt: 14',
+    'São Pedro',
+    'Neropolis',
+    'GO',
+    '000000',
+    '000'
+);
+
+insert into emails (email) values
+('rdsdo2011@gmail.com');
+
+insert into telefones (
+    dd,
+    telefone) VALUES
+('62',
+ '991544066'
+);
+
 insert into pessoas (
     nome,
     sobrenome,
     cpf,
     data_nacimento,
     data_cadastro,
-
     enderecos_id_fk,
     emails_id_fk,
     telefones_id_fk) values
@@ -44,22 +91,46 @@ insert into pessoas (
     '00000000100',
     '1993-03-04',
     '2020-01-20',
-    1,
-    1,
-    1
+    2,
+    2,
+    2
 );
 
 insert into tipos_usuarios (tipo_usuario) values ('administrador');
 
-insert into usuarios (nome_usuario, email, senha, matricula, ativo, pessoas_id_fk, tipos_usuarios_id_fk) values
+insert into usuarios (
+    nome_usuario,
+    email,
+    senha,
+    matricula,
+    ativo,
+    bloqueado,
+    pessoas_id_fk,
+    tipos_usuarios_id_fk,
+    academias_id_fk) values
 ('root',
  'rdsdo2011@gmail.com',
- 'root',
+ '123456',
  '1',
  true,
+ true,
+ 1,
  1,
  1
 );
+
+
+insert into  rotas_permissoes (nome_rota, caminho_rota) VALUES
+('Home','/home'),
+('Cadastro Pessoas','/cadastro-pessoa'),
+('Cadastro Academia','/cadastro-academia'),
+('Cadastro Dietas','/cadastro-dieta');
+
+insert into usuarios_rotas (usuarios_id_fk, rotas_permissoes_id_fk) values
+(1,1),
+(1,2),
+(1,3),
+(1,4);
 
 insert into medidas (
     data_avaliacao,
