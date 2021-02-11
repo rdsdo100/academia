@@ -113,6 +113,9 @@ npx ts-node ./node_modules/typeorm/cli.js migration:revert                     =
 imagens gratuitas
 https://unsplash.com/
 
+icones e imagens svg
+https://www.flaticon.com/br/
+
 
 npm run typeorm migration:create -- -n usuario
 npm run typeorm entity:create -- -n usuario

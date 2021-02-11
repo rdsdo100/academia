@@ -1,3 +1,4 @@
+/*
 module.exports = {
     type: 'mysql',
     host: 'localhost',
@@ -17,7 +18,7 @@ module.exports = {
     },
 };
 
-/*
+*/
 
 module.exports = {
    type: process.env.TYPEORM_SCHEMA ,
@@ -39,4 +40,3 @@ module.exports = {
       subscribersDir: process.env.TYPEORM_SUBSCRIBERS_DIR
    }
 }
-*/
