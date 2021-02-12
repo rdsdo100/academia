@@ -2,7 +2,7 @@ import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 't
 import { UsuariosRotas } from './UsuariosRotas';
 
 @Entity({ name: 'rotas_permissoes' })
-export class RotasPermissoes extends BaseEntity {
+    export class RotasPermissoes extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 

@@ -15,7 +15,8 @@ export default class TestController {
     @Get()
     async Test(request: Request, response: Response) {
 
-        await buscarPermissoesRtasUusariosRepository()
+     const  ret =    await buscarPermissoesRtasUusariosRepository()
+return response.json(ret)
 
     }
 }
