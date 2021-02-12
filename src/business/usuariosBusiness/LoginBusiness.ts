@@ -17,11 +17,8 @@ export default class LoginBusiness {
             );
 
 
-             return {
-                 authorization,
-                 logado : true,
+             return authorization
 
-             }
 
 
         } else {
