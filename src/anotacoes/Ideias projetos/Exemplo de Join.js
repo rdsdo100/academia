@@ -9,3 +9,13 @@ await getManager()
         .innerJoin(table4, 't4', 't4.id = t2.id_2') // INNER JOIN table4 t4 ON t4.id = t2.id_2 
         .where('t3.event = 2019') // WHERE t3.event = 2019
         .getRawMany() // depend on what you need really
+
+
+
+/*
+    buscarPrmissoes = await createQueryBuilder('Pessoas')
+        .leftJoinAndSelect('Pessoas.enderecosIdFK', 'persons')
+        .leftJoinAndSelect('Pessoas.emailsIdFK', 'items')
+        .leftJoinAndSelect('Pessoas.telefonesIdFK' , 'ok')
+        .getMany();
+*/
