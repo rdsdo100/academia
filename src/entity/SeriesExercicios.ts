@@ -2,7 +2,7 @@ import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColu
 import { Exercicios } from './Exercicios';
 import { Treinos } from './Treinos';
 
-@Entity({ name: 'series_Exercicios' })
+@Entity({ name: 'series_exercicios' })
 export class SeriesExercicios extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
