@@ -1,19 +1,19 @@
 import {createQueryBuilder} from "typeorm";
-import {UsuariosRotas} from "../entity/UsuariosRotas";
 
-const buscarPermissoesRtasUusariosRepository = async () => {
 
- let buscarPrmissoes
+const buscarPermissoesRtasUusariosRepository = async (idUsuario: number) => {
 
-    buscarPrmissoes = await createQueryBuilder('UsuariosRotas')
-        .leftJoin('UsuariosRotas.usuariosIdFK' , 'ur')
-        .leftJoinAndSelect('UsuariosRotas.rotasPermissoesIdFK' , 'ur2')
+ let buscarPrmissoes:any
 
-        .getMany();
+        buscarPrmissoes =  await createQueryBuilder('UsuariosRotas')
+            .leftJoin('UsuariosRotas.usuariosIdFK', 'persons')
+            .leftJoinAndSelect('UsuariosRotas.rotasPermissoesIdFK', 'items')
+            .getMany()
 
 
     return buscarPrmissoes
 };
+
 export {
     buscarPermissoesRtasUusariosRepository
 }
