@@ -65,7 +65,7 @@ const cadastrarUsuariosRepository = async (
             usuarios.pessoasIdFK = retornoPessoas;
             usuarioRetorno = await queryRunner.manager.save(usuarios);
 
-            retornoUsuarios = await queryRunner.manager.save(Usuarios, { pessoasIdFK: retornoPessoas });
+            //retornoUsuarios = await queryRunner.manager.save(Usuarios, { pessoasIdFK: retornoPessoas });
         } else {
             retornoUsuarios = buscarPessoas;
         }
