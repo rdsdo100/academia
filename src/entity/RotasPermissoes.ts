@@ -1,5 +1,6 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
 import { UsuariosRotas } from './UsuariosRotas';
+import {RotasPrincipais} from "./RotasPrincipais";
 
 @Entity({ name: 'rotas_permissoes' })
     export class RotasPermissoes extends BaseEntity {
@@ -14,4 +15,10 @@ import { UsuariosRotas } from './UsuariosRotas';
 
     @OneToMany(() => UsuariosRotas, (usuariosRotas) => usuariosRotas.rotasPermissoesIdFK)
     usuariosRotas: UsuariosRotas[];
+
+
+    @ManyToOne(() => RotasPrincipais, (rotasPrincipais) => rotasPrincipais.rotasPermissoes, { eager: true })
+    @JoinColumn([{ name: 'rotas_principais_id_fk', referencedColumnName: 'id' }])
+    rotas_principais_id_fk: RotasPrincipais;
+
 }

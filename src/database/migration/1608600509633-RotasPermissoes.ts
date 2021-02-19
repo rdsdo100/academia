@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from 'typeorm';
 
 export class RotasPermissoes1608600509633 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
@@ -27,7 +27,20 @@ export class RotasPermissoes1608600509633 implements MigrationInterface {
                         isNullable: true,
                         isUnique: true,
                     },
+                    {
+                        name: 'rotas_principais_id_fk',
+                        type: 'int',
+                    },
                 ],
+            }),
+        );
+        await queryRunner.createForeignKey(
+            'rotas_permissoes',
+            new TableForeignKey({
+                columnNames: ['rotas_principais_id_fk'],
+                referencedColumnNames: ['id'],
+                referencedTableName: 'rotas_principais',
+                name: 'rotas_permissoes_rotas_principais',
             }),
         );
     }
