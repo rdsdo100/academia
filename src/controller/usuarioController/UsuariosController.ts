@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@overnightjs/core';
+import {ClassMiddleware, Controller, Get, Post} from '@overnightjs/core';
 import { Request, Response } from 'express';
 import { Enderecos } from '../../entity/Enderecos';
 import { Pessoas } from '../../entity/Pessoas';
@@ -8,12 +8,16 @@ import UsuariosBuisiness from '../../business/usuariosBusiness/UsuariosBuisiness
 import { Usuarios } from '../../entity/Usuarios';
 import { TiposUsuarios } from '../../entity/TiposUsuarios';
 import { Academias } from '../../entity/Academias';
+import {decodificar} from "../../config/Jwt";
+import {usuariosValidations} from "../../validation/usuariosValidations";
 
 @Controller('user')
-//@ClassMiddleware([decodificar,usuariosValidations ])
+@ClassMiddleware([usuariosValidations,decodificar])
 export default class UsuariosController {
     @Get()
-    async index(request: Request, response: Response) {}
+    async index(request: Request, response: Response) {
+
+    }
 
     @Post()
     async cadastrPessoas(request: Request, response: Response) {
@@ -40,14 +44,14 @@ export default class UsuariosController {
         enderecos.ibge = String(request.body.endereco.ibge);
         enderecos.numero = String(request.body.endereco.numero);
 
-        telefones.dd = String(request.body.telefone.dd);
+         telefones.dd = String(request.body.telefone.dd);
         telefones.telefone = String(request.body.telefone.telefone);
 
         emails.email = String(request.body.email.email);
 
-        tiposUsuarios.id = Number(request.body.tipoUsuario.tipoUsuario);
+        tiposUsuarios.id = Number(request.body.usuario.tipoUsuario);
 
-        academias.id = Number(request.body.academia.IdAcademias);
+       academias.id = Number(request.body.usuario.academia);
 
         usuarios.nomeUsuario = String(request.body.usuario.nomeUsuario);
         usuarios.email = String(request.body.email.email);
@@ -58,10 +62,10 @@ export default class UsuariosController {
 
         const usuariosBuisiness = new UsuariosBuisiness();
 
-        console.log(pessoas, enderecos, emails, telefones, usuarios, tiposUsuarios, academias);
+       // console.log(pessoas, enderecos, emails, telefones, usuarios, tiposUsuarios, academias);
 
-        const retorno = await usuariosBuisiness.cadastrarAlunos(pessoas, enderecos, emails, telefones, usuarios);
+       const retorno = await usuariosBuisiness.cadastrarAlunos(pessoas, enderecos, emails, telefones, usuarios);
 
-        return response.json(retorno);
+       return response.json({retorno, pessoas, enderecos, emails, telefones, usuarios, academias});
     }
 }

@@ -10,7 +10,7 @@ const usuariosValidations = celebrate(
                 dataNacimento: Joi.date(),
             },
             endereco: {
-                cep: Joi.string().length(7),
+                cep: Joi.string().length(8),
                 logradouro: Joi.string(),
                 complemento: Joi.string(),
                 bairro: Joi.string(),
@@ -26,15 +26,11 @@ const usuariosValidations = celebrate(
                 dd: Joi.string().max(3).min(2),
                 telefone: Joi.string().max(9).min(8),
             },
-            tipoUsuario: {
-                ipoUsuario: Joi.number(),
-            },
-            academia: {
-                IdAcademias: Joi.number(),
-            },
             usuario: {
                 nomeUsuario: Joi.string().required(),
                 senha: Joi.string().required(),
+                tipoUsuario: Joi.number(),
+                academia: Joi.number(),
             },
         }),
     },
