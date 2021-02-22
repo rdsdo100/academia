@@ -1,0 +1,165 @@
+{
+  "Exemplos": {
+    "rota": "",
+    "get": {
+      "rota": "",
+      "heades": {},
+      "params": "",
+      "body": {}
+    },
+    "post": {
+      "rota": "",
+      "heades": {},
+      "params": "",
+      "body": {}
+    },
+    "delete": {
+      "rota": "",
+      "heades": {},
+      "params": "/number",
+      "body": {}
+    },
+    "update": {
+      "rota": "",
+      "heades": {},
+      "params": "/number",
+      "body": {}
+    }
+  },
+  "Usuarios": {
+    "rota": "",
+    "get": {
+      "rota": "",
+      "heades": {},
+      "params": "",
+      "body": {
+
+      }
+    },
+    "post": {
+      "rota": "",
+      "heades": {},
+      "params": "",
+      "body": {}
+    },
+    "delete": {
+      "rota": "",
+      "heades": {},
+      "params": "/number",
+      "body": {
+        "pessoa": {
+          "nome": "",
+          "sobrenome": "",
+          "cpf": "",
+          "dataNacimento": ""
+        },
+
+        "endereco": {
+          "cep": "",
+          "logradouro": "",
+          "complemento": "",
+          "bairro": "",
+          "localidade": "",
+          "uf": "",
+          "ibge": "",
+          "numero": ""
+        },
+
+        "telefone": {
+          "dd": "",
+          "telefone": ""
+        },
+
+        "email": {
+          "email": ""
+        },
+
+        "usuario": {
+          "nomeUsuario": "root",
+          "senha": "123456",
+          "tipoUsuario": 1 ,
+          "academia": 1
+        }
+      }
+    },
+    "update": {
+      "rota": "",
+      "heades": {},
+      "params": "/number",
+      "body": {}
+    }
+  },
+  "Academia": {
+    "rota": "",
+    "get": {
+      "rota": "",
+      "heades": {},
+      "params": "",
+      "body": {}
+    },
+    "post": {
+      "rota": "",
+      "heades": {},
+      "params": "",
+      "body": {}
+    },
+    "delete": {
+      "rota": "",
+      "heades": {},
+      "params": "/number",
+      "body": {}
+    },
+    "update": {
+      "rota": "",
+      "heades": {},
+      "params": "/number",
+      "body": {}
+    }
+  },
+  "Medidas": {
+    "rota": "",
+    "get": {
+      "rota": "",
+      "heades": {},
+      "params": "",
+      "body": {}
+    },
+    "post": {
+      "rota": "",
+      "heades": {},
+      "params": "",
+      "body": {
+        "idAluno": "",
+        "dataAvaliacao": "",
+        "peso": "",
+        "estatura": "",
+        "toraxNormal": "",
+        "toraxExpandido": "",
+        "bracoDireitoRelaxado": "",
+        "bracoDireitoExpandido": "",
+        "bracoEsquerdoRelaxado": "",
+        "bracoEsquerdoExpandido": "",
+        "cintura": "",
+        "abdomem": "",
+        "quadril": "",
+        "coxaMedialDireira": "",
+        "coxaMedialEsquerda": "",
+        "panturriliaDireita": "",
+        "panturriliaEsquerda": "",
+        "observacoes": ""
+      }
+    },
+    "delete": {
+      "rota": "",
+      "heades": {},
+      "params": "/number",
+      "body": {}
+    },
+    "update": {
+      "rota": "",
+      "heades": {},
+      "params": "/number",
+      "body": {}
+    }
+  }
+}

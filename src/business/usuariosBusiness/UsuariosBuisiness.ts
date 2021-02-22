@@ -4,10 +4,13 @@ import { Emails } from '../../entity/Emails';
 import { Telefones } from '../../entity/Telefones';
 import { formatNome } from '../../util/formatNomes';
 import { Usuarios } from '../../entity/Usuarios';
-import { cadastrarUsuariosRepository } from '../../repository/usuarioRepository';
+import {cadastrarUsuariosRepository, listUsuarioRepository} from '../../repository/usuarioRepository';
 
 export default class UsuariosBuisiness {
-    async index() {}
+    async index() {
+        const usuario = await  listUsuarioRepository()
+        return usuario
+    }
 
     async cadastrarAlunos(
         pessoas: Pessoas,

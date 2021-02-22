@@ -11,11 +11,15 @@ import { Academias } from '../../entity/Academias';
 import {decodificar} from "../../config/Jwt";
 import {usuariosValidations} from "../../validation/usuariosValidations";
 
+
 @Controller('user')
 @ClassMiddleware([usuariosValidations,decodificar])
 export default class UsuariosController {
     @Get()
     async index(request: Request, response: Response) {
+        const usuariosBuisiness = new UsuariosBuisiness();
+        const usuarios = await  usuariosBuisiness.index()
+        return response.json(usuarios);
 
     }
 
@@ -62,10 +66,8 @@ export default class UsuariosController {
 
         const usuariosBuisiness = new UsuariosBuisiness();
 
-       // console.log(pessoas, enderecos, emails, telefones, usuarios, tiposUsuarios, academias);
-
        const retorno = await usuariosBuisiness.cadastrarAlunos(pessoas, enderecos, emails, telefones, usuarios);
 
-       return response.json({retorno, pessoas, enderecos, emails, telefones, usuarios, academias});
+       return response.json(retorno);
     }
 }
