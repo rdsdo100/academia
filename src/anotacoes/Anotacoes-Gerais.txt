@@ -85,6 +85,13 @@ uploads de arquivos
 
 npm install multer
 npm install @types/multer
+
+
+===================================================================================================================================================
+Limpar  cache yarn 
+
+yarn cache clean                                                              == Limpa os caches da maquina(arquivos antigos que enchem o hd)
+
 ===================================================================================================================================================
 comandos typeorm
 
