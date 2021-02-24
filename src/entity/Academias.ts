@@ -24,15 +24,15 @@ export class Academias extends BaseEntity {
     @Column()
     bloqueado: boolean;
 
-    @ManyToOne(() => Enderecos, (enderecos) => enderecos.academias, { eager: true })
+    @ManyToOne(() => Enderecos, (enderecos) => enderecos.academias)
     @JoinColumn([{ name: 'enderecos_id_fk', referencedColumnName: 'id' }])
     enderecosIdFK: Enderecos;
 
-    @ManyToOne(() => Emails, (emails) => emails.academias, { eager: true })
+    @ManyToOne(() => Emails, (emails) => emails.academias)
     @JoinColumn([{ name: 'emails_id_fk', referencedColumnName: 'id' }])
     emailsIdFK: Emails;
 
-    @ManyToOne(() => Telefones, (telefones) => telefones.academias, { eager: true })
+    @ManyToOne(() => Telefones, (telefones) => telefones.academias )
     @JoinColumn([{ name: 'telefones_id_fk', referencedColumnName: 'id' }])
     telefonesIdFK: Telefones;
 

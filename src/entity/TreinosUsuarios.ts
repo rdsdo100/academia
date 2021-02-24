@@ -10,11 +10,11 @@ export class TreinosUsuarios extends BaseEntity {
     @Column()
     nomeTreino: string;
 
-    @ManyToOne(() => Usuarios, (usuarios) => usuarios.treinosUsuarios, { eager: true })
+    @ManyToOne(() => Usuarios, (usuarios) => usuarios.treinosUsuarios)
     @JoinColumn([{ name: 'usuarios_id_fk', referencedColumnName: 'id' }])
     usuariosIdFK: Usuarios;
 
-    @ManyToOne(() => Treinos, (treinos) => treinos.treinosUsuarios, { eager: true })
+    @ManyToOne(() => Treinos, (treinos) => treinos.treinosUsuarios)
     @JoinColumn([{ name: 'treinos_id_fk', referencedColumnName: 'id' }])
     treinosIdFK: Treinos;
 }

@@ -7,11 +7,11 @@ export class MedidasUsuarios extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Usuarios, (usuarios) => usuarios.treinosUsuarios, { eager: true })
+    @ManyToOne(() => Usuarios, (usuarios) => usuarios.treinosUsuarios )
     @JoinColumn([{ name: 'usuarios_id_fk', referencedColumnName: 'id' }])
     usuariosIdFK: Usuarios;
 
-    @ManyToOne(() => Medidas, (medidas) => medidas.medidasUsuarios, { eager: true })
+    @ManyToOne(() => Medidas, (medidas) => medidas.medidasUsuarios)
     @JoinColumn([{ name: 'medidas_id_fk', referencedColumnName: 'id' }])
     medidasIdFK: Medidas;
 }

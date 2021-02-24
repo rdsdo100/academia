@@ -17,7 +17,7 @@ import {RotasPrincipais} from "./RotasPrincipais";
     usuariosRotas: UsuariosRotas[];
 
 
-    @ManyToOne(() => RotasPrincipais, (rotasPrincipais) => rotasPrincipais.rotasPermissoes, { eager: true })
+    @ManyToOne(() => RotasPrincipais, (rotasPrincipais) => rotasPrincipais.rotasPermissoes)
     @JoinColumn([{ name: 'rotas_principais_id_fk', referencedColumnName: 'id' }])
     rotas_principais_id_fk: RotasPrincipais;
 

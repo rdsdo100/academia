@@ -25,15 +25,15 @@ import { Usuarios } from './Usuarios';
     @Column({ name: 'data_cadastro', nullable: false, type: 'date' })
     dataCadastro: Date;
 
-    @ManyToOne(() => Enderecos, (enderecos) => enderecos.pessoas, { eager: true })
+    @ManyToOne(() => Enderecos, (enderecos) => enderecos.pessoas)
     @JoinColumn([{ name: 'enderecos_id_fk', referencedColumnName: 'id' }])
     enderecosIdFK: Enderecos;
 
-    @ManyToOne(() => Emails, (emails) => emails.pessoas, { eager: true })
+    @ManyToOne(() => Emails, (emails) => emails.pessoas)
     @JoinColumn([{ name: 'emails_id_fk', referencedColumnName: 'id' }])
     emailsIdFK: Emails;
 
-    @ManyToOne(() => Telefones, (telefones) => telefones.pessoas, { eager: true })
+    @ManyToOne(() => Telefones, (telefones) => telefones.pessoas)
     @JoinColumn([{ name: 'telefones_id_fk', referencedColumnName: 'id' }])
     telefonesIdFK: Telefones;
 

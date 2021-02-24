@@ -22,11 +22,11 @@ export class SeriesExercicios extends BaseEntity {
     @Column()
     intervalo: number;
 
-    @ManyToOne(() => Exercicios, (exercicios) => exercicios.seriesExercicios, { eager: true })
+    @ManyToOne(() => Exercicios, (exercicios) => exercicios.seriesExercicios )
     @JoinColumn([{ name: 'exercicios_id_fk', referencedColumnName: 'id' }])
     exerciciosIdFK: Exercicios;
 
-    @ManyToOne(() => Treinos, (treinos) => treinos.seriesExercicios, { eager: true })
+    @ManyToOne(() => Treinos, (treinos) => treinos.seriesExercicios)
     @JoinColumn([{ name: 'treinos_id_fk', referencedColumnName: 'id' }])
     treinosIdFK: Treinos;
 }
