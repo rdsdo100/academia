@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Controller, Get } from '@overnightjs/core';
+import {Controller, Get, Post} from '@overnightjs/core';
 
 @Controller('test')
 export default class TestController {
@@ -8,5 +8,12 @@ export default class TestController {
 
 
 
+
+    }
+    @Post()
+    async Resposta(request: Request, response: Response){
+
+        console.log(request.body , request.headers.ok)
+response.status(200).json({ok: "foi"})
     }
 }

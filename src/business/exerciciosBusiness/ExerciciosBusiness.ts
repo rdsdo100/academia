@@ -1,4 +1,4 @@
-import { buscarExercicios, cadastrarExercicios } from '../../repository/exerciciosController';
+import { buscarExercicios, cadastrarExercicios } from '../../repository/exerciciosRepository';
 
 export default class ExerciciosBusiness {
     async index() {
