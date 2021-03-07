@@ -5,6 +5,9 @@ import { Request, Response } from 'express';
 export default class Inicio {
     @Get()
     inicio(req: Request, res: Response) {
-        res.send({ ok: 'Funcionando', Name: 'Rubens' , toVivo: true });
+        res.send({ ok: 'Funcionando', 
+        Name: 'Rubens' ,
+         toVivo: true , 
+         teste: String(process.env.TESTE) });
     }
 }
